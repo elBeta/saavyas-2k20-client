@@ -1,0 +1,14 @@
+{
+    "master": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-saavyas-2k20-client-master-221423-authRole",
+            "UnauthRoleArn": "arn:aws:iam::379471395249:role/amplify-saavyas-2k20-client-master-221423-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::379471395249:role/amplify-saavyas-2k20-client-master-221423-authRole",
+            "Region": "ap-south-1",
+            "DeploymentBucketName": "amplify-saavyas-2k20-client-master-221423-deployment",
+            "UnauthRoleName": "amplify-saavyas-2k20-client-master-221423-unauthRole",
+            "StackName": "amplify-saavyas-2k20-client-master-221423",
+            "StackId": "arn:aws:cloudformation:ap-south-1:379471395249:stack/amplify-saavyas-2k20-client-master-221423/87e8c180-fb34-11e9-aca6-02abaae9da36"
+        }
+    }
+}
