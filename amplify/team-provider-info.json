@@ -10,5 +10,17 @@
             "StackName": "amplify-saavyas-2k20-client-master-221423",
             "StackId": "arn:aws:cloudformation:ap-south-1:379471395249:stack/amplify-saavyas-2k20-client-master-221423/87e8c180-fb34-11e9-aca6-02abaae9da36"
         }
+    },
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-saavyas-2k20-client-dev-222337-authRole",
+            "UnauthRoleArn": "arn:aws:iam::379471395249:role/amplify-saavyas-2k20-client-dev-222337-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::379471395249:role/amplify-saavyas-2k20-client-dev-222337-authRole",
+            "Region": "ap-south-1",
+            "DeploymentBucketName": "amplify-saavyas-2k20-client-dev-222337-deployment",
+            "UnauthRoleName": "amplify-saavyas-2k20-client-dev-222337-unauthRole",
+            "StackName": "amplify-saavyas-2k20-client-dev-222337",
+            "StackId": "arn:aws:cloudformation:ap-south-1:379471395249:stack/amplify-saavyas-2k20-client-dev-222337/d182f5d0-fb35-11e9-9848-0aa7e2913d94"
+        }
     }
 }
