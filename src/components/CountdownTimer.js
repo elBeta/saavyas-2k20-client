@@ -4,6 +4,8 @@ import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
 import { makeStyles } from "@material-ui/core/styles"
 
+import moment from "moment"
+
 const useStyles = makeStyles({
   root: {
     padding: "1rem 0",
@@ -46,7 +48,15 @@ function CountdownTimer({
     const interval = setInterval(() => setCurTime(Date.now()), 1000)
     return () => clearInterval(interval)
   }, [])
-  const timeComponents = { days: 100, hours: 13, mins: 24, secs: 32 }
+  const timeLeft = moment.duration(targetDate.diff(moment()))
+  const daysLeft = targetDate.diff(moment(), "days")
+
+  const timeComponents = {
+    days: daysLeft,
+    hours: timeLeft.hours(),
+    mins: timeLeft.minutes(),
+    secs: timeLeft.seconds(),
+  }
 
   return (
     <Grid container spacing={spacing} justify="center" className={classes.root}>
@@ -83,7 +93,7 @@ function CountdownTimer({
 }
 
 const defaultProps = {
-  targetDate: Date.now() + 10000000,
+  targetDate: moment("1 March 2020"),
   dividerWidth: 2,
   dividerColor: "white",
   unitCountColor: "white",
