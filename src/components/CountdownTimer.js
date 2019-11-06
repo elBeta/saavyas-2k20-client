@@ -1,0 +1,96 @@
+import React, { useState, useEffect } from "react"
+import Grid from "@material-ui/core/Grid"
+import Typography from "@material-ui/core/Typography"
+import Divider from "@material-ui/core/Divider"
+import { makeStyles } from "@material-ui/core/styles"
+
+const useStyles = makeStyles({
+  root: {
+    padding: "1rem 0",
+  },
+  rightDivider: props => ({
+    borderRightWidth: props.dividerWidth,
+    borderRightColor: props.dividerColor,
+  }),
+  unitCountStyle: props => ({
+    color: props.unitCountColor,
+  }),
+  unitStyle: props => ({
+    color: props.unitColor,
+  }),
+  centerAlign: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+})
+
+function CountdownTimer({
+  targetDate = defaultProps.targetDate,
+  dividerWidth = defaultProps.dividerWidth,
+  dividerColor = defaultProps.dividerColor,
+  unitCountColor = defaultProps.unitColor,
+  unitColor = defaultProps.unitColor,
+  spacing = defaultProps.spacing,
+  unitCountTypographyVariant = defaultProps.unitCountTypographyVariant,
+  unitTypographyVariant = defaultProps.unitTypographyVariant,
+}) {
+  const classes = useStyles({
+    dividerWidth,
+    dividerColor,
+    unitCountColor,
+    unitColor,
+  })
+  const [curTime, setCurTime] = useState(Date.now())
+  useEffect(() => {
+    const interval = setInterval(() => setCurTime(Date.now()), 1000)
+    return () => clearInterval(interval)
+  }, [])
+  const timeComponents = { days: 100, hours: 13, mins: 24, secs: 32 }
+
+  return (
+    <Grid container spacing={spacing} justify="center" className={classes.root}>
+      {Object.keys(timeComponents).map((key, index) => (
+        <Grid
+          item
+          container
+          key={key}
+          xs={6}
+          sm={3}
+          direction="column"
+          className={classes.rightDivider}
+        >
+          <Grid item className={classes.centerAlign}>
+            <Typography
+              className={classes.unitCountStyle}
+              variant={unitCountTypographyVariant}
+            >
+              {timeComponents[key].toString().padStart(2, "0")}
+            </Typography>
+          </Grid>
+          <Grid item className={classes.centerAlign}>
+            <Typography
+              className={classes.unitStyle}
+              variant={unitTypographyVariant}
+            >
+              {key}
+            </Typography>
+          </Grid>
+        </Grid>
+      ))}
+    </Grid>
+  )
+}
+
+const defaultProps = {
+  targetDate: Date.now() + 10000000,
+  dividerWidth: 2,
+  dividerColor: "white",
+  unitCountColor: "white",
+  unitColor: "white",
+  spacing: 8,
+  unitCountTypographyVariant: "h3",
+  unitTypographyVariant: "h5",
+}
+
+export default CountdownTimer

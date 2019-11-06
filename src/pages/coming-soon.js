@@ -10,6 +10,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 
 import ImageSlideshow from "../components/ImageSlideshow"
 import FluidImage from "../components/image"
+import CountdownTimer from "../components/CountdownTimer"
 
 const useStyles = makeStyles({
   mainSection: {
@@ -102,7 +103,9 @@ function ComingSoon() {
                   </Typography>
                   <Divider className={classes.styledDivider} />
                 </Grid>
-                <Grid item></Grid>
+                <Grid item>
+                  <CountdownTimer />
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
