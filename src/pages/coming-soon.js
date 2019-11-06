@@ -8,7 +8,7 @@ import Divider from "@material-ui/core/Divider"
 
 import MenuIcon from "@material-ui/icons/Menu"
 
-import ImageSlideshow from "../components/imageSlideshow"
+import ImageSlideshow from "../components/ImageSlideshow"
 import FluidImage from "../components/image"
 
 const useStyles = makeStyles({
