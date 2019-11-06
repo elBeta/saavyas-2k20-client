@@ -14,7 +14,7 @@ import Img from "gatsby-image"
  */
 
 function FluidImage(props) {
-  const { fileName } = props
+  const { fileName, ...otherProps } = props
 
   const data = useStaticQuery(graphql`
     query {
@@ -42,7 +42,13 @@ function FluidImage(props) {
     return null
   }
 
-  return <Img fluid={image.node.childImageSharp.fluid} key={image.node.id} />
+  return (
+    <Img
+      fluid={image.node.childImageSharp.fluid}
+      key={image.node.id}
+      {...otherProps}
+    />
+  )
 }
 
 export default FluidImage
