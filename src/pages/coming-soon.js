@@ -11,6 +11,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import ImageSlideshow from "../components/ImageSlideshow"
 import FluidImage from "../components/image"
 import CountdownTimer from "../components/CountdownTimer"
+import ShareButtons from "../components/ShareButtons"
 
 const useStyles = makeStyles({
   mainSection: {
@@ -105,6 +106,9 @@ function ComingSoon() {
                 </Grid>
                 <Grid item>
                   <CountdownTimer />
+                </Grid>
+                <Grid item>
+                  <ShareButtons />
                 </Grid>
               </Grid>
             </Grid>
