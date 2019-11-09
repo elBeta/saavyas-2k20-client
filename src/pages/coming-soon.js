@@ -51,7 +51,7 @@ const useStyles = makeStyles({
     height: "100%",
     zIndex: -2,
     backgroundColor: "black",
-    opacity: 0.8,
+    opacity: 0.7,
   },
   overlay: {
     position: "absolute",
