@@ -15,6 +15,7 @@ import LocateIcon from "@material-ui/icons/MyLocation"
 import ImageSlideshow from "../components/ImageSlideshow"
 import CountdownTimer from "../components/CountdownTimer"
 import ShareButtons from "../components/ShareButtons"
+import FluidImage from "../components/image"
 
 
 const theme = responsiveFontSizes(createMuiTheme());
@@ -68,7 +69,13 @@ const useStyles = makeStyles({
     backgroundColor: "white",
     height: 2,
   },
-  saavyasLogo: {},
+  saavyasLogo: {
+    width: '20rem',
+
+    [theme.breakpoints.down('xs')]: {
+      width: '15rem'
+    }
+  },
 })
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -110,14 +117,11 @@ function ComingSoon() {
                   direction="column"
                   justify="center"
                   alignItems="center"
+                  spacing={1}
                   className={classes.mainSectionInnerArea}
                 >
                   <Grid item>
-                    <Typography>Image here</Typography>
-                    {/* <FluidImage
-                    fileName="saavyas_logo.png"
-                    className={classes.saavyasLogo}
-                  /> */}
+                    <FluidImage fileName="saavyas_logo_with_text.png" className={classes.saavyasLogo} />
                   </Grid>
                   <Grid item>
                     <Typography
