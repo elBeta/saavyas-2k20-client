@@ -33,6 +33,9 @@ const useStyles = makeStyles({
     overflowX: "hidden",
     overflowY: "hidden"
   },
+  comingSoonTypo: {
+    fontFamily: 'Permanent Marker'
+  },
   slidesContainer: {
     position: "absolute",
     top: 0,
@@ -124,7 +127,7 @@ function ComingSoon() {
                     <FluidImage fileName="saavyas_logo_with_text.png" className={classes.saavyasLogo} />
                   </Grid>
                   <Grid item>
-                    <Typography color="secondary" variant="h2">
+                    <Typography color="secondary" variant="h2" className={classes.comingSoonTypo}>
                       COMING SOON
                     </Typography>
                     <Divider className={classes.styledDivider} />
