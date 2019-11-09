@@ -1,22 +1,36 @@
-import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import React, { useState } from "react"
+import { makeStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import IconButton from "@material-ui/core/IconButton"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
+import Dialog from "@material-ui/core/Dialog"
+import Slide from "@material-ui/core/Slide"
 
 import MenuIcon from "@material-ui/icons/Menu"
+import CloseIcon from "@material-ui/icons/Close"
+import LocateIcon from "@material-ui/icons/MyLocation"
 
 import ImageSlideshow from "../components/ImageSlideshow"
-import FluidImage from "../components/image"
 import CountdownTimer from "../components/CountdownTimer"
 import ShareButtons from "../components/ShareButtons"
+
+
+const theme = responsiveFontSizes(createMuiTheme());
+theme.typography.body1 = {
+  fontSize: '1rem',
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '0.8rem',
+  }
+}
 
 const useStyles = makeStyles({
   mainSection: {
     position: "relative",
     height: "100vh",
+    overflowX: "hidden",
+    overflowY: "hidden"
   },
   slidesContainer: {
     position: "absolute",
@@ -57,65 +71,272 @@ const useStyles = makeStyles({
   saavyasLogo: {},
 })
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="right" ref={ref} {...props} />
+})
+
 function ComingSoon() {
   const classes = useStyles()
+  const [moreInfoOpen, setMoreInfoOpen] = useState(false)
+
+  const handleMoreInfoClick = e => {
+    setMoreInfoOpen(true)
+  }
+
+  const handleMoreInfoClose = e => {
+    setMoreInfoOpen(false)
+  }
 
   return (
     <>
       <CssBaseline />
-      <div>
-        <Grid container>
-          <Grid item container xs={12} className={classes.mainSection}>
-            <Grid item xs={12} className={classes.slidesContainer}>
-              <div className={classes.overlay} />
-              <ImageSlideshow className={classes.slideshow} />
-            </Grid>
-            <Grid item container xs={12} direction="column">
-              <Grid item>
-                <IconButton>
-                  <MenuIcon />
-                </IconButton>
+      <ThemeProvider theme={theme}>
+        <div>
+          <Grid container>
+            <Grid item container xs={12} className={classes.mainSection}>
+              <Grid item xs={12} className={classes.slidesContainer}>
+                <div className={classes.overlay} />
+                <ImageSlideshow className={classes.slideshow} />
               </Grid>
-              <Grid
-                item
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-                className={classes.mainSectionInnerArea}
-              >
+              <Grid item container xs={12} direction="column">
                 <Grid item>
-                  <Typography>Image here</Typography>
-                  {/* <FluidImage
+                  <IconButton onClick={handleMoreInfoClick}>
+                    <MenuIcon style={{ fill: "white" }} />
+                  </IconButton>
+                </Grid>
+                <Grid
+                  item
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                  className={classes.mainSectionInnerArea}
+                >
+                  <Grid item>
+                    <Typography>Image here</Typography>
+                    {/* <FluidImage
                     fileName="saavyas_logo.png"
                     className={classes.saavyasLogo}
                   /> */}
-                </Grid>
-                <Grid item>
-                  <Typography
-                    display="inline"
-                    style={{ color: "white", display: "inline" }}
-                    variant="h3"
-                  >
-                    We're{" "}
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      display="inline"
+                      style={{ color: "white", display: "inline" }}
+                      variant="h3"
+                    >
+                      We're{" "}
+                    </Typography>
+                    <Typography display="inline" color="secondary" variant="h2">
+                      COMING SOON
                   </Typography>
-                  <Typography display="inline" color="secondary" variant="h2">
-                    COMING SOON
+                    <Divider className={classes.styledDivider} />
+                  </Grid>
+                  <Grid item>
+                    <CountdownTimer />
+                  </Grid>
+                  <Grid item>
+                    <ShareButtons />
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </div>
+        <MoreInfo open={moreInfoOpen} handleClose={handleMoreInfoClose} />
+      </ThemeProvider>
+
+    </>
+  )
+}
+
+const useStyles2 = makeStyles({
+  root: {
+    height: "100%",
+    width: "100%",
+    maxHeight: '100%',
+    maxWidth: '100%',
+    padding: 24,
+    backgroundColor: "#212121",
+  },
+  titleColor1: {
+    color: "#ff0066",
+  },
+  titleColor2: {
+    color: "#ffffff",
+  },
+  locateIconColor: {
+    fill: "#ff0066",
+  },
+  containerRoot: {
+    height: '100%',
+  },
+  closeIconItem: {
+    flexGrow: 0,
+  },
+  mainArea: {
+    flexGrow: 1,
+  },
+  styledDivider: {
+    backgroundColor: "white",
+    height: 2,
+    width: '30%',
+  },
+  centerAlign: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+})
+
+function MoreInfo(props) {
+  const classes2 = useStyles2()
+  const contactDetails = { 'Devanshi': '123456789', 'Damodar': '123456789', 'Nihal': '123456789', 'Aashay': '123456789', 'Vishal': '123456789', }
+
+  return (
+    <Dialog
+      fullScreen
+      open={props.open}
+      onClose={props.handleClose}
+      TransitionComponent={Transition}
+    >
+      <div className={classes2.root}>
+        <Grid container className={classes2.containerRoot}>
+          <Grid item xs={12} className={classes2.closeIconItem}>
+            <IconButton onClick={props.handleClose}>
+              <CloseIcon style={{ fill: "white" }} />
+            </IconButton>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            container
+            direction="column"
+            justify="space-between"
+            className={classes2.mainArea}
+          >
+            <Grid item container direction="column" spacing={2}>
+              <Grid item>
+                <Typography
+                  display="inline"
+                  variant="h2"
+                  className={classes2.titleColor1}
+                >
+                  About{" "}
+                </Typography>
+                <Typography
+                  display="inline"
+                  variant="h2"
+                  className={classes2.titleColor2}
+                >
+                  Us
+                </Typography>
+                <Divider className={classes2.styledDivider} />
+              </Grid>
+              <Grid item>
+                <Typography variant="body1" className={classes2.titleColor2}>
+                  Saavyas'19 is to be the second edition of the annual
+                  inter-college techno-cultural fest of National Institute of
+                  Technology Goa. It will be a three-day event involving
+                  technical, music, arts, dance and drama enthusiasts from all
+                  over the country through competitions and performances. The
+                  name Saavyas finds its roots in a Sanskrit word meaning
+                  ‘bringing people together’. We believe that Saavyas will be
+                  the perfect festival to bring both technology and culture
+                  together on one platform.
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item container direction="column" spacing={2}>
+              <Grid item>
+                <Typography
+                  display="inline"
+                  variant="h2"
+                  className={classes2.titleColor1}
+                >
+                  Contact{" "}
+                </Typography>
+                <Typography
+                  display="inline"
+                  variant="h2"
+                  className={classes2.titleColor2}
+                >
+                  Us
+                </Typography>
+                <Divider className={classes2.styledDivider} />
+              </Grid>
+              <Grid item container alignItems="space-around">
+                {Object.entries(contactDetails).map((contact, index) => (
+                  <Grid item container direction="column" xs={4} key={index}>
+                    <Grid item>
+                      <Typography
+                        display="inline"
+                        variant="body1"
+                        align="center"
+                        className={classes2.titleColor1}
+                      >
+                        {contact[0]}
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                      <Typography
+                        display="inline"
+                        variant="body1"
+                        align="center"
+                        className={classes2.titleColor2}
+                      >
+                        {contact[1]}
+                      </Typography>
+                    </Grid>
+                  </Grid>))}
+              </Grid>
+            </Grid>
+            <Grid item container direction="column" spacing={2}>
+              <Grid item>
+                <Typography
+                  display="inline"
+                  variant="h2"
+                  className={classes2.titleColor1}
+                >
+                  Find{" "}
+                </Typography>
+                <Typography
+                  display="inline"
+                  variant="h2"
+                  className={classes2.titleColor2}
+                >
+                  Us
+                </Typography>
+                <Divider className={classes2.styledDivider} />
+              </Grid>
+              <Grid item container justify="space-between">
+                <Grid item>
+                  <Typography variant="body1" className={classes2.titleColor2}>
+                    National Institute of Technology Goa
                   </Typography>
-                  <Divider className={classes.styledDivider} />
+                  <Typography variant="body1" className={classes2.titleColor2}>
+                    Farmagudi, Ponda
+                  </Typography>
+                  <Typography variant="body1" className={classes2.titleColor2}>
+                    Goa - 403401
+                  </Typography>
                 </Grid>
                 <Grid item>
-                  <CountdownTimer />
-                </Grid>
-                <Grid item>
-                  <ShareButtons />
+                  <a
+                    href="https://goo.gl/maps/s4iauzvopmvQ3io67"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <IconButton>
+                      <LocateIcon fontSize="large" className={classes2.locateIconColor} />
+                    </IconButton>
+                  </a>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </div>
-    </>
+    </Dialog>
   )
 }
 
