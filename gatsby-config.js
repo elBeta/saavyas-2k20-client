@@ -14,17 +14,24 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: true,
+        stripMetadata: true,
+        defaultQuality: 90,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Saavyas 2k20`,
         short_name: `Saavyas`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#01bcf2`,
+        theme_color: `#01bcf2`,
         display: `standalone`,
-        icon: `src/assets/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/saavyas_logo.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-material-ui`,
