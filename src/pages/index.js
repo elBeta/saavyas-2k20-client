@@ -21,9 +21,9 @@ import SEO from "../components/seo"
 
 const theme = responsiveFontSizes(createMuiTheme());
 theme.typography.body1 = {
-  fontSize: '1rem',
-  [theme.breakpoints.down('xs')]: {
-    fontSize: '0.8rem',
+  fontSize: "1rem",
+  [theme.breakpoints.down("xs")]: {
+    fontSize: "0.8rem",
   }
 }
 
@@ -78,12 +78,16 @@ const useStyles = makeStyles({
     height: 2,
   },
   saavyasLogo: {
-    width: '20rem',
+    width: "20rem",
 
-    [theme.breakpoints.down('xs')]: {
-      width: '15rem'
+    [theme.breakpoints.down("xs")]: {
+      width: "15rem"
     }
   },
+  moreInfoLabel: {
+    color: "white",
+    paddingLeft: 2,
+  }
 })
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -118,6 +122,12 @@ function ComingSoon() {
                 <Grid item>
                   <IconButton onClick={handleMoreInfoClick}>
                     <MenuIcon style={{ fill: "white" }} />
+                    <Typography
+                      display="inline"
+                      variant="body2"
+                      className={classes.moreInfoLabel}>
+                      More Info
+                    </Typography>
                   </IconButton>
                 </Grid>
                 <Grid
@@ -163,8 +173,8 @@ const useStyles2 = makeStyles({
   root: {
     height: "100%",
     width: "100%",
-    maxHeight: '100%',
-    maxWidth: '100%',
+    maxHeight: "100%",
+    maxWidth: "100%",
     padding: 24,
   },
   titleColor1: {
@@ -173,11 +183,14 @@ const useStyles2 = makeStyles({
   titleColor2: {
     color: "#ffffff",
   },
+  titleFont: {
+    fontFamily: "Permanent Marker, Roboto",
+  },
   locateIconColor: {
     fill: "#ff0066",
   },
   containerRoot: {
-    height: '100%',
+    height: "100%",
   },
   closeIconItem: {
     flexGrow: 0,
@@ -188,12 +201,12 @@ const useStyles2 = makeStyles({
   styledDivider: {
     backgroundColor: "white",
     height: 2,
-    width: '30%',
-    [theme.breakpoints.only('sm')]: {
-      width: '40%'
+    width: "30%",
+    [theme.breakpoints.only("sm")]: {
+      width: "40%"
     },
-    [theme.breakpoints.only('xs')]: {
-      width: '60%'
+    [theme.breakpoints.only("xs")]: {
+      width: "60%"
     }
   },
   centerAlign: {
@@ -205,17 +218,20 @@ const useStyles2 = makeStyles({
     borderBottomStyle: "solid",
     borderBottomWidth: 3,
     borderBottomColor: "white",
-    width: 'max-content',
-    paddingRight: '5rem',
-    [theme.breakpoints.only('xs')]: {
-      paddingRight: '2rem',
+    width: "max-content",
+    paddingRight: "5rem",
+    [theme.breakpoints.only("xs")]: {
+      paddingRight: "2rem",
     }
   }
 })
 
 function MoreInfo(props) {
   const classes2 = useStyles2()
-  const contactDetails = { 'Devanshi': '123456789', 'Damodar': '123456789', 'Nihal': '123456789', 'Aashay': '123456789', 'Vishal': '123456789', }
+  const contactDetails = {
+    "Devanshi": "8550930424", "Damodar": "7798435097",
+    "Nihal": "7902491495", "Aashay": "9881493681", "Vishal": "8698143452",
+  }
 
   return (
     <Dialog
@@ -259,22 +275,22 @@ function MoreInfo(props) {
 
 function MoreInfoTitle(props) {
   const { classes, title } = props;
-  const titleStart = title.split(' ')[0] + " "
-  const titleEnd = title.split(' ')[1]
+  const titleStart = title.split(" ")[0] + " "
+  const titleEnd = title.split(" ")[1]
 
   return (
     <div className={classes.titleContainer}>
       <Typography
         display="inline"
         variant="h2"
-        className={classes.titleColor1}
+        className={`${classes.titleColor1} ${classes.titleFont}`}
       >
         {titleStart}
       </Typography>
       <Typography
         display="inline"
         variant="h2"
-        className={classes.titleColor2}
+        className={`${classes.titleColor2} ${classes.titleFont}`}
       >
         {titleEnd}
       </Typography>
@@ -292,7 +308,7 @@ function AboutUs(props) {
       </Grid>
       <Grid item>
         <Typography variant="body1" className={classes.titleColor2}>
-          Saavyas'19 is to be the second edition of the annual
+          Saavyas"20 is to be the third edition of the annual
           inter-college techno-cultural fest of National Institute of
           Technology Goa. It will be a three-day event involving
           technical, music, arts, dance and drama enthusiasts from all
@@ -321,7 +337,7 @@ function ContactUs(props) {
             <Grid item>
               <Typography
                 display="inline"
-                variant="body1"
+                variant="h6"
                 align="center"
                 className={classes.titleColor1}
               >
@@ -353,7 +369,7 @@ function FindUs(props) {
         <MoreInfoTitle classes={classes} title="Find Us" />
       </Grid>
       <Grid item container>
-        <Grid item xs={10} sm='auto'>
+        <Grid item xs={10} sm="auto">
           <Typography variant="body1" className={classes.titleColor2}>
             National Institute of Technology Goa
         </Typography>
@@ -364,7 +380,7 @@ function FindUs(props) {
             Goa - 403401
         </Typography>
         </Grid>
-        <Grid item xs={2} sm='auto'>
+        <Grid item xs={2} sm="auto">
           <a
             href="https://goo.gl/maps/s4iauzvopmvQ3io67"
             target="_blank"
