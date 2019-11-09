@@ -124,16 +124,9 @@ function ComingSoon() {
                     <FluidImage fileName="saavyas_logo_with_text.png" className={classes.saavyasLogo} />
                   </Grid>
                   <Grid item>
-                    <Typography
-                      display="inline"
-                      style={{ color: "white", display: "inline" }}
-                      variant="h3"
-                    >
-                      We're{" "}
-                    </Typography>
-                    <Typography display="inline" color="secondary" variant="h2">
+                    <Typography color="secondary" variant="h2">
                       COMING SOON
-                  </Typography>
+                    </Typography>
                     <Divider className={classes.styledDivider} />
                   </Grid>
                   <Grid item>
@@ -155,13 +148,15 @@ function ComingSoon() {
 }
 
 const useStyles2 = makeStyles({
+  moreInfoDialog: {
+    backgroundColor: "#212121",
+  },
   root: {
     height: "100%",
     width: "100%",
     maxHeight: '100%',
     maxWidth: '100%',
     padding: 24,
-    backgroundColor: "#212121",
   },
   titleColor1: {
     color: "#ff0066",
@@ -185,12 +180,28 @@ const useStyles2 = makeStyles({
     backgroundColor: "white",
     height: 2,
     width: '30%',
+    [theme.breakpoints.only('sm')]: {
+      width: '40%'
+    },
+    [theme.breakpoints.only('xs')]: {
+      width: '60%'
+    }
   },
   centerAlign: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   },
+  titleContainer: {
+    borderBottomStyle: "solid",
+    borderBottomWidth: 3,
+    borderBottomColor: "white",
+    width: 'max-content',
+    paddingRight: '5rem',
+    [theme.breakpoints.only('xs')]: {
+      paddingRight: '2rem',
+    }
+  }
 })
 
 function MoreInfo(props) {
@@ -203,6 +214,7 @@ function MoreInfo(props) {
       open={props.open}
       onClose={props.handleClose}
       TransitionComponent={Transition}
+      classes={{ paper: classes2.moreInfoDialog }}
     >
       <div className={classes2.root}>
         <Grid container className={classes2.containerRoot}>
@@ -218,6 +230,7 @@ function MoreInfo(props) {
             direction="column"
             justify="space-between"
             className={classes2.mainArea}
+            spacing={1}
           >
             <Grid item>
               <AboutUs classes={classes2} />
@@ -235,27 +248,38 @@ function MoreInfo(props) {
   )
 }
 
+function MoreInfoTitle(props) {
+  const { classes, title } = props;
+  const titleStart = title.split(' ')[0] + " "
+  const titleEnd = title.split(' ')[1]
+
+  return (
+    <div className={classes.titleContainer}>
+      <Typography
+        display="inline"
+        variant="h2"
+        className={classes.titleColor1}
+      >
+        {titleStart}
+      </Typography>
+      <Typography
+        display="inline"
+        variant="h2"
+        className={classes.titleColor2}
+      >
+        {titleEnd}
+      </Typography>
+    </div>
+  );
+}
+
 function AboutUs(props) {
   const { classes } = props;
 
   return (
     <Grid container direction="column" spacing={2}>
       <Grid item>
-        <Typography
-          display="inline"
-          variant="h2"
-          className={classes.titleColor1}
-        >
-          About{" "}
-        </Typography>
-        <Typography
-          display="inline"
-          variant="h2"
-          className={classes.titleColor2}
-        >
-          Us
-      </Typography>
-        <Divider className={classes.styledDivider} />
+        <MoreInfoTitle classes={classes} title="About Us" />
       </Grid>
       <Grid item>
         <Typography variant="body1" className={classes.titleColor2}>
@@ -280,21 +304,7 @@ function ContactUs(props) {
   return (
     <Grid container direction="column" spacing={2}>
       <Grid item>
-        <Typography
-          display="inline"
-          variant="h2"
-          className={classes.titleColor1}
-        >
-          Contact{" "}
-        </Typography>
-        <Typography
-          display="inline"
-          variant="h2"
-          className={classes.titleColor2}
-        >
-          Us
-      </Typography>
-        <Divider className={classes.styledDivider} />
+        <MoreInfoTitle classes={classes} title="Contact Us" />
       </Grid>
       <Grid item container alignItems="space-around">
         {Object.entries(contactDetails).map((contact, index) => (
@@ -331,24 +341,10 @@ function FindUs(props) {
   return (
     <Grid container direction="column" spacing={2}>
       <Grid item>
-        <Typography
-          display="inline"
-          variant="h2"
-          className={classes.titleColor1}
-        >
-          Find{" "}
-        </Typography>
-        <Typography
-          display="inline"
-          variant="h2"
-          className={classes.titleColor2}
-        >
-          Us
-      </Typography>
-        <Divider className={classes.styledDivider} />
+        <MoreInfoTitle classes={classes} title="Find Us" />
       </Grid>
-      <Grid item container justify="space-between">
-        <Grid item>
+      <Grid item container>
+        <Grid item xs={10} sm='auto'>
           <Typography variant="body1" className={classes.titleColor2}>
             National Institute of Technology Goa
         </Typography>
@@ -359,7 +355,7 @@ function FindUs(props) {
             Goa - 403401
         </Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={2} sm='auto'>
           <a
             href="https://goo.gl/maps/s4iauzvopmvQ3io67"
             target="_blank"
