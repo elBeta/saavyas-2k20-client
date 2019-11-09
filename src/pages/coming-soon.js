@@ -215,129 +215,159 @@ function MoreInfo(props) {
             justify="space-between"
             className={classes2.mainArea}
           >
-            <Grid item container direction="column" spacing={2}>
-              <Grid item>
-                <Typography
-                  display="inline"
-                  variant="h2"
-                  className={classes2.titleColor1}
-                >
-                  About{" "}
-                </Typography>
-                <Typography
-                  display="inline"
-                  variant="h2"
-                  className={classes2.titleColor2}
-                >
-                  Us
-                </Typography>
-                <Divider className={classes2.styledDivider} />
-              </Grid>
-              <Grid item>
-                <Typography variant="body1" className={classes2.titleColor2}>
-                  Saavyas'19 is to be the second edition of the annual
-                  inter-college techno-cultural fest of National Institute of
-                  Technology Goa. It will be a three-day event involving
-                  technical, music, arts, dance and drama enthusiasts from all
-                  over the country through competitions and performances. The
-                  name Saavyas finds its roots in a Sanskrit word meaning
-                  ‘bringing people together’. We believe that Saavyas will be
-                  the perfect festival to bring both technology and culture
-                  together on one platform.
-                </Typography>
-              </Grid>
+            <Grid item>
+              <AboutUs classes={classes2} />
             </Grid>
-            <Grid item container direction="column" spacing={2}>
-              <Grid item>
-                <Typography
-                  display="inline"
-                  variant="h2"
-                  className={classes2.titleColor1}
-                >
-                  Contact{" "}
-                </Typography>
-                <Typography
-                  display="inline"
-                  variant="h2"
-                  className={classes2.titleColor2}
-                >
-                  Us
-                </Typography>
-                <Divider className={classes2.styledDivider} />
-              </Grid>
-              <Grid item container alignItems="space-around">
-                {Object.entries(contactDetails).map((contact, index) => (
-                  <Grid item container direction="column" xs={4} key={index}>
-                    <Grid item>
-                      <Typography
-                        display="inline"
-                        variant="body1"
-                        align="center"
-                        className={classes2.titleColor1}
-                      >
-                        {contact[0]}
-                      </Typography>
-                    </Grid>
-                    <Grid item>
-                      <Typography
-                        display="inline"
-                        variant="body1"
-                        align="center"
-                        className={classes2.titleColor2}
-                      >
-                        {contact[1]}
-                      </Typography>
-                    </Grid>
-                  </Grid>))}
-              </Grid>
+            <Grid item>
+              <ContactUs classes={classes2} contactDetails={contactDetails} />
             </Grid>
-            <Grid item container direction="column" spacing={2}>
-              <Grid item>
-                <Typography
-                  display="inline"
-                  variant="h2"
-                  className={classes2.titleColor1}
-                >
-                  Find{" "}
-                </Typography>
-                <Typography
-                  display="inline"
-                  variant="h2"
-                  className={classes2.titleColor2}
-                >
-                  Us
-                </Typography>
-                <Divider className={classes2.styledDivider} />
-              </Grid>
-              <Grid item container justify="space-between">
-                <Grid item>
-                  <Typography variant="body1" className={classes2.titleColor2}>
-                    National Institute of Technology Goa
-                  </Typography>
-                  <Typography variant="body1" className={classes2.titleColor2}>
-                    Farmagudi, Ponda
-                  </Typography>
-                  <Typography variant="body1" className={classes2.titleColor2}>
-                    Goa - 403401
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <a
-                    href="https://goo.gl/maps/s4iauzvopmvQ3io67"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    <IconButton>
-                      <LocateIcon fontSize="large" className={classes2.locateIconColor} />
-                    </IconButton>
-                  </a>
-                </Grid>
-              </Grid>
+            <Grid item>
+              <FindUs classes={classes2} />
             </Grid>
           </Grid>
         </Grid>
       </div>
     </Dialog>
   )
+}
+
+function AboutUs(props) {
+  const { classes } = props;
+
+  return (
+    <Grid container direction="column" spacing={2}>
+      <Grid item>
+        <Typography
+          display="inline"
+          variant="h2"
+          className={classes.titleColor1}
+        >
+          About{" "}
+        </Typography>
+        <Typography
+          display="inline"
+          variant="h2"
+          className={classes.titleColor2}
+        >
+          Us
+      </Typography>
+        <Divider className={classes.styledDivider} />
+      </Grid>
+      <Grid item>
+        <Typography variant="body1" className={classes.titleColor2}>
+          Saavyas'19 is to be the second edition of the annual
+          inter-college techno-cultural fest of National Institute of
+          Technology Goa. It will be a three-day event involving
+          technical, music, arts, dance and drama enthusiasts from all
+          over the country through competitions and performances. The
+          name Saavyas finds its roots in a Sanskrit word meaning
+          ‘bringing people together’. We believe that Saavyas will be
+          the perfect festival to bring both technology and culture
+          together on one platform.
+      </Typography>
+      </Grid>
+    </Grid>
+  );
+}
+
+function ContactUs(props) {
+  const { classes, contactDetails } = props;
+
+  return (
+    <Grid container direction="column" spacing={2}>
+      <Grid item>
+        <Typography
+          display="inline"
+          variant="h2"
+          className={classes.titleColor1}
+        >
+          Contact{" "}
+        </Typography>
+        <Typography
+          display="inline"
+          variant="h2"
+          className={classes.titleColor2}
+        >
+          Us
+      </Typography>
+        <Divider className={classes.styledDivider} />
+      </Grid>
+      <Grid item container alignItems="space-around">
+        {Object.entries(contactDetails).map((contact, index) => (
+          <Grid item container direction="column" xs={4} key={index}>
+            <Grid item>
+              <Typography
+                display="inline"
+                variant="body1"
+                align="center"
+                className={classes.titleColor1}
+              >
+                {contact[0]}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography
+                display="inline"
+                variant="body1"
+                align="center"
+                className={classes.titleColor2}
+              >
+                {contact[1]}
+              </Typography>
+            </Grid>
+          </Grid>))}
+      </Grid>
+    </Grid>
+  );
+}
+
+function FindUs(props) {
+  const { classes } = props;
+
+  return (
+    <Grid container direction="column" spacing={2}>
+      <Grid item>
+        <Typography
+          display="inline"
+          variant="h2"
+          className={classes.titleColor1}
+        >
+          Find{" "}
+        </Typography>
+        <Typography
+          display="inline"
+          variant="h2"
+          className={classes.titleColor2}
+        >
+          Us
+      </Typography>
+        <Divider className={classes.styledDivider} />
+      </Grid>
+      <Grid item container justify="space-between">
+        <Grid item>
+          <Typography variant="body1" className={classes.titleColor2}>
+            National Institute of Technology Goa
+        </Typography>
+          <Typography variant="body1" className={classes.titleColor2}>
+            Farmagudi, Ponda
+        </Typography>
+          <Typography variant="body1" className={classes.titleColor2}>
+            Goa - 403401
+        </Typography>
+        </Grid>
+        <Grid item>
+          <a
+            href="https://goo.gl/maps/s4iauzvopmvQ3io67"
+            target="_blank"
+            rel="noopener noreferrer">
+            <IconButton>
+              <LocateIcon fontSize="large" className={classes.locateIconColor} />
+            </IconButton>
+          </a>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
 }
 
 export default ComingSoon
