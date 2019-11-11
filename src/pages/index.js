@@ -262,10 +262,10 @@ function MoreInfo(props) {
       phoneNo: "7798435097"
     },
     {
-      name: "Vishal Kumar",
+      name: "Vikash Yadav",
       title: "Events Team",
       email: "events@saavyas.org",
-      phoneNo: "8698143452"
+      phoneNo: "8459778409"
     },
     {
       name: "Ashutosh Kabra",
