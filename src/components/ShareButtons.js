@@ -32,7 +32,7 @@ function ShareButtons() {
     <Grid container spacing={1}>
       <Grid item>
         <a
-          href="https://www.facebook.com/nitgoa"
+          href="https://www.facebook.com/saavyas.nitg"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -54,7 +54,7 @@ function ShareButtons() {
       </Grid>
       <Grid item>
         <a
-          href="https://twitter.com/NITGoa_Official"
+          href="https://twitter.com/saavyas_nitg"
           target="_blank"
           rel="noopener noreferrer"
         >
