@@ -40,8 +40,8 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Permanent Marker`,
-            variants: [`400`],
+            family: `Montserrat`,
+            variants: [`900`],
             subsets: [`latin`],
           }
         ],

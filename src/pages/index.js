@@ -23,7 +23,7 @@ const theme = responsiveFontSizes(createMuiTheme());
 theme.typography.body1 = {
   fontSize: "1rem",
   [theme.breakpoints.down("xs")]: {
-    fontSize: "0.8rem",
+    fontSize: "0.9rem",
   }
 }
 
@@ -35,7 +35,7 @@ const useStyles = makeStyles({
     overflowY: "hidden"
   },
   comingSoonTypo: {
-    fontFamily: "Permanent Marker, Roboto",
+    fontFamily: "Montserrat, Roboto",
     color: "#ff0066",
     [theme.breakpoints.only("xs")]: {
       fontSize: "2.6rem"
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     top: 0,
     left: 0,
     width: "100%",
-    minHeight: "100vh",
+    height: "100%",
   },
   slideshow: {
     height: "100%",
@@ -177,13 +177,13 @@ const useStyles2 = makeStyles({
     padding: 24,
   },
   titleColor1: {
-    color: "#ff0066",
+    color: "#0077c8",
   },
   titleColor2: {
     color: "#ffffff",
   },
   titleFont: {
-    fontFamily: "Permanent Marker, Roboto",
+    fontFamily: "Montserrat, Roboto",
   },
   locateIconColor: {
     fill: "#ff0066",
