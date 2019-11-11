@@ -28,7 +28,7 @@ module.exports = {
         name: `Saavyas 2k20`,
         short_name: `Saavyas`,
         start_url: `/`,
-        background_color: `#01bcf2`,
+        background_color: `#ffffff`,
         theme_color: `#01bcf2`,
         display: `standalone`,
         icon: `src/assets/images/saavyas_logo.png`, // This path is relative to the root of the site.

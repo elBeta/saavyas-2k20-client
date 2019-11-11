@@ -97,7 +97,7 @@ const defaultProps = {
   dividerColor: "white",
   unitCountColor: "white",
   unitColor: "white",
-  spacing: 8,
+  spacing: 6,
   unitCountTypographyVariant: "h3",
   unitTypographyVariant: "h5",
 }
