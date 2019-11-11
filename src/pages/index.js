@@ -30,7 +30,7 @@ theme.typography.body1 = {
 const useStyles = makeStyles({
   mainSection: {
     position: "relative",
-    height: "100vh",
+    minHeight: "100vh",
     overflowX: "hidden",
     overflowY: "hidden"
   },
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     top: 0,
     left: 0,
     width: "100%",
-    height: "100vh",
+    minHeight: "100vh",
   },
   slideshow: {
     height: "100%",
@@ -70,6 +70,9 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
   },
+  mainSectionArea: {
+    padding: 24,
+  },
   mainSectionInnerArea: {
     flexGrow: 1,
   },
@@ -83,10 +86,6 @@ const useStyles = makeStyles({
     [theme.breakpoints.down("xs")]: {
       width: "15rem"
     }
-  },
-  moreInfoLabel: {
-    color: "white",
-    paddingLeft: 2,
   }
 })
 
@@ -118,16 +117,16 @@ function ComingSoon() {
                 <div className={classes.overlay} />
                 <ImageSlideshow className={classes.slideshow} />
               </Grid>
-              <Grid item container xs={12} direction="column">
+              <Grid
+                item
+                xs={12}
+                container
+                direction="column"
+                className={classes.mainSectionArea}
+              >
                 <Grid item>
-                  <IconButton onClick={handleMoreInfoClick}>
-                    <MenuIcon style={{ fill: "white" }} />
-                    <Typography
-                      display="inline"
-                      variant="body2"
-                      className={classes.moreInfoLabel}>
-                      More Info
-                    </Typography>
+                  <IconButton style={{ padding: 0 }} onClick={handleMoreInfoClick}>
+                    <MenuIcon style={{ fill: "white" }} color="inherit" fontSize="large" />
                   </IconButton>
                 </Grid>
                 <Grid
@@ -192,6 +191,19 @@ const useStyles2 = makeStyles({
   containerRoot: {
     height: "100%",
   },
+  closeButton: {
+    padding: 0,
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.enteringScreen,
+      easing: theme.transitions.easing.easeIn,
+    }),
+  },
+  closeButtonOpen: {
+    transform: 'rotate(90deg)'
+  },
+  closeButtonClosed: {
+    transform: 'rotate(0deg)'
+  },
   closeIconItem: {
     flexGrow: 0,
   },
@@ -244,8 +256,8 @@ function MoreInfo(props) {
       <div className={classes2.root}>
         <Grid container className={classes2.containerRoot}>
           <Grid item xs={12} className={classes2.closeIconItem}>
-            <IconButton onClick={props.handleClose}>
-              <CloseIcon style={{ fill: "white" }} />
+            <IconButton className={classes2.closeButton} onClick={props.handleClose}>
+              <CloseIcon style={{ fill: "white" }} fontSize="large" />
             </IconButton>
           </Grid>
           <Grid
