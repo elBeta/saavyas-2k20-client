@@ -11,6 +11,9 @@ import Slide from "@material-ui/core/Slide"
 import MenuIcon from "@material-ui/icons/Menu"
 import CloseIcon from "@material-ui/icons/Close"
 import LocateIcon from "@material-ui/icons/MyLocation"
+import AccountIcon from "@material-ui/icons/AccountCircle"
+import PhoneIcon from "@material-ui/icons/Phone"
+import EmailIcon from "@material-ui/icons/Email"
 
 import ImageSlideshow from "../components/ImageSlideshow"
 import CountdownTimer from "../components/CountdownTimer"
@@ -23,19 +26,19 @@ const theme = responsiveFontSizes(createMuiTheme());
 theme.typography.body1 = {
   fontSize: "1rem",
   [theme.breakpoints.down("xs")]: {
-    fontSize: "0.8rem",
+    fontSize: "0.9rem",
   }
 }
 
 const useStyles = makeStyles({
   mainSection: {
     position: "relative",
-    height: "100vh",
+    minHeight: "100vh",
     overflowX: "hidden",
     overflowY: "hidden"
   },
   comingSoonTypo: {
-    fontFamily: "Permanent Marker, Roboto",
+    fontFamily: "Montserrat, Roboto",
     color: "#ff0066",
     [theme.breakpoints.only("xs")]: {
       fontSize: "2.6rem"
@@ -46,7 +49,7 @@ const useStyles = makeStyles({
     top: 0,
     left: 0,
     width: "100%",
-    height: "100vh",
+    height: "100%",
   },
   slideshow: {
     height: "100%",
@@ -70,6 +73,9 @@ const useStyles = makeStyles({
     alignItems: "center",
     justifyContent: "center",
   },
+  mainSectionArea: {
+    padding: 24,
+  },
   mainSectionInnerArea: {
     flexGrow: 1,
   },
@@ -83,10 +89,6 @@ const useStyles = makeStyles({
     [theme.breakpoints.down("xs")]: {
       width: "15rem"
     }
-  },
-  moreInfoLabel: {
-    color: "white",
-    paddingLeft: 2,
   }
 })
 
@@ -118,16 +120,16 @@ function ComingSoon() {
                 <div className={classes.overlay} />
                 <ImageSlideshow className={classes.slideshow} />
               </Grid>
-              <Grid item container xs={12} direction="column">
+              <Grid
+                item
+                xs={12}
+                container
+                direction="column"
+                className={classes.mainSectionArea}
+              >
                 <Grid item>
-                  <IconButton onClick={handleMoreInfoClick}>
-                    <MenuIcon style={{ fill: "white" }} />
-                    <Typography
-                      display="inline"
-                      variant="body2"
-                      className={classes.moreInfoLabel}>
-                      More Info
-                    </Typography>
+                  <IconButton style={{ padding: 0 }} onClick={handleMoreInfoClick}>
+                    <MenuIcon style={{ fill: "white" }} color="inherit" fontSize="large" />
                   </IconButton>
                 </Grid>
                 <Grid
@@ -143,7 +145,7 @@ function ComingSoon() {
                     <FluidImage fileName="saavyas_logo_with_text.png" className={classes.saavyasLogo} />
                   </Grid>
                   <Grid item>
-                    <Typography color="secondary" variant="h1" className={classes.comingSoonTypo}>
+                    <Typography color="secondary" variant="h1" align="center" className={classes.comingSoonTypo}>
                       COMING SOON
                     </Typography>
                     <Divider className={classes.styledDivider} />
@@ -178,19 +180,32 @@ const useStyles2 = makeStyles({
     padding: 24,
   },
   titleColor1: {
-    color: "#ff0066",
+    color: "#0077c8",
   },
   titleColor2: {
     color: "#ffffff",
   },
   titleFont: {
-    fontFamily: "Permanent Marker, Roboto",
+    fontFamily: "Montserrat, Roboto",
   },
   locateIconColor: {
     fill: "#ff0066",
   },
   containerRoot: {
     height: "100%",
+  },
+  closeButton: {
+    padding: 0,
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.enteringScreen,
+      easing: theme.transitions.easing.easeIn,
+    }),
+  },
+  closeButtonOpen: {
+    transform: 'rotate(90deg)'
+  },
+  closeButtonClosed: {
+    transform: 'rotate(0deg)'
   },
   closeIconItem: {
     flexGrow: 0,
@@ -223,15 +238,48 @@ const useStyles2 = makeStyles({
     [theme.breakpoints.only("xs")]: {
       paddingRight: "2rem",
     }
+  },
+  contactCardHeader: {
+    width: "max-content",
+    marginLeft: "-8px",
+    borderBottomStyle: "solid",
+    borderBottomWidth: 2,
+    borderBottomColor: "white",
   }
 })
 
 function MoreInfo(props) {
   const classes2 = useStyles2()
-  const contactDetails = {
-    "Devanshi": "8550930424", "Damodar": "7798435097",
-    "Nihal": "7902491495", "Aashay": "9881493681", "Vishal": "8698143452",
-  }
+  // const contactDetails = {
+  //   "Devanshi": "8550930424", "Damodar": "7798435097",
+  //   "Nihal": "7902491495", "Aashay": "9881493681", "Vishal": "8698143452",
+  // }
+  const contactDetails = [
+    {
+      name: "Damodar Pai",
+      title: "Core Team",
+      email: "coreteam@saavyas.org",
+      phoneNo: "7798435097"
+    },
+    {
+      name: "Vikash Yadav",
+      title: "Events Team",
+      email: "events@saavyas.org",
+      phoneNo: "8459778409"
+    },
+    {
+      name: "Ashutosh Kabra",
+      title: "Sponsorship Team",
+      email: "sponsorship@saavyas.org",
+      phoneNo: "7993659322"
+    },
+    {
+      name: "Archit Garg",
+      title: "Marketing Team",
+      email: "publicity@saavyas.org",
+      phoneNo: "8708049718"
+    }
+  ]
 
   return (
     <Dialog
@@ -244,8 +292,8 @@ function MoreInfo(props) {
       <div className={classes2.root}>
         <Grid container className={classes2.containerRoot}>
           <Grid item xs={12} className={classes2.closeIconItem}>
-            <IconButton onClick={props.handleClose}>
-              <CloseIcon style={{ fill: "white" }} />
+            <IconButton className={classes2.closeButton} onClick={props.handleClose}>
+              <CloseIcon style={{ fill: "white" }} fontSize="large" />
             </IconButton>
           </Grid>
           <Grid
@@ -255,7 +303,7 @@ function MoreInfo(props) {
             direction="column"
             justify="space-between"
             className={classes2.mainArea}
-            spacing={1}
+            spacing={2}
           >
             <Grid item>
               <AboutUs classes={classes2} />
@@ -308,7 +356,7 @@ function AboutUs(props) {
       </Grid>
       <Grid item>
         <Typography variant="body1" className={classes.titleColor2}>
-          Saavyas"20 is to be the third edition of the annual
+          Saavyas '20 is to be the third edition of the annual
           inter-college techno-cultural fest of National Institute of
           Technology Goa. It will be a three-day event involving
           technical, music, arts, dance and drama enthusiasts from all
@@ -331,30 +379,18 @@ function ContactUs(props) {
       <Grid item>
         <MoreInfoTitle classes={classes} title="Contact Us" />
       </Grid>
-      <Grid item container alignItems="space-around">
-        {Object.entries(contactDetails).map((contact, index) => (
-          <Grid item container direction="column" xs={4} key={index}>
-            <Grid item>
-              <Typography
-                display="inline"
-                variant="h6"
-                align="center"
-                className={classes.titleColor1}
-              >
-                {contact[0]}
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography
-                display="inline"
-                variant="body1"
-                align="center"
-                className={classes.titleColor2}
-              >
-                {contact[1]}
-              </Typography>
-            </Grid>
-          </Grid>))}
+      <Grid item container spacing={3} style={{ marginLeft: 4 }}>
+        {contactDetails.map((contact, index) => (
+          <Grid item xs={12} sm={3} key={index}>
+            <ContactCard
+              title={contact.title}
+              name={contact.name}
+              email={contact.email}
+              phoneNo={contact.phoneNo}
+              classes={{ contactCardHeader: classes.contactCardHeader }}
+            />
+          </Grid>
+        ))}
       </Grid>
     </Grid>
   );
@@ -389,6 +425,56 @@ function FindUs(props) {
               <LocateIcon fontSize="large" className={classes.locateIconColor} />
             </IconButton>
           </a>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+}
+
+function ContactCard(props) {
+  const { title, name, phoneNo, email, classes } = props;
+
+  return (
+    <Grid container direction="column" spacing={1}>
+      <Grid item container className={classes.contactCardHeader} style={{ paddingRight: "3rem" }}>
+        <Grid item>
+          <AccountIcon style={{ fill: "white" }} fontSize="large" />
+        </Grid>
+        <Grid item style={{ paddingLeft: 10 }}>
+          <Grid container direction="column">
+            <Grid item>
+              <Typography variant="h5" style={{ color: "white" }}>
+                {title}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="subtitle1" style={{ color: "white" }}>
+                {name}
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item container direction="column">
+        <Grid item container spacing={2}>
+          <Grid item>
+            <EmailIcon fontSize="small" style={{ fill: "white" }} />
+          </Grid>
+          <Grid item>
+            <Typography variant="body1" style={{ color: "white" }}>
+              {email}
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid item container spacing={2}>
+          <Grid item>
+            <PhoneIcon fontSize="small" style={{ fill: "white" }} />
+          </Grid>
+          <Grid item>
+            <Typography variant="body1" style={{ color: "white" }}>
+              {phoneNo}
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

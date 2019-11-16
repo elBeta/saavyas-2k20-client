@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Saavyas 2k20`,
+    title: `Saavyas '20`,
     description: `Coming Soon...`,
     author: `@elBeta`,
   },
@@ -25,10 +25,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Saavyas 2k20`,
+        name: `Saavyas '20`,
         short_name: `Saavyas`,
         start_url: `/`,
-        background_color: `#01bcf2`,
+        background_color: `#ffffff`,
         theme_color: `#01bcf2`,
         display: `standalone`,
         icon: `src/assets/images/saavyas_logo.png`, // This path is relative to the root of the site.
@@ -40,8 +40,8 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Permanent Marker`,
-            variants: [`400`],
+            family: `Montserrat`,
+            variants: [`900`],
             subsets: [`latin`],
           }
         ],
