@@ -15,7 +15,7 @@ function ImageSlideshow(props) {
               relativePath
               childImageSharp {
                 fluid(maxHeight: 1080, quality: 100) {
-                  ...GatsbyImageSharpFluid
+                  ...GatsbyImageSharpFluid_withWebp
                 }
               }
             }
