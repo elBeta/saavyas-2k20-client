@@ -63,7 +63,7 @@ const useStyles = makeStyles({
     left: 0,
     zIndex: -1,
 
-    opacity: 0.8,
+    opacity: 0.6,
     backgroundColor: "black",
     height: "100%",
     width: "100%",
