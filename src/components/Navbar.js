@@ -2,85 +2,72 @@ import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Appbar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
+import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
-import Drawer from "@material-ui/core/Drawer"
-import IconButton from "@material-ui/core/IconButton"
 
-import MenuIcon from "@material-ui/icons/Menu"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   link: {
     color: "white",
     textDecoration: "solid",
-    fontSize: "1.5rem",
   },
+  activeLink: {},
 }))
 
 function Navbar(props) {
   const classes = useStyles()
 
-  // return (
-  //   <Appbar>
-  //     <Toolbar>
-  //       <IconButton color="inherit">
-  //         <MenuIcon />
-  //       </IconButton>
-  //     </Toolbar>
-  //   </Appbar>
-  // )
+  const navData = useStaticQuery(graphql`
+    {
+      site {
+        siteMetadata {
+          menuOtherLinks {
+            link
+            name
+          }
+          menuMainLinks {
+            link
+            name
+          }
+        }
+      }
+    }
+  `)
+
+  const { menuMainLinks, menuOtherLinks } = navData.site.siteMetadata
 
   return (
     <Appbar>
       <Toolbar>
         <Grid container justify="space-around">
           <Grid container justify="space-around" item xs={12}>
-            <Grid item>
-              <a className={classes.link} href="#meet-the-team">
-                MEET THE TEAM
-              </a>
-            </Grid>
-            <Grid item>
-              <a className={classes.link} href="#registration">
-                REGISTRATION
-              </a>
-            </Grid>
-            <Grid item>
-              <a className={classes.link} href="#ca">
-                CAMPUS AMBASSADOR
-              </a>
-            </Grid>
-            <Grid item>
-              <a className={classes.link} href="#gallery">
-                GALLERY
-              </a>
-            </Grid>
-            <Grid item>
-              <a className={classes.link} href="#sponsors">
-                SPONSORS
-              </a>
-            </Grid>
+            {menuOtherLinks.map(linkItem => (
+              <Grid item key={linkItem.name}>
+                <Link
+                  to={linkItem.link}
+                  className={classes.link}
+                  activeClassName={classes.activeLink}
+                  partiallyActive={true}
+                >
+                  <Typography variant="h5">{linkItem.name}</Typography>
+                </Link>
+              </Grid>
+            ))}
           </Grid>
           <Grid container justify="space-around" item xs={12}>
-            <Grid item>
-              <a className={classes.link} href="#home">
-                HOME
-              </a>
-            </Grid>
-            <Grid item>
-              <a className={classes.link} href="#about-us">
-                ABOUT US
-              </a>
-            </Grid>
-            <Grid item>
-              <a className={classes.link} href="#events">
-                EVENTS
-              </a>
-            </Grid>
-            <Grid item>
-              <a className={classes.link} href="#contact-us">
-                CONTACT US
-              </a>
-            </Grid>
+            {menuMainLinks.map(linkItem => (
+              <Grid item key={linkItem.name}>
+                <Link
+                  to={linkItem.link}
+                  className={classes.link}
+                  activeClassName={classes.activeLink}
+                  partiallyActive={true}
+                >
+                  <Typography variant="h6">{linkItem.name}</Typography>
+                </Link>
+              </Grid>
+            ))}
           </Grid>
         </Grid>
       </Toolbar>

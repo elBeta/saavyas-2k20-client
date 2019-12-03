@@ -3,6 +3,46 @@ module.exports = {
     title: `Saavyas '20`,
     description: `Coming Soon...`,
     author: `@elBeta`,
+    menuMainLinks: [
+      {
+        name: `Home`,
+        link: `/main-page/#home`,
+      },
+      {
+        name: `About Us`,
+        link: `/main-page/#about-us`,
+      },
+      {
+        name: `Events`,
+        link: `/main-page/#events`,
+      },
+      {
+        name: `Contact Us`,
+        link: `/main-page/#contact-us`,
+      },
+    ],
+    menuOtherLinks: [
+      {
+        name: `Meet the Team`,
+        link: `/meet-the-team`,
+      },
+      {
+        name: `Registration`,
+        link: `/registration`,
+      },
+      {
+        name: `Campus Ambassador`,
+        link: `/ca`,
+      },
+      {
+        name: `Gallery`,
+        link: `/gallery`,
+      },
+      {
+        name: `Sponsors`,
+        link: `/sponsors`,
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -43,7 +83,7 @@ module.exports = {
             family: `Montserrat`,
             variants: [`900`],
             subsets: [`latin`],
-          }
+          },
         ],
       },
     },
