@@ -32,7 +32,7 @@ module.exports = {
       },
       {
         name: `Campus Ambassador`,
-        link: `/ca`,
+        link: `/campusambassador`,
       },
       {
         name: `Gallery`,
