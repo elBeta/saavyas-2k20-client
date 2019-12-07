@@ -84,6 +84,12 @@ module.exports = {
             variants: [`900`],
             subsets: [`latin`],
           },
+          {
+            family: `Barlow Semi Condensed`,
+            variants: [`900`],
+            subsets: [`latin`],
+            // text: [`CAMPUS AMBASSADOR PROGRAM`],
+          },
         ],
       },
     },
