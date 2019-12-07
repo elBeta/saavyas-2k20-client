@@ -90,6 +90,18 @@ module.exports = {
             subsets: [`latin`],
             // text: [`CAMPUS AMBASSADOR PROGRAM`],
           },
+          {
+            family: `Lobster`,
+            variants: [`400`],
+            subsets: [`latin`],
+            text: `Be the of`,
+          },
+          {
+            family: `Bree Serif`,
+            variants: [`400`],
+            subsets: [`latin`],
+            text: `FACE`,
+          },
         ],
       },
     },

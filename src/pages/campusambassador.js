@@ -6,7 +6,9 @@ import Grid from "@material-ui/core/Grid"
 
 import Navbar from "../components/Navbar"
 import HamburgerMenu from "../components/HamburgerMenu"
+
 import MainSlide from "../components/campusambassador/MainSlide"
+import FaceSlide from "../components/campusambassador/FaceSlide"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -44,7 +46,9 @@ function CA() {
           <Grid container item className={classes.slide}>
             <MainSlide mobileMode={mobileMode} />
           </Grid>
-          <Grid container item className={classes.slide}></Grid>
+          <Grid container item className={classes.slide}>
+            <FaceSlide />
+          </Grid>
         </Grid>
       </div>
     </>
