@@ -4,8 +4,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
 
-import Navbar from "../components/Navbar"
-import HamburgerMenu from "../components/HamburgerMenu"
+// import Navbar from "../components/Navbar"
+// import HamburgerMenu from "../components/HamburgerMenu"
 
 import MainSlide from "../components/campusambassador/MainSlide"
 import FaceSlide from "../components/campusambassador/FaceSlide"
@@ -55,7 +55,7 @@ function CA() {
     <>
       <CssBaseline />
       <div className={classes.root}>
-        {mobileMode | tabletMode ? <HamburgerMenu /> : <Navbar />}
+        {/* {mobileMode | tabletMode ? <HamburgerMenu /> : <Navbar />} */}
         <Grid container direction="column" className={classes.slidesContainer}>
           <Grid container item className={classes.slide}>
             <MainSlide mobileMode={mobileMode} />
