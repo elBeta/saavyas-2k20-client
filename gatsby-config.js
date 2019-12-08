@@ -88,19 +88,17 @@ module.exports = {
             family: `Barlow`,
             variants: [`400`, `700`],
             subsets: [`latin`],
-            text: "abcdefghijklmnopqrstuvwxyz",
           },
           {
             family: `Barlow Semi Condensed`,
-            variants: [`900`],
+            variants: [`700`, `900`],
             subsets: [`latin`],
-            // text: [`CAMPUS AMBASSADOR PROGRAM`],
           },
           {
             family: `Barlow Condensed`,
             variants: [`700`],
             subsets: [`latin`],
-            text: "WHY BECOME A CAMPUS AMBASSADOR?",
+            text: "ARCHIT RICHA RAKESH",
           },
           {
             family: `Lobster`,

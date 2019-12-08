@@ -12,6 +12,7 @@ import FaceSlide from "../components/campusambassador/FaceSlide"
 import WhyCASlide from "../components/campusambassador/WhyCASlide"
 import IncentivesSlide from "../components/campusambassador/IncentivesSlide"
 import ResponsibilitiesSlide from "../components/campusambassador/ResponsibilitesSlide"
+import RegisterSlide from "../components/campusambassador/RegisterSlide"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -22,6 +23,11 @@ const useStyles = makeStyles(theme => ({
   },
   incentivesSlide: {
     [theme.breakpoints.only("xs")]: {
+      height: "auto",
+    },
+  },
+  registerSlide: {
+    [theme.breakpoints.between("xs", "md")]: {
       height: "auto",
     },
   },
@@ -69,6 +75,13 @@ function CA() {
           </Grid>
           <Grid container item className={classes.slide}>
             <ResponsibilitiesSlide />
+          </Grid>
+          <Grid
+            container
+            item
+            className={[classes.slide, classes.registerSlide]}
+          >
+            <RegisterSlide />
           </Grid>
         </Grid>
       </div>
