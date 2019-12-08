@@ -9,6 +9,7 @@ import HamburgerMenu from "../components/HamburgerMenu"
 
 import MainSlide from "../components/campusambassador/MainSlide"
 import FaceSlide from "../components/campusambassador/FaceSlide"
+import WhyCASlide from "../components/campusambassador/WhyCASlide"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -48,6 +49,9 @@ function CA() {
           </Grid>
           <Grid container item className={classes.slide}>
             <FaceSlide />
+          </Grid>
+          <Grid container item className={classes.slide}>
+            <WhyCASlide />
           </Grid>
         </Grid>
       </div>

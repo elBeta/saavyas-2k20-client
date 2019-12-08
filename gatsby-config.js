@@ -91,6 +91,12 @@ module.exports = {
             // text: [`CAMPUS AMBASSADOR PROGRAM`],
           },
           {
+            family: `Barlow Condensed`,
+            variants: [`700`],
+            subsets: [`latin`],
+            text: "WHY BECOME A CAMPUS AMBASSADOR?",
+          },
+          {
             family: `Lobster`,
             variants: [`400`],
             subsets: [`latin`],
