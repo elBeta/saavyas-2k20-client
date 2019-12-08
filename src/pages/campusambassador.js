@@ -20,6 +20,11 @@ const useStyles = makeStyles(theme => ({
   slide: {
     height: "100vh",
   },
+  responsibilitiesSlide: {
+    [theme.breakpoints.between("xs", "sm")]: {
+      height: "auto",
+    },
+  },
   incentivesSlide: {
     [theme.breakpoints.only("xs")]: {
       height: "auto",
@@ -72,7 +77,11 @@ function CA() {
           >
             <IncentivesSlide mobileMode={mobileMode} />
           </Grid>
-          <Grid container item className={classes.slide}>
+          <Grid
+            container
+            item
+            className={[classes.slide, classes.responsibilitiesSlide]}
+          >
             <ResponsibilitiesSlide />
           </Grid>
           <Grid
