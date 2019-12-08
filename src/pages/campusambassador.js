@@ -11,6 +11,7 @@ import MainSlide from "../components/campusambassador/MainSlide"
 import FaceSlide from "../components/campusambassador/FaceSlide"
 import WhyCASlide from "../components/campusambassador/WhyCASlide"
 import IncentivesSlide from "../components/campusambassador/IncentivesSlide"
+import ResponsibilitiesSlide from "../components/campusambassador/ResponsibilitesSlide"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -65,6 +66,9 @@ function CA() {
             className={[classes.slide, classes.incentivesSlide]}
           >
             <IncentivesSlide mobileMode={mobileMode} />
+          </Grid>
+          <Grid container item className={classes.slide}>
+            <ResponsibilitiesSlide />
           </Grid>
         </Grid>
       </div>

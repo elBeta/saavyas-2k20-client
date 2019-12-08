@@ -85,6 +85,12 @@ module.exports = {
             subsets: [`latin`],
           },
           {
+            family: `Barlow`,
+            variants: [`400`, `700`],
+            subsets: [`latin`],
+            text: "abcdefghijklmnopqrstuvwxyz",
+          },
+          {
             family: `Barlow Semi Condensed`,
             variants: [`900`],
             subsets: [`latin`],
