@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     height: "100%",
     width: "100%",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       background: "black",
       opacity: 0.9,
     },
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     top: 0,
     left: 0,
     zIndex: -1,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       opacity: 0.3,
     },
   },
@@ -30,10 +30,17 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     top: `calc(100vh / 5)`,
     left: "2rem",
+    [theme.breakpoints.between("sm", "md")]: {
+      top: `calc(100vh / 5)`,
+      left: `calc(100vw / 3)`,
+    },
   },
   faceSlideTextA: {
     fontFamily: "Lobster",
     fontSize: "8rem",
+    [theme.breakpoints.only("xs")]: {
+      fontSize: "6rem",
+    },
     color: "white",
   },
   faceSlideTextB: {
@@ -44,6 +51,9 @@ const useStyles = makeStyles(theme => ({
   faceSlideTextC: {
     fontFamily: "Lobster",
     fontSize: "8rem",
+    [theme.breakpoints.only("xs")]: {
+      fontSize: "6rem",
+    },
     color: "white",
   },
   saavyasLogoImage: {
