@@ -84,6 +84,33 @@ module.exports = {
             variants: [`900`],
             subsets: [`latin`],
           },
+          {
+            family: `Barlow`,
+            variants: [`400`, `700`],
+            subsets: [`latin`],
+          },
+          {
+            family: `Barlow Semi Condensed`,
+            variants: [`700`, `900`],
+            subsets: [`latin`],
+          },
+          {
+            family: `Barlow Condensed`,
+            variants: [`700`],
+            subsets: [`latin`],
+          },
+          {
+            family: `Lobster`,
+            variants: [`400`],
+            subsets: [`latin`],
+            text: `Be the of`,
+          },
+          {
+            family: `Bree Serif`,
+            variants: [`400`],
+            subsets: [`latin`],
+            text: `FACE`,
+          },
         ],
       },
     },
