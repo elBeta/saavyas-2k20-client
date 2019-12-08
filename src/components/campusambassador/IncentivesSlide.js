@@ -19,7 +19,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    fontFamily: "Montserrat",
+    fontFamily: "Barlow Semi Condensed",
+    fontWeight: 700,
     paddingBottom: "6rem",
     [theme.breakpoints.only("xs")]: {
       fontSize: "2.5rem",
@@ -53,6 +54,8 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: "1rem",
   },
   incentiveHeader: {
+    fontFamily: "Barlow Semi Condensed",
+    fontWeight: 700,
     [theme.breakpoints.only("xs")]: {
       fontSize: "1.75rem",
     },
@@ -78,7 +81,7 @@ function IncentivesSlide(props) {
     >
       <Grid item>
         <Typography variant="h2" className={classes.title}>
-          Incentives
+          INCENTIVES
         </Typography>
       </Grid>
       <Grid container item>
