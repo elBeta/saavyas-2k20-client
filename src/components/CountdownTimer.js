@@ -92,7 +92,7 @@ function CountdownTimer({
 }
 
 const defaultProps = {
-  targetDate: moment("2020-03-01"),
+  targetDate: moment("2020-03-06"),
   dividerWidth: 2,
   dividerColor: "white",
   unitCountColor: "white",
