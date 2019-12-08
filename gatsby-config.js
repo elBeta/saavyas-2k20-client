@@ -98,7 +98,6 @@ module.exports = {
             family: `Barlow Condensed`,
             variants: [`700`],
             subsets: [`latin`],
-            text: "ARCHIT RICHA RAKESH",
           },
           {
             family: `Lobster`,

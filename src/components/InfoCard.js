@@ -38,6 +38,8 @@ const useStyles = makeStyles(theme => ({
     },
   }),
   cardSecondaryTypo: props => ({
+    fontFamily: "Barlow",
+    fontWeight: 400,
     color: props.cardSecondaryFontColor,
     [theme.breakpoints.only("xs")]: {
       fontSize: "1rem",
@@ -120,7 +122,7 @@ const defaultProps = {
   cardPrimaryBGColor: "#3B3566",
   cardSecondaryBGColor: "white",
   cardPrimaryFontColor: "white",
-  cardSecondaryFontColor: "black",
+  cardSecondaryFontColor: "#232332",
 }
 
 export default InfoCard
