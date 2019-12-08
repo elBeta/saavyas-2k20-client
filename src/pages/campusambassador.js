@@ -10,6 +10,7 @@ import HamburgerMenu from "../components/HamburgerMenu"
 import MainSlide from "../components/campusambassador/MainSlide"
 import FaceSlide from "../components/campusambassador/FaceSlide"
 import WhyCASlide from "../components/campusambassador/WhyCASlide"
+import IncentivesSlide from "../components/campusambassador/IncentivesSlide"
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -17,6 +18,11 @@ const useStyles = makeStyles(theme => ({
   slide: {
     border: "1px solid blue",
     height: "100vh",
+  },
+  incentivesSlide: {
+    [theme.breakpoints.only("xs")]: {
+      height: "auto",
+    },
   },
 }))
 
@@ -52,6 +58,13 @@ function CA() {
           </Grid>
           <Grid container item className={classes.slide}>
             <WhyCASlide />
+          </Grid>
+          <Grid
+            container
+            item
+            className={[classes.slide, classes.incentivesSlide]}
+          >
+            <IncentivesSlide mobileMode={mobileMode} />
           </Grid>
         </Grid>
       </div>
