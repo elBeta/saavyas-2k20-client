@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
   root: {},
   slidesContainer: {},
   slide: {
-    border: "1px solid blue",
     height: "100vh",
   },
   incentivesSlide: {
