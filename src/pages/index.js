@@ -46,8 +46,10 @@ const useStyles = makeStyles({
     overflowY: "hidden",
   },
   comingSoonTypo: {
-    fontFamily: "Montserrat, Roboto",
-    color: "#ff0066",
+    fontFamily: "Barlow Semi Condensed",
+    fontWeight: 700,
+    // color: "#ff0066",
+    color: "#F50057",
     [theme.breakpoints.only("xs")]: {
       fontSize: "2.6rem",
     },
@@ -237,7 +239,12 @@ const useStyles2 = makeStyles({
     color: "#ffffff",
   },
   titleFont: {
-    fontFamily: "Montserrat, Roboto",
+    fontFamily: "Barlow Semi Condensed",
+    fontWeight: 700,
+    fontSize: "4rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "3rem",
+    },
   },
   locateIconColor: {
     fill: "#ff0066",
@@ -384,14 +391,14 @@ function MoreInfoTitle(props) {
     <div className={classes.titleContainer}>
       <Typography
         display="inline"
-        variant="h2"
+        variant="h1"
         className={`${classes.titleColor1} ${classes.titleFont}`}
       >
         {titleStart}
       </Typography>
       <Typography
         display="inline"
-        variant="h2"
+        variant="h1"
         className={`${classes.titleColor2} ${classes.titleFont}`}
       >
         {titleEnd}

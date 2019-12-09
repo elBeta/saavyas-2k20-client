@@ -15,9 +15,13 @@ const useStyles = makeStyles({
   }),
   unitCountStyle: props => ({
     color: props.unitCountColor,
+    fontFamily: "Barlow Semi Condensed",
+    fontWeight: 700,
   }),
   unitStyle: props => ({
     color: props.unitColor,
+    fontFamily: "Barlow Semi Condensed",
+    fontWeight: 700,
   }),
   centerAlign: {
     display: "flex",
@@ -51,10 +55,10 @@ function CountdownTimer({
   const daysLeft = targetDate.diff(moment(), "days")
 
   const timeComponents = {
-    days: daysLeft,
-    hours: timeLeft.hours(),
-    mins: timeLeft.minutes(),
-    secs: timeLeft.seconds(),
+    DAYS: daysLeft,
+    HOURS: timeLeft.hours(),
+    MINS: timeLeft.minutes(),
+    SECS: timeLeft.seconds(),
   }
 
   return (
@@ -98,7 +102,7 @@ const defaultProps = {
   unitCountColor: "white",
   unitColor: "white",
   spacing: 6,
-  unitCountTypographyVariant: "h3",
+  unitCountTypographyVariant: "h2",
   unitTypographyVariant: "h5",
 }
 
