@@ -12,6 +12,8 @@ import Typography from "@material-ui/core/Typography"
 import Divider from "@material-ui/core/Divider"
 import Dialog from "@material-ui/core/Dialog"
 import Slide from "@material-ui/core/Slide"
+import Button from "@material-ui/core/Button"
+import Badge from "@material-ui/core/Badge"
 
 import MenuIcon from "@material-ui/icons/Menu"
 import CloseIcon from "@material-ui/icons/Close"
@@ -25,6 +27,8 @@ import CountdownTimer from "../components/CountdownTimer"
 import ShareButtons from "../components/ShareButtons"
 import FluidImage from "../components/image"
 import SEO from "../components/seo"
+
+import { Link } from "gatsby"
 
 const theme = responsiveFontSizes(createMuiTheme())
 theme.typography.body1 = {
@@ -94,6 +98,16 @@ const useStyles = makeStyles({
       width: "15rem",
     },
   },
+  caBtn: {
+    color: "white",
+    borderRadius: 0,
+  },
+  caBtnBadge: {
+    color: "white",
+  },
+  caLink: {
+    textDecoration: "solid",
+  },
 })
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -131,17 +145,36 @@ function ComingSoon() {
                 direction="column"
                 className={classes.mainSectionArea}
               >
-                <Grid item>
-                  <IconButton
-                    style={{ padding: 0 }}
-                    onClick={handleMoreInfoClick}
-                  >
-                    <MenuIcon
-                      style={{ fill: "white" }}
-                      color="inherit"
-                      fontSize="large"
-                    />
-                  </IconButton>
+                <Grid container justify="space-between" item>
+                  <Grid item>
+                    <IconButton
+                      style={{ padding: 0 }}
+                      onClick={handleMoreInfoClick}
+                    >
+                      <MenuIcon
+                        style={{ fill: "white" }}
+                        color="inherit"
+                        fontSize="large"
+                      />
+                    </IconButton>
+                  </Grid>
+                  <Grid item>
+                    <Link to="/campusambassador" className={classes.caLink}>
+                      <Badge
+                        badgeContent="NEW"
+                        color="secondary"
+                        className={classes.caBtnBadge}
+                      >
+                        <Button
+                          variant="outlined"
+                          color="inherit"
+                          className={classes.caBtn}
+                        >
+                          Campus Ambassador
+                        </Button>
+                      </Badge>
+                    </Link>
+                  </Grid>
                 </Grid>
                 <Grid
                   item
