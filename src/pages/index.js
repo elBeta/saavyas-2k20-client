@@ -439,18 +439,20 @@ function ContactUs(props) {
       <Grid item>
         <MoreInfoTitle classes={classes} title="Contact Us" />
       </Grid>
-      <Grid item container spacing={3} style={{ marginLeft: 4 }}>
-        {contactDetails.map((contact, index) => (
-          <Grid item xs={12} sm={3} key={index}>
-            <ContactCard
-              title={contact.title}
-              name={contact.name}
-              email={contact.email}
-              phoneNo={contact.phoneNo}
-              classes={{ contactCardHeader: classes.contactCardHeader }}
-            />
-          </Grid>
-        ))}
+      <Grid item style={{ padding: 22 }}>
+        <Grid item container spacing={3}>
+          {contactDetails.map((contact, index) => (
+            <Grid item xs={12} sm={3} key={index}>
+              <ContactCard
+                title={contact.title}
+                name={contact.name}
+                email={contact.email}
+                phoneNo={contact.phoneNo}
+                classes={{ contactCardHeader: classes.contactCardHeader }}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Grid>
     </Grid>
   )
