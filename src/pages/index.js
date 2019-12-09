@@ -1,5 +1,10 @@
 import React, { useState } from "react"
-import { makeStyles, createMuiTheme, responsiveFontSizes, ThemeProvider } from "@material-ui/core/styles"
+import {
+  makeStyles,
+  createMuiTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
 import IconButton from "@material-ui/core/IconButton"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -21,13 +26,12 @@ import ShareButtons from "../components/ShareButtons"
 import FluidImage from "../components/image"
 import SEO from "../components/seo"
 
-
-const theme = responsiveFontSizes(createMuiTheme());
+const theme = responsiveFontSizes(createMuiTheme())
 theme.typography.body1 = {
   fontSize: "1rem",
   [theme.breakpoints.down("xs")]: {
     fontSize: "0.9rem",
-  }
+  },
 }
 
 const useStyles = makeStyles({
@@ -35,13 +39,13 @@ const useStyles = makeStyles({
     position: "relative",
     minHeight: "100vh",
     overflowX: "hidden",
-    overflowY: "hidden"
+    overflowY: "hidden",
   },
   comingSoonTypo: {
     fontFamily: "Montserrat, Roboto",
     color: "#ff0066",
     [theme.breakpoints.only("xs")]: {
-      fontSize: "2.6rem"
+      fontSize: "2.6rem",
     },
   },
   slidesContainer: {
@@ -87,9 +91,9 @@ const useStyles = makeStyles({
     width: "20rem",
 
     [theme.breakpoints.down("xs")]: {
-      width: "15rem"
-    }
-  }
+      width: "15rem",
+    },
+  },
 })
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -128,8 +132,15 @@ function ComingSoon() {
                 className={classes.mainSectionArea}
               >
                 <Grid item>
-                  <IconButton style={{ padding: 0 }} onClick={handleMoreInfoClick}>
-                    <MenuIcon style={{ fill: "white" }} color="inherit" fontSize="large" />
+                  <IconButton
+                    style={{ padding: 0 }}
+                    onClick={handleMoreInfoClick}
+                  >
+                    <MenuIcon
+                      style={{ fill: "white" }}
+                      color="inherit"
+                      fontSize="large"
+                    />
                   </IconButton>
                 </Grid>
                 <Grid
@@ -142,10 +153,18 @@ function ComingSoon() {
                   className={classes.mainSectionInnerArea}
                 >
                   <Grid item>
-                    <FluidImage fileName="saavyas_logo_with_text.png" className={classes.saavyasLogo} />
+                    <FluidImage
+                      fileName="saavyas_logo_with_text.png"
+                      className={classes.saavyasLogo}
+                    />
                   </Grid>
                   <Grid item>
-                    <Typography color="secondary" variant="h1" align="center" className={classes.comingSoonTypo}>
+                    <Typography
+                      color="secondary"
+                      variant="h1"
+                      align="center"
+                      className={classes.comingSoonTypo}
+                    >
                       COMING SOON
                     </Typography>
                     <Divider className={classes.styledDivider} />
@@ -163,7 +182,6 @@ function ComingSoon() {
         </div>
         <MoreInfo open={moreInfoOpen} handleClose={handleMoreInfoClose} />
       </ThemeProvider>
-
     </>
   )
 }
@@ -196,16 +214,16 @@ const useStyles2 = makeStyles({
   },
   closeButton: {
     padding: 0,
-    transition: theme.transitions.create('transform', {
+    transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.enteringScreen,
       easing: theme.transitions.easing.easeIn,
     }),
   },
   closeButtonOpen: {
-    transform: 'rotate(90deg)'
+    transform: "rotate(90deg)",
   },
   closeButtonClosed: {
-    transform: 'rotate(0deg)'
+    transform: "rotate(0deg)",
   },
   closeIconItem: {
     flexGrow: 0,
@@ -218,11 +236,11 @@ const useStyles2 = makeStyles({
     height: 2,
     width: "30%",
     [theme.breakpoints.only("sm")]: {
-      width: "40%"
+      width: "40%",
     },
     [theme.breakpoints.only("xs")]: {
-      width: "60%"
-    }
+      width: "60%",
+    },
   },
   centerAlign: {
     display: "flex",
@@ -237,7 +255,7 @@ const useStyles2 = makeStyles({
     paddingRight: "5rem",
     [theme.breakpoints.only("xs")]: {
       paddingRight: "2rem",
-    }
+    },
   },
   contactCardHeader: {
     width: "max-content",
@@ -245,7 +263,7 @@ const useStyles2 = makeStyles({
     borderBottomStyle: "solid",
     borderBottomWidth: 2,
     borderBottomColor: "white",
-  }
+  },
 })
 
 function MoreInfo(props) {
@@ -259,26 +277,26 @@ function MoreInfo(props) {
       name: "Damodar Pai",
       title: "Core Team",
       email: "coreteam@saavyas.org",
-      phoneNo: "7798435097"
+      phoneNo: "7798435097",
     },
     {
       name: "Vikash Yadav",
       title: "Events Team",
       email: "events@saavyas.org",
-      phoneNo: "8459778409"
+      phoneNo: "8459778409",
     },
     {
       name: "Ashutosh Kabra",
       title: "Sponsorship Team",
       email: "sponsorship@saavyas.org",
-      phoneNo: "7993659322"
+      phoneNo: "7993659322",
     },
     {
       name: "Archit Garg",
       title: "Marketing Team",
       email: "publicity@saavyas.org",
-      phoneNo: "8708049718"
-    }
+      phoneNo: "8708049718",
+    },
   ]
 
   return (
@@ -292,7 +310,10 @@ function MoreInfo(props) {
       <div className={classes2.root}>
         <Grid container className={classes2.containerRoot}>
           <Grid item xs={12} className={classes2.closeIconItem}>
-            <IconButton className={classes2.closeButton} onClick={props.handleClose}>
+            <IconButton
+              className={classes2.closeButton}
+              onClick={props.handleClose}
+            >
               <CloseIcon style={{ fill: "white" }} fontSize="large" />
             </IconButton>
           </Grid>
@@ -322,7 +343,7 @@ function MoreInfo(props) {
 }
 
 function MoreInfoTitle(props) {
-  const { classes, title } = props;
+  const { classes, title } = props
   const titleStart = title.split(" ")[0] + " "
   const titleEnd = title.split(" ")[1]
 
@@ -343,11 +364,11 @@ function MoreInfoTitle(props) {
         {titleEnd}
       </Typography>
     </div>
-  );
+  )
 }
 
 function AboutUs(props) {
-  const { classes } = props;
+  const { classes } = props
 
   return (
     <Grid container direction="column" spacing={2}>
@@ -356,23 +377,22 @@ function AboutUs(props) {
       </Grid>
       <Grid item>
         <Typography variant="body1" className={classes.titleColor2}>
-          Saavyas '20 is to be the third edition of the annual
-          inter-college techno-cultural fest of National Institute of
-          Technology Goa. It will be a three-day event involving
-          technical, music, arts, dance and drama enthusiasts from all
-          over the country through competitions and performances. The
-          name Saavyas finds its roots in a Sanskrit word meaning
-          ‘bringing people together’. We believe that Saavyas will be
-          the perfect festival to bring both technology and culture
-          together on one platform.
-      </Typography>
+          Saavyas '20 is to be the third edition of the annual inter-college
+          techno-cultural fest of National Institute of Technology Goa. It will
+          be a three-day event involving technical, music, arts, dance and drama
+          enthusiasts from all over the country through competitions and
+          performances. The name Saavyas finds its roots in a Sanskrit word
+          meaning ‘bringing people together’. We believe that Saavyas will be
+          the perfect festival to bring both technology and culture together on
+          one platform.
+        </Typography>
       </Grid>
     </Grid>
-  );
+  )
 }
 
 function ContactUs(props) {
-  const { classes, contactDetails } = props;
+  const { classes, contactDetails } = props
 
   return (
     <Grid container direction="column" spacing={2}>
@@ -393,11 +413,11 @@ function ContactUs(props) {
         ))}
       </Grid>
     </Grid>
-  );
+  )
 }
 
 function FindUs(props) {
-  const { classes } = props;
+  const { classes } = props
 
   return (
     <Grid container direction="column" spacing={2}>
@@ -408,35 +428,44 @@ function FindUs(props) {
         <Grid item xs={10} sm="auto">
           <Typography variant="body1" className={classes.titleColor2}>
             National Institute of Technology Goa
-        </Typography>
+          </Typography>
           <Typography variant="body1" className={classes.titleColor2}>
             Farmagudi, Ponda
-        </Typography>
+          </Typography>
           <Typography variant="body1" className={classes.titleColor2}>
             Goa - 403401
-        </Typography>
+          </Typography>
         </Grid>
         <Grid item xs={2} sm="auto">
           <a
             href="https://goo.gl/maps/s4iauzvopmvQ3io67"
             target="_blank"
-            rel="noopener noreferrer">
+            rel="noopener noreferrer"
+          >
             <IconButton>
-              <LocateIcon fontSize="large" className={classes.locateIconColor} />
+              <LocateIcon
+                fontSize="large"
+                className={classes.locateIconColor}
+              />
             </IconButton>
           </a>
         </Grid>
       </Grid>
     </Grid>
-  );
+  )
 }
 
 function ContactCard(props) {
-  const { title, name, phoneNo, email, classes } = props;
+  const { title, name, phoneNo, email, classes } = props
 
   return (
     <Grid container direction="column" spacing={1}>
-      <Grid item container className={classes.contactCardHeader} style={{ paddingRight: "3rem" }}>
+      <Grid
+        item
+        container
+        className={classes.contactCardHeader}
+        style={{ paddingRight: "3rem" }}
+      >
         <Grid item>
           <AccountIcon style={{ fill: "white" }} fontSize="large" />
         </Grid>
@@ -478,7 +507,7 @@ function ContactCard(props) {
         </Grid>
       </Grid>
     </Grid>
-  );
+  )
 }
 
 export default ComingSoon
