@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid"
 // import Navbar from "../components/Navbar"
 // import HamburgerMenu from "../components/HamburgerMenu"
 
+import SEO from "../components/seo"
 import MainSlide from "../components/campusambassador/MainSlide"
 import FaceSlide from "../components/campusambassador/FaceSlide"
 import WhyCASlide from "../components/campusambassador/WhyCASlide"
@@ -58,6 +59,7 @@ function CA() {
   return (
     <>
       <CssBaseline />
+      <SEO title="Campus Ambassador" />
       <div className={classes.root}>
         {/* {mobileMode | tabletMode ? <HamburgerMenu /> : <Navbar />} */}
         <Grid container direction="column" className={classes.slidesContainer}>
