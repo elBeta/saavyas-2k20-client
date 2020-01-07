@@ -1,7 +1,30 @@
-import React from "react"
+import React, { useState } from "react"
 import Grid from "@material-ui/core/Grid"
 import IconButton from "@material-ui/core/IconButton"
 import SvgIcon from "@material-ui/core/SvgIcon"
+
+import { makeStyles } from "@material-ui/core/styles"
+
+const useStyles = makeStyles(theme => ({
+  facebookIcon: {
+    fill: "white",
+    "&:hover": {
+      fill: "#3b5998 !important",
+    },
+  },
+  instagramIcon: {
+    fill: "white",
+    "&:hover": {
+      fill: "#fb3958 !important",
+    },
+  },
+  twitterIcon: {
+    fill: "white",
+    "&:hover": {
+      fill: "#00aced !important",
+    },
+  },
+}))
 
 function FacebookIcon(props) {
   return (
@@ -27,7 +50,9 @@ function TwitterIcon(props) {
   )
 }
 
-function ShareButtons() {
+function ShareButtons(props) {
+  const classes = useStyles()
+
   return (
     <Grid container spacing={1}>
       <Grid item>
@@ -37,7 +62,7 @@ function ShareButtons() {
           rel="noopener noreferrer"
         >
           <IconButton>
-            <FacebookIcon fontSize="large" style={{ fill: "white" }} />
+            <FacebookIcon className={classes.facebookIcon} fontSize="large" />
           </IconButton>
         </a>
       </Grid>
@@ -48,7 +73,7 @@ function ShareButtons() {
           rel="noopener noreferrer"
         >
           <IconButton>
-            <InstagramIcon fontSize="large" style={{ fill: "white" }} />
+            <InstagramIcon className={classes.instagramIcon} fontSize="large" />
           </IconButton>
         </a>
       </Grid>
@@ -59,7 +84,7 @@ function ShareButtons() {
           rel="noopener noreferrer"
         >
           <IconButton>
-            <TwitterIcon fontSize="large" style={{ fill: "white" }} />
+            <TwitterIcon className={classes.twitterIcon} fontSize="large" />
           </IconButton>
         </a>
       </Grid>
