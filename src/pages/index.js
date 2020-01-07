@@ -100,14 +100,14 @@ const useStyles = makeStyles({
       width: "15rem",
     },
   },
-  caBtn: {
+  navBtn: {
     color: "white",
     borderRadius: 0,
   },
-  caBtnBadge: {
+  navBtnBadge: {
     color: "white",
   },
-  caLink: {
+  navLink: {
     textDecoration: "solid",
   },
 })
@@ -160,22 +160,41 @@ function ComingSoon() {
                       />
                     </IconButton>
                   </Grid>
-                  <Grid item>
-                    <Link to="/campusambassador" className={classes.caLink}>
-                      <Badge
-                        badgeContent="NEW"
-                        color="secondary"
-                        className={classes.caBtnBadge}
-                      >
-                        <Button
-                          variant="outlined"
-                          color="inherit"
-                          className={classes.caBtn}
+                  <Grid container item spacing={2} style={{ width: "auto" }}>
+                    <Grid item>
+                      <Link to="/autocad2020" className={classes.navLink}>
+                        <Badge
+                          badgeContent="NEW"
+                          color="secondary"
+                          className={classes.navBtnBadge}
                         >
-                          Campus Ambassador
-                        </Button>
-                      </Badge>
-                    </Link>
+                          <Button
+                            variant="outlined"
+                            color="inherit"
+                            className={classes.navBtn}
+                          >
+                            AutoCAD Workshop 2020
+                          </Button>
+                        </Badge>
+                      </Link>
+                    </Grid>
+                    <Grid item>
+                      <Link to="/campusambassador" className={classes.navLink}>
+                        <Badge
+                          badgeContent="NEW"
+                          color="secondary"
+                          className={classes.navBtnBadge}
+                        >
+                          <Button
+                            variant="outlined"
+                            color="inherit"
+                            className={classes.navBtn}
+                          >
+                            Campus Ambassador
+                          </Button>
+                        </Badge>
+                      </Link>
+                    </Grid>
                   </Grid>
                 </Grid>
                 <Grid
