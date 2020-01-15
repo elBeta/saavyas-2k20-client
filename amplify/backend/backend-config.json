@@ -1,1 +1,9 @@
-{}
+{
+  "function": {
+    "computeHash": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true
+    }
+  }
+}
