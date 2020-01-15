@@ -6,20 +6,5 @@
 			"build": true
 		}
 	},
-	"api": {
-		"requestHashAPI": {
-			"service": "API Gateway",
-			"providerPlugin": "awscloudformation",
-			"dependsOn": [
-				{
-					"category": "function",
-					"resourceName": "computeHash",
-					"attributes": [
-						"Name",
-						"Arn"
-					]
-				}
-			]
-		}
-	}
+	"api": {}
 }
