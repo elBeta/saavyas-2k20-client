@@ -1,12 +1,9 @@
 {
-  "req": {
-    "key": "abc",
-    "txnid": "xyz",
-    "amount": "123",
-    "productinfo": "best",
-    "firstname": "jay",
-    "email": "nomail",
-    "hash": "shash",
-    "udf1": "udff"
-  }
+  "key": "abc",
+  "txnid": "xyz",
+  "amount": "123",
+  "productinfo": "best",
+  "firstname": "jay",
+  "email": "nomail",
+  "hash": "shash"
 }
