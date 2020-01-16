@@ -1,7 +1,30 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Helmet } from "react-helmet"
+import Amplify, { API } from "aws-amplify"
+
+import awsconfig from "../aws-exports"
 
 function RegistrationPage() {
+  useEffect(() => {
+    const apiName = "requestHashAPI"
+    const path = "/request-hash"
+    const init = {
+      queryStringParameters: {
+        key: "abc",
+        txnid: "xyz",
+        amount: "123",
+        productinfo: "best",
+        firstname: "jay",
+        email: "nomail",
+        hash: "shash",
+      },
+    }
+    Amplify.configure(awsconfig)
+    API.get(apiName, path, init)
+      .then(response => console.log(response))
+      .catch(err => console.log(err))
+  }, [])
+
   return (
     <>
       <Helmet>
