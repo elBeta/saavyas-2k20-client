@@ -31,21 +31,21 @@ exports.handler = async event => {
 
   // One blank must be left even if no UDF is supplied
   // Therefore, check if udf is empty
-  const isUdfEmpty = ![1, 2, 3, 4, 5]
-    .map(item => [undefined, null].includes(data["udf" + item.toString()]))
-    .includes(false)
+  // const isUdfEmpty = ![1, 2, 3, 4, 5]
+  //   .map(item => [undefined, null].includes(data["udf" + item.toString()]))
+  //   .includes(false)
 
-  // Replace one udf with blank (required as per Docs)
-  if (isUdfEmpty) {
-    data["udf1"] = ""
-  }
+  // // Replace one udf with blank (required as per Docs)
+  // if (isUdfEmpty) {
+  //   data["udf1"] = ""
+  // }
 
   // Generate hashing sequence
   const salt = "QZpaSP4aQk"
   let hashingSequence =
     "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5"
       .split("|")
-      .map(item => data[item])
+      .map(item => (data[item] ? data[item] : ""))
       .filter(item => item !== undefined)
       .join("|") +
     "||||||" +
