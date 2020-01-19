@@ -4,6 +4,21 @@
 			"service": "Lambda",
 			"providerPlugin": "awscloudformation",
 			"build": true
+		},
+		"handleResponse": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "paymentsDB",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	},
 	"api": {
@@ -20,6 +35,26 @@
 					]
 				}
 			]
+		},
+		"txnResponseAPI": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "handleResponse",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	},
+	"storage": {
+		"paymentsDB": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
 		}
 	}
 }
