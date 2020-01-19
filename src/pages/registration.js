@@ -38,10 +38,26 @@ function RegistrationPage() {
             surl: "localhost:8000/registration",
             furl: "localhost:8000/registration",
             hash: resp,
+            mode: "dropout",
           },
           {
             resonseHandler: BOLT => {
               console.log(BOLT.response.txnStatus)
+              API.get("txnResponseAPI", "/response", {
+                queryStringParameters: {
+                  key: BOLT.response.key,
+                  txnid: BOLT.response.txnid,
+                  amount: BOLT.response.amount,
+                  productinfo: BOLT.response.productinfo,
+                  firstname: BOLT.response.firstname,
+                  email: BOLT.response.email,
+                  phone: BOLT.response.phone,
+                  hash: BOLT.response.hash,
+                  status: BOLT.response.txnStatus,
+                },
+              })
+                .then(response => console.log(response))
+                .catch(err => console.log(err))
             },
             catchException: function(BOLT) {
               alert(BOLT.message)
