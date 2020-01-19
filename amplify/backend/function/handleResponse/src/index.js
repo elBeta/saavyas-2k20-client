@@ -1,9 +1,14 @@
 const AWS = require("aws-sdk")
+const crypto = require("crypto")
 
 AWS.config.update({ region: process.env.TABLE_REGION })
 
 const dynamodb = new AWS.DynamoDB.DocumentClient()
-const tableName = "paymentsDB"
+let tableName = "paymentsDB"
+
+if (process.env.ENV && process.env.ENV !== "NONE") {
+  tableName = tableName + "-" + process.env.ENV
+}
 
 exports.handler = (event, context) => {
   // hashSequence =
@@ -55,6 +60,9 @@ exports.handler = (event, context) => {
   console.log("responseHash: " + hash)
 
   if (data["hash"] !== hash) {
+    console.log(
+      "Error: Request hash doesn't match one provided. Possible MITM attack."
+    )
     return {
       statusCode: 400,
       headers: {
@@ -93,6 +101,8 @@ exports.handler = (event, context) => {
         body: JSON.stringify("Error: Couldn't record transaction in database"),
       }
     }
+    console.log("Successfully inserted record into database")
+    console.log(data)
     return {
       statusCode: 200,
       headers: {
@@ -100,17 +110,7 @@ exports.handler = (event, context) => {
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
       },
+      body: JSON.stringify("Successfully inserted record into database"),
     }
   })
-
-  const response = {
-    statusCode: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-    },
-    body: JSON.stringify(hash),
-  }
-  return response
 }
