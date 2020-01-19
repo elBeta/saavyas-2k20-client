@@ -11,8 +11,8 @@ function RegistrationPage() {
     const init = {
       queryStringParameters: {
         key: "T5g199Dn",
-        txnid: "tid1234",
-        amount: 17,
+        txnid: "tid9876",
+        amount: 47,
         productinfo: "TestProduct",
         firstname: "Piyush",
         email: "piyush.kotian@gmail.com",
@@ -29,8 +29,8 @@ function RegistrationPage() {
         window.bolt.launch(
           {
             key: "T5g199Dn",
-            txnid: "tid1234",
-            amount: 17,
+            txnid: "tid9876",
+            amount: 47,
             productinfo: "TestProduct",
             firstname: "Piyush",
             email: "piyush.kotian@gmail.com",
@@ -38,11 +38,10 @@ function RegistrationPage() {
             surl: "localhost:8000/registration",
             furl: "localhost:8000/registration",
             hash: resp,
-            mode: "dropout",
           },
           {
-            resonseHandler: BOLT => {
-              console.log(BOLT.response.txnStatus)
+            responseHandler: BOLT => {
+              alert(BOLT.response.txnStatus)
               API.get("txnResponseAPI", "/response", {
                 queryStringParameters: {
                   key: BOLT.response.key,
@@ -53,13 +52,13 @@ function RegistrationPage() {
                   email: BOLT.response.email,
                   phone: BOLT.response.phone,
                   hash: BOLT.response.hash,
-                  status: BOLT.response.txnStatus,
+                  status: BOLT.response.status,
                 },
               })
                 .then(response => console.log(response))
                 .catch(err => console.log(err))
             },
-            catchException: function(BOLT) {
+            catchException: BOLT => {
               alert(BOLT.message)
             },
           }
