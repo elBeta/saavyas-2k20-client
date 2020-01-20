@@ -4,6 +4,14 @@
 	"Parameters": {
 		"env": {
 			"Type": "String"
+		},
+		"storageeventsInfoDBName": {
+			"Type": "String",
+			"Default": "storageeventsInfoDBName"
+		},
+		"storageeventsInfoDBArn": {
+			"Type": "String",
+			"Default": "storageeventsInfoDBArn"
 		}
 	},
 	"Conditions": {
@@ -50,6 +58,12 @@
 						},
 						"REGION": {
 							"Ref": "AWS::Region"
+						},
+						"STORAGE_EVENTSINFODB_NAME": {
+							"Ref": "storageeventsInfoDBName"
+						},
+						"STORAGE_EVENTSINFODB_ARN": {
+							"Ref": "storageeventsInfoDBArn"
 						}
 					}
 				},
@@ -63,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-saavyas-2k20-client-dev-222337-deployment",
-					"S3Key": "amplify-builds/computeHash-6b50676e7336472f7747-build.zip"
+					"S3Key": "amplify-builds/computeHash-796c43546b4f7a776c71-build.zip"
 				}
 			}
 		},
@@ -144,6 +158,52 @@
 									}
 								]
 							}
+						}
+					]
+				}
+			}
+		},
+		"AmplifyResourcesPolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "amplify-lambda-execution-policy",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:Get*",
+								"dynamodb:BatchGetItem",
+								"dynamodb:List*",
+								"dynamodb:Describe*",
+								"dynamodb:Scan",
+								"dynamodb:Query"
+							],
+							"Resource": [
+								{
+									"Ref": "storageeventsInfoDBArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storageeventsInfoDBArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
 						}
 					]
 				}

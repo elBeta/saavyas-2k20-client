@@ -1,1 +1,9 @@
-{}
+{
+    "permissions": {
+        "storage": {
+            "eventsInfoDB": [
+                "read"
+            ]
+        }
+    }
+}
