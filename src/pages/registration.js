@@ -8,15 +8,15 @@ function RegistrationPage() {
   useEffect(() => {
     const apiName = "requestHashAPI"
     const path = "/request-hash"
+    const coreQueryParams = {
+      key: "T5g199Dn",
+      txnid: "tid9875",
+      productinfo: "event-voic",
+      firstname: "Piyush",
+      email: "piyush.kotian@gmail.com",
+    }
     const init = {
-      queryStringParameters: {
-        key: "T5g199Dn",
-        txnid: "tid9876",
-        amount: 47,
-        productinfo: "TestProduct",
-        firstname: "Piyush",
-        email: "piyush.kotian@gmail.com",
-      },
+      queryStringParameters: coreQueryParams,
     }
     Amplify.configure(awsconfig)
     API.get(apiName, path, init)
@@ -24,20 +24,16 @@ function RegistrationPage() {
         console.log(response)
         return response
       })
-      .then(resp => {
-        console.log(resp)
+      .then(response => {
+        console.log(response)
         window.bolt.launch(
           {
-            key: "T5g199Dn",
-            txnid: "tid9876",
-            amount: 47,
-            productinfo: "TestProduct",
-            firstname: "Piyush",
-            email: "piyush.kotian@gmail.com",
+            ...coreQueryParams,
             phone: "7338500594",
             surl: "localhost:8000/registration",
             furl: "localhost:8000/registration",
-            hash: resp,
+            hash: response["hash"],
+            amount: response["amount"],
           },
           {
             responseHandler: BOLT => {
