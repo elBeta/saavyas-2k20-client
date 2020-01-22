@@ -9,6 +9,14 @@
             "UnauthRoleName": "amplify-saavyas-2k20-client-master-221423-unauthRole",
             "StackName": "amplify-saavyas-2k20-client-master-221423",
             "StackId": "arn:aws:cloudformation:ap-south-1:379471395249:stack/amplify-saavyas-2k20-client-master-221423/87e8c180-fb34-11e9-aca6-02abaae9da36"
+        },
+        "categories": {
+            "function": {
+                "computeHash": {},
+                "handleResponse": {},
+                "eventsInfoDB": {},
+                "paymentsDB": {}
+            }
         }
     },
     "dev": {
