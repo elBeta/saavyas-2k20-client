@@ -162,7 +162,7 @@ function ComingSoon() {
                   </Grid>
                   <Grid container item spacing={2} style={{ width: "auto" }}>
                     <Grid item>
-                      <Link to="/blender2020" className={classes.navLink}>
+                      <Link to="/cbworkshop" className={classes.navLink}>
                         <Badge
                           badgeContent="NEW"
                           color="secondary"
@@ -173,7 +173,7 @@ function ComingSoon() {
                             color="inherit"
                             className={classes.navBtn}
                           >
-                            Blender Workshop 2020
+                            Coding Blocks Workshop
                           </Button>
                         </Badge>
                       </Link>
