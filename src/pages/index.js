@@ -179,7 +179,7 @@ function ComingSoon() {
                       </Link>
                     </Grid>
                     <Grid item>
-                      <Link to="/campusambassador" className={classes.navLink}>
+                      <Link to="/merchandise" className={classes.navLink}>
                         <Badge
                           badgeContent="NEW"
                           color="secondary"
@@ -190,7 +190,7 @@ function ComingSoon() {
                             color="inherit"
                             className={classes.navBtn}
                           >
-                            Campus Ambassador
+                            Merchandise
                           </Button>
                         </Badge>
                       </Link>
