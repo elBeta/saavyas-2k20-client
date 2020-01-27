@@ -66,6 +66,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "1rem",
     },
   },
+  extraInfo: {
+    color: "black",
+    fontFamily: "Barlow",
+    fontWeight: 700,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1rem",
+    },
+  },
   knowMoreBtn: {
     borderRadius: 0,
     backgroundColor: "#05396b",
@@ -91,12 +99,13 @@ const useStyles = makeStyles(theme => ({
 function IoTwithGoogle(props) {
   const classes = useStyles()
 
-  const briefSummaryText = `Internet of Things (IoT) is an ecosystem of connected physical
-  things that are accessible through the internet. The 'Thing' in IoT
-  could be a person with a heart monitor or an automobile with
-  built-in-sensors, i.e. objects that have been assigned an IP address
-  and could collect and transfer data over a network without manual
-  intervention.`
+  const briefSummaryText =
+    "Internet of Things (IoT) is an ecosystem of connected physical \
+  things that are accessible through the internet. The 'Thing' in IoT \
+  could be a person with a heart monitor or an automobile with \
+  built-in-sensors, i.e. objects that have been assigned an IP address \
+  and could collect and transfer data over a network without manual \
+  intervention."
 
   return (
     <div className={classes.root}>
@@ -107,6 +116,9 @@ function IoTwithGoogle(props) {
         <Grid item xs={12} sm={6}>
           <Typography variant="h5" className={classes.briefSummary}>
             {briefSummaryText}
+            <Typography variant="h5" className={classes.extraInfo}>
+              Workshop organized by Wingfotech in NIT Goa
+            </Typography>
           </Typography>
         </Grid>
         <Grid item xs={12}>

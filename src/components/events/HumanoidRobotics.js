@@ -55,6 +55,14 @@ const useStyles = makeStyles(theme => ({
       fontSize: "1rem",
     },
   },
+  extraInfo: {
+    color: "black",
+    fontFamily: "Barlow",
+    fontWeight: 700,
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1rem",
+    },
+  },
   knowMoreBtn: {
     borderRadius: 0,
     backgroundColor: "#18262a",
@@ -114,6 +122,9 @@ function HumanoidRobotics(props) {
         <Grid item xs={12} sm={6}>
           <Typography variant="h5" className={classes.briefSummary}>
             {briefSummaryText}
+            <Typography variant="h5" className={classes.extraInfo}>
+              Workshop organized by Wingfotech in NIT Goa
+            </Typography>
           </Typography>
         </Grid>
         {!mobileNav && (
