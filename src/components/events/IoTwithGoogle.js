@@ -142,29 +142,47 @@ function Title(props) {
 
 function ActionPanel(props) {
   const { classes } = props
+  const registrationLink =
+    "https://www.payumoney.com/paybypayumoney/#/FDD5FAEB0B834D653EA32AE59CC4DB14"
+  const moreInfoFileLink =
+    "https://drive.google.com/open?id=1_B4qjVQCczijVXZO0tP-5Rmr1xZd61bA"
+
   return (
     <Grid container justify="space-between">
       <Grid item>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.knowMoreBtn}
+        <a
+          href={moreInfoFileLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "inherit", color: "inherit" }}
         >
-          <Typography variant="h3" className={classes.btnTypo}>
-            Know More
-          </Typography>
-        </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.knowMoreBtn}
+          >
+            <Typography variant="h3" className={classes.btnTypo}>
+              Know More
+            </Typography>
+          </Button>
+        </a>
       </Grid>
       <Grid item>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.knowMoreBtn}
+        <a
+          href={registrationLink}
+          rel="noopener noreferrer"
+          style={{ textDecoration: "inherit", color: "inherit" }}
         >
-          <Typography variant="h3" className={classes.btnTypo}>
-            Register
-          </Typography>
-        </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.knowMoreBtn}
+          >
+            <Typography variant="h3" className={classes.btnTypo}>
+              Register
+            </Typography>
+          </Button>
+        </a>
       </Grid>
     </Grid>
   )
