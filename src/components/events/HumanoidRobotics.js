@@ -1,15 +1,21 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import { useTheme, makeStyles } from "@material-ui/core/styles"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 import Grid from "@material-ui/core/Grid"
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: "100vh",
+    minHeight: "100vh",
     width: "100%",
+    padding: "2rem",
     paddingLeft: "5rem",
     paddingRight: "5rem",
+    [theme.breakpoints.down("xs")]: {
+      padding: "1rem",
+    },
+
     backgroundColor: "#dc3d24",
     border: "2px solid black",
 
@@ -23,6 +29,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 900,
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
+
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "3.75rem",
+    },
   },
   titleB: {
     color: "#18262a",
@@ -31,10 +41,19 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 900,
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
+
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "3.75rem",
+    },
   },
   briefSummary: {
     color: "white",
     fontFamily: "Barlow",
+    paddingTop: "1.25rem",
+    paddingBottom: "1.25rem",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1rem",
+    },
   },
   knowMoreBtn: {
     borderRadius: 0,
@@ -45,6 +64,13 @@ const useStyles = makeStyles(theme => ({
     "&:hover": {
       backgroundColor: "#1e1e1e",
     },
+    marginTop: "2rem",
+    [theme.breakpoints.down("xs")]: {
+      padding: "0.5rem",
+      paddingLeft: "1.25rem",
+      paddingRight: "1.25rem",
+      marginTop: "0.75rem",
+    },
   },
   btnTypo: {
     fontFamily: "Barlow Semi Condensed",
@@ -54,8 +80,22 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+function useWidth() {
+  const theme = useTheme()
+  const keys = [...theme.breakpoints.keys].reverse()
+  return (
+    keys.reduce((output, key) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const matches = useMediaQuery(theme.breakpoints.up(key))
+      return !output && matches ? key : output
+    }, null) || "xs"
+  )
+}
+
 function HumanoidRobotics(props) {
   const classes = useStyles()
+
+  const mobileNav = ["xs"].includes(useWidth())
 
   const briefSummaryText =
     "Humanoid robots are being developed to perform human tasks like \
@@ -65,15 +105,22 @@ function HumanoidRobotics(props) {
 
   return (
     <div className={classes.root}>
-      <Grid container alignItems="center" spacing={4}>
+      <Grid container alignItems="center">
+        {mobileNav && (
+          <Grid item xs={12} sm={6}>
+            <Title classes={classes} />
+          </Grid>
+        )}
         <Grid item xs={12} sm={6}>
           <Typography variant="h5" className={classes.briefSummary}>
             {briefSummaryText}
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Title classes={classes} />
-        </Grid>
+        {!mobileNav && (
+          <Grid item xs={12} sm={6}>
+            <Title classes={classes} />
+          </Grid>
+        )}
         <Grid item xs={12}>
           <ActionPanel classes={classes} />
         </Grid>

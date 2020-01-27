@@ -6,10 +6,15 @@ import Typography from "@material-ui/core/Typography"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: "100vh",
+    minHeight: "100vh",
     width: "100%",
+    padding: "2rem",
     paddingLeft: "5rem",
     paddingRight: "5rem",
+    [theme.breakpoints.down("xs")]: {
+      padding: "1rem",
+    },
+
     backgroundColor: "#3aafa9",
     border: "2px solid black",
 
@@ -23,6 +28,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 900,
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
+
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "3.75rem",
+    },
   },
   titleB: {
     color: "#18262a",
@@ -31,6 +40,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 900,
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
+
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "2.5rem",
+    },
   },
   titleC: {
     color: "#18262a",
@@ -39,10 +52,19 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 900,
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
+
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "3.75rem",
+    },
   },
   briefSummary: {
     color: "white",
     fontFamily: "Barlow",
+    paddingTop: "1.25rem",
+    paddingBottom: "1.25rem",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1rem",
+    },
   },
   knowMoreBtn: {
     borderRadius: 0,
@@ -50,6 +72,13 @@ const useStyles = makeStyles(theme => ({
     padding: "1.5rem",
     paddingLeft: "4rem",
     paddingRight: "4rem",
+    marginTop: "2rem",
+    [theme.breakpoints.down("xs")]: {
+      padding: "0.5rem",
+      paddingLeft: "1.25rem",
+      paddingRight: "1.25rem",
+      marginTop: "0.75rem",
+    },
   },
   btnTypo: {
     fontFamily: "Barlow Semi Condensed",
@@ -71,7 +100,7 @@ function IoTwithGoogle(props) {
 
   return (
     <div className={classes.root}>
-      <Grid container alignItems="center" spacing={4}>
+      <Grid container alignItems="center">
         <Grid item xs={12} sm={6}>
           <Title classes={classes} />
         </Grid>
