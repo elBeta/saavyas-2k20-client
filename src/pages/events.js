@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid"
 import { makeStyles } from "@material-ui/core/styles"
 
 import IoTwithGoogle from "../components/events/IoTwithGoogle"
+import HumanoidRobotics from "../components/events/HumanoidRobotics"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,7 +21,7 @@ function EventsPage(props) {
       <CssBaseline />
       <div className={classes.root}>
         <IoTwithGoogle />
-        <IoTwithGoogle />
+        <HumanoidRobotics />
       </div>
     </>
   )
