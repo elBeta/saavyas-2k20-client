@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 
 import IoTwithGoogle from "../components/events/IoTwithGoogle"
 import HumanoidRobotics from "../components/events/HumanoidRobotics"
+import ArtificialIntelligence from "../components/events/ArtificialIntelligence"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,6 +23,7 @@ function EventsPage(props) {
       <div className={classes.root}>
         <IoTwithGoogle />
         <HumanoidRobotics />
+        <ArtificialIntelligence />
       </div>
     </>
   )
