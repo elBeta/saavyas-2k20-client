@@ -29,6 +29,12 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
 
+    [theme.breakpoints.between("md", "lg")]: {
+      fontSize: "7rem",
+    },
+    [theme.breakpoints.only("sm")]: {
+      fontSize: "6.5rem",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "3.75rem",
     },
@@ -41,6 +47,12 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
 
+    [theme.breakpoints.between("md", "lg")]: {
+      fontSize: "5.5rem",
+    },
+    [theme.breakpoints.only("sm")]: {
+      fontSize: "4.5rem",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "3rem",
     },
@@ -98,10 +110,10 @@ function ArtificialIntelligence(props) {
   return (
     <div className={classes.root}>
       <Grid container alignItems="center">
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Title classes={classes} />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Typography variant="h5" className={classes.briefSummary}>
             {briefSummaryText}
             <Typography variant="h5" className={classes.extraInfo}>

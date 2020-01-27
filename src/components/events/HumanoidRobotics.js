@@ -30,6 +30,12 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
 
+    [theme.breakpoints.between("md", "lg")]: {
+      fontSize: "7rem",
+    },
+    [theme.breakpoints.only("sm")]: {
+      fontSize: "6.5rem",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "3.75rem",
     },
@@ -42,6 +48,12 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
 
+    [theme.breakpoints.between("md", "lg")]: {
+      fontSize: "7rem",
+    },
+    [theme.breakpoints.only("sm")]: {
+      fontSize: "6.5rem",
+    },
     [theme.breakpoints.down("xs")]: {
       fontSize: "3.75rem",
     },
@@ -103,7 +115,7 @@ function useWidth() {
 function HumanoidRobotics(props) {
   const classes = useStyles()
 
-  const mobileNav = ["xs"].includes(useWidth())
+  const mobileNav = ["xs", "sm"].includes(useWidth())
 
   const briefSummaryText =
     "Humanoid robots are being developed to perform human tasks like \
@@ -115,11 +127,11 @@ function HumanoidRobotics(props) {
     <div className={classes.root}>
       <Grid container alignItems="center">
         {mobileNav && (
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <Title classes={classes} />
           </Grid>
         )}
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Typography variant="h5" className={classes.briefSummary}>
             {briefSummaryText}
             <Typography variant="h5" className={classes.extraInfo}>
@@ -128,7 +140,7 @@ function HumanoidRobotics(props) {
           </Typography>
         </Grid>
         {!mobileNav && (
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <Title classes={classes} />
           </Grid>
         )}
