@@ -1,11 +1,10 @@
 import React from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
-import Grid from "@material-ui/core/Grid"
 import { makeStyles } from "@material-ui/core/styles"
 
-import IoTwithGoogle from "../components/events/IoTwithGoogle"
-import HumanoidRobotics from "../components/events/HumanoidRobotics"
-import ArtificialIntelligence from "../components/events/ArtificialIntelligence"
+import IoTwithGoogle from "../../components/events/IoTwithGoogle"
+import HumanoidRobotics from "../../components/events/HumanoidRobotics"
+import ArtificialIntelligence from "../../components/events/ArtificialIntelligence"
 
 const useStyles = makeStyles(theme => ({
   root: {
