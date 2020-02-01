@@ -84,9 +84,9 @@ function useWidth() {
 function ImageCategorize(props) {
   const classes = useStyles()
   const images = [
-    { title: "Technical", fileName: "tech", link: "/events/technical" },
-    { title: "Cultural", fileName: "cultural", link: "/events/cultural" },
-    // { title: "Technical", fileName: "tech", link: "/events/technical" },
+    { title: "Technical", fileName: "tech.jpg", link: "/events/technical" },
+    { title: "Cultural", fileName: "cultural.jpg", link: "/events/cultural" },
+    { title: "Workshop", fileName: "workshop.jpg", link: "/events/workshop" },
     // { title: "Cultural", fileName: "cultural", link: "/events/cultural" },
     // { title: "Technical", fileName: "tech", link: "/events/technical" },
     // { title: "Cultural", fileName: "cultural", link: "/events/cultural" },
