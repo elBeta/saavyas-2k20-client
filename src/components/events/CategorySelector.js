@@ -1,5 +1,6 @@
 import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
+import { useTheme, makeStyles } from "@material-ui/core/styles"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import { Link } from "gatsby"
@@ -8,12 +9,14 @@ import FluidImage from "../../components/image"
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: "100vh",
-    width: "100vw",
+    height: "100%",
+    width: "100%",
   },
   categoryContainer: {
     position: "relative",
-    height: "100%",
+    [theme.breakpoints.down("xs")]: {
+      height: "100%",
+    },
     width: "100%",
     border: "2px solid black",
     "&:hover": {
@@ -25,6 +28,10 @@ const useStyles = makeStyles(theme => ({
         padding: "1rem",
       },
     },
+  },
+  fluidImage: {
+    height: "100%",
+    width: "100%",
   },
   imageContainer: {
     position: "absolute",
@@ -57,27 +64,55 @@ const useStyles = makeStyles(theme => ({
   },
   titleTypo: {
     [theme.breakpoints.down("xs")]: {
-      fontSize: "2rem",
+      fontSize: "1.75rem",
     },
   },
 }))
+
+function useWidth() {
+  const theme = useTheme()
+  const keys = [...theme.breakpoints.keys].reverse()
+  return (
+    keys.reduce((output, key) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const matches = useMediaQuery(theme.breakpoints.up(key))
+      return !output && matches ? key : output
+    }, null) || "xs"
+  )
+}
 
 function ImageCategorize(props) {
   const classes = useStyles()
   const images = [
     { title: "Technical", fileName: "tech", link: "/events/technical" },
     { title: "Cultural", fileName: "cultural", link: "/events/cultural" },
+    // { title: "Technical", fileName: "tech", link: "/events/technical" },
+    // { title: "Cultural", fileName: "cultural", link: "/events/cultural" },
+    // { title: "Technical", fileName: "tech", link: "/events/technical" },
+    // { title: "Cultural", fileName: "cultural", link: "/events/cultural" },
   ]
 
+  const mobileMode = ["xs"].includes(useWidth())
+
   return (
-    <Grid container className={classes.root}>
+    <Grid
+      container
+      direction={mobileMode ? "column" : "row"}
+      wrap={mobileMode ? "nowrap" : "wrap"}
+      className={classes.root}
+    >
       {images.map(image => (
-        <Grid item xs={6} className={classes.categoryContainer}>
+        <Grid
+          item
+          xs="auto"
+          sm={(images.length > 3 ? 24 : 12) / images.length}
+          className={classes.categoryContainer}
+        >
           <Link to={image.link}>
             <div className={classes.imageContainer}>
               <FluidImage
                 fileName={image.fileName}
-                style={{ width: "100%", height: "100%" }}
+                className={classes.fluidImage}
               />
             </div>
             <div className={classes.overlay}></div>
