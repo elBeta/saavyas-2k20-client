@@ -83,15 +83,7 @@ function useWidth() {
 
 function ImageCategorize(props) {
   const classes = useStyles()
-  const images = [
-    { title: "Technical", fileName: "tech.jpg", link: "/events/technical" },
-    { title: "Cultural", fileName: "cultural.jpg", link: "/events/cultural" },
-    { title: "Workshop", fileName: "workshop.jpg", link: "/events/workshop" },
-    // { title: "Cultural", fileName: "cultural", link: "/events/cultural" },
-    // { title: "Technical", fileName: "tech", link: "/events/technical" },
-    // { title: "Cultural", fileName: "cultural", link: "/events/cultural" },
-  ]
-
+  const { categories } = props
   const mobileMode = ["xs"].includes(useWidth())
 
   return (
@@ -101,24 +93,24 @@ function ImageCategorize(props) {
       wrap={mobileMode ? "nowrap" : "wrap"}
       className={classes.root}
     >
-      {images.map(image => (
+      {categories.map(category => (
         <Grid
           item
           xs="auto"
-          sm={(images.length > 3 ? 24 : 12) / images.length}
+          sm={(categories.length > 3 ? 24 : 12) / categories.length}
           className={classes.categoryContainer}
         >
-          <Link to={image.link}>
+          <Link to={category.link}>
             <div className={classes.imageContainer}>
               <FluidImage
-                fileName={image.fileName}
+                fileName={category.fileName}
                 className={classes.fluidImage}
               />
             </div>
             <div className={classes.overlay}></div>
             <div className={classes.categoryTitle}>
               <Typography variant="h2" className={classes.titleTypo}>
-                {image.title}
+                {category.title}
               </Typography>
             </div>
           </Link>

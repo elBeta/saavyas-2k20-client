@@ -42,6 +42,21 @@ const useStyles = makeStyles(theme => ({
 function EventsCategory(props) {
   const classes = useStyles()
 
+  const eventCategories = [
+    { title: "Technical", fileName: "tech.jpg", link: "/events/technical" },
+    { title: "Cultural", fileName: "cultural.jpg", link: "/events/cultural" },
+    {
+      title: "Entertainment",
+      fileName: "entertainment.jpg",
+      link: "/events/entertainment",
+    },
+    {
+      title: "Sports and eSports",
+      fileName: "sports_esports.jpg",
+      link: "/events/sports_esports",
+    },
+  ]
+
   return (
     <>
       <CssBaseline />
@@ -54,7 +69,7 @@ function EventsCategory(props) {
           </Toolbar>
         </AppBar>
         <div className={classes.categorySelectorContainer}>
-          <CategorySelector />
+          <CategorySelector categories={eventCategories} />
         </div>
       </div>
     </>
