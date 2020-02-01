@@ -81,7 +81,7 @@ function useWidth() {
   )
 }
 
-function ImageCategorize(props) {
+function CategorySelector(props) {
   const classes = useStyles()
   const { categories } = props
   const mobileMode = ["xs"].includes(useWidth())
@@ -120,4 +120,4 @@ function ImageCategorize(props) {
   )
 }
 
-export default ImageCategorize
+export default CategorySelector
