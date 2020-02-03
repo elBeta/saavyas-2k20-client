@@ -2,9 +2,9 @@ import React from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { makeStyles } from "@material-ui/core/styles"
 
-import IoTwithGoogle from "../../components/events/IoTwithGoogle"
-import HumanoidRobotics from "../../components/events/HumanoidRobotics"
-import ArtificialIntelligence from "../../components/events/ArtificialIntelligence"
+import EventSlide from "../../components/events/EventSlide"
+
+import { events } from "../../details/eventDetails"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,9 +20,18 @@ function EventsPage(props) {
     <>
       <CssBaseline />
       <div className={classes.root}>
-        <IoTwithGoogle />
-        <HumanoidRobotics />
-        <ArtificialIntelligence />
+        {events.map(event => (
+          <EventSlide
+            rightAlign={event.rightAlign}
+            imageFileName={event.imageFileName}
+            eventSummary={event.eventSummary}
+            titleA={event.titleA}
+            titleB={event.titleB}
+            colorScheme={event.colorScheme}
+            ruleBookLink={event.ruleBookLink}
+            registrationLink={event.registrationLink}
+          />
+        ))}
       </div>
     </>
   )
