@@ -1,6 +1,7 @@
 import React from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { makeStyles } from "@material-ui/core/styles"
+import Helmet from "react-helmet"
 
 import EventSlide from "../../components/events/EventSlide"
 import CategorySelector from "../../components/events/CategorySelector"
@@ -23,6 +24,9 @@ function EventsPage(props) {
   return (
     <>
       <CssBaseline />
+      <Helmet>
+        <html style="scroll-behavior:smooth"></html>
+      </Helmet>
       <div className={classes.root}>
         <div className={classes.highlightEvents}>
           <CategorySelector categories={highlightEvents} />
