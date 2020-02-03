@@ -31,6 +31,24 @@ export const colorScheme = {
   },
 }
 
+export const highlightEvents = [
+  {
+    title: "Robowars",
+    fileName: "event-posters/robowars.jpg",
+    link: "/events/technical/#robowars",
+  },
+  {
+    title: "Artificial Intelligence",
+    fileName: "event-posters/ai.jpg",
+    link: "/events/technical/#ai",
+  },
+  {
+    title: "Humanoid Robotics",
+    fileName: "event-posters/humanoid.jpg",
+    link: "/events/technical/#humanrobot",
+  },
+]
+
 export const events = [
   {
     titleA: "IoT with",

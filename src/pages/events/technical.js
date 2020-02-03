@@ -3,13 +3,17 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import { makeStyles } from "@material-ui/core/styles"
 
 import EventSlide from "../../components/events/EventSlide"
+import CategorySelector from "../../components/events/CategorySelector"
 
-import { events } from "../../details/eventDetails"
+import { events, highlightEvents } from "../../details/eventDetails"
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: "100%",
     width: "100%",
+  },
+  highlightEvents: {
+    height: "60vh",
   },
 }))
 
@@ -20,6 +24,9 @@ function EventsPage(props) {
     <>
       <CssBaseline />
       <div className={classes.root}>
+        <div className={classes.highlightEvents}>
+          <CategorySelector categories={highlightEvents} />
+        </div>
         {events.map(event => (
           <EventSlide
             rightAlign={event.rightAlign}
