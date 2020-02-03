@@ -141,6 +141,7 @@ function EventSlide(props) {
     eventDate,
     eventFee,
     eventSummary,
+    id,
     titleA,
     titleB,
     ruleBookLink,
@@ -166,7 +167,7 @@ function EventSlide(props) {
   )
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id={id}>
       <Grid container alignItems="center">
         {!(mobileMode || !rightAlign) && imageComponent}
         <Grid

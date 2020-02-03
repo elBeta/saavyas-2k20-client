@@ -51,6 +51,7 @@ export const highlightEvents = [
 
 export const events = [
   {
+    id: "iotwithgass",
     titleA: "IoT with",
     titleB: "Google Assistant",
     rightAlign: false,
@@ -70,6 +71,7 @@ export const events = [
       "https://www.payumoney.com/paybypayumoney/#/FDD5FAEB0B834D653EA32AE59CC4DB14",
   },
   {
+    id: "humanrobot",
     titleA: "Humanoid",
     titleB: "Robotics",
     rightAlign: true,
@@ -87,6 +89,7 @@ export const events = [
       "https://www.payumoney.com/paybypayumoney/#/FDD5FAEB0B834D653EA32AE59CC4DB14",
   },
   {
+    id: "ai",
     titleA: "Artificial",
     titleB: "Intelligence",
     colorScheme: colorScheme.greenBlueWhite,
@@ -105,6 +108,7 @@ export const events = [
       "https://www.payumoney.com/paybypayumoney/#/FDD5FAEB0B834D653EA32AE59CC4DB14",
   },
   {
+    id: "robowars",
     titleA: "Robo",
     titleB: "Wars",
     eventDate: "...",

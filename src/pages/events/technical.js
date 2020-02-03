@@ -32,6 +32,7 @@ function EventsPage(props) {
             rightAlign={event.rightAlign}
             imageFileName={event.imageFileName}
             eventSummary={event.eventSummary}
+            id={event.id}
             titleA={event.titleA}
             titleB={event.titleB}
             colorScheme={event.colorScheme}
