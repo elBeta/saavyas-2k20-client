@@ -103,6 +103,7 @@ const useStyles = makeStyles({
   navBtn: {
     color: "white",
     borderRadius: 0,
+    fontWeight: 700,
   },
   navBtnBadge: {
     color: "white",
@@ -163,36 +164,36 @@ function ComingSoon() {
                   <Grid container item spacing={2} style={{ width: "auto" }}>
                     <Grid item>
                       <Link to="/events" className={classes.navLink}>
-                        <Badge
+                        {/* <Badge
                           badgeContent="NEW"
                           color="secondary"
                           className={classes.navBtnBadge}
+                        > */}
+                        <Button
+                          variant="outlined"
+                          color="inherit"
+                          className={classes.navBtn}
                         >
-                          <Button
-                            variant="outlined"
-                            color="inherit"
-                            className={classes.navBtn}
-                          >
-                            Events
-                          </Button>
-                        </Badge>
+                          Events
+                        </Button>
+                        {/* </Badge> */}
                       </Link>
                     </Grid>
                     <Grid item>
                       <Link to="/merchandise" className={classes.navLink}>
-                        <Badge
+                        {/* <Badge
                           badgeContent="NEW"
                           color="secondary"
                           className={classes.navBtnBadge}
+                        > */}
+                        <Button
+                          variant="outlined"
+                          color="inherit"
+                          className={classes.navBtn}
                         >
-                          <Button
-                            variant="outlined"
-                            color="inherit"
-                            className={classes.navBtn}
-                          >
-                            Merchandise
-                          </Button>
-                        </Badge>
+                          Merchandise
+                        </Button>
+                        {/* </Badge> */}
                       </Link>
                     </Grid>
                   </Grid>
