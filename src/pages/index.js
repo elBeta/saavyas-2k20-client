@@ -111,6 +111,12 @@ const useStyles = makeStyles({
   navLink: {
     textDecoration: "solid",
   },
+  menuBtn: {
+    padding: 0,
+    [theme.breakpoints.down("xs")]: {
+      paddingBottom: "1rem",
+    },
+  },
 })
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -151,7 +157,7 @@ function ComingSoon() {
                 <Grid container justify="space-between" item>
                   <Grid item>
                     <IconButton
-                      style={{ padding: 0 }}
+                      className={classes.menuBtn}
                       onClick={handleMoreInfoClick}
                     >
                       <MenuIcon

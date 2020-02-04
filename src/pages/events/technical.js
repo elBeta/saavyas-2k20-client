@@ -55,6 +55,7 @@ function EventsPage(props) {
             rightAlign={event.rightAlign}
             imageFileName={event.imageFileName}
             eventDate={event.eventDate}
+            eventFee={event.eventFee}
             eventTime={event.eventTime}
             eventSummary={event.eventSummary}
             id={event.id}
