@@ -33,14 +33,14 @@ export const colorScheme = {
 
 export const highlightEvents = [
   {
-    title: "Robowars",
-    fileName: "event-posters/robowars.jpg",
-    link: "/events/technical/#robowars",
+    title: "GDG ML and WebDev",
+    fileName: "event-posters/gdg_ml_wd.png",
+    link: "/events/technical/#gdg_ml_wd",
   },
   {
-    title: "Artificial Intelligence",
-    fileName: "event-posters/ai.jpg",
-    link: "/events/technical/#ai",
+    title: "IoT w. Google Asst.",
+    fileName: "event-posters/iot_with_gass.jpg",
+    link: "/events/technical/#iotwithgass",
   },
   {
     title: "Humanoid Robotics",
