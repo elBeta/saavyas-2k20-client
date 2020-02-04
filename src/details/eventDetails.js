@@ -66,8 +66,8 @@ export const events = [
       "Rudra Sawant - Intro to ML and DL; " +
       "Salil Naik - Being a creative front-end developer; " +
       "Ashley D'Souza - Design Thinking; ",
+    registrationLink: "https://saavyas.typeform.com/to/Z6X10B",
   },
-
   {
     id: "humanrobot",
     titleA: "Humanoid",
