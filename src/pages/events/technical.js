@@ -54,6 +54,8 @@ function EventsPage(props) {
           <EventSlide
             rightAlign={event.rightAlign}
             imageFileName={event.imageFileName}
+            eventDate={event.eventDate}
+            eventTime={event.eventTime}
             eventSummary={event.eventSummary}
             id={event.id}
             titleA={event.titleA}

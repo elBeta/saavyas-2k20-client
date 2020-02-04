@@ -140,6 +140,7 @@ function EventSlide(props) {
     imageFileName,
     eventDate,
     eventFee,
+    eventTime,
     eventSummary,
     id,
     titleA,
@@ -191,6 +192,7 @@ function EventSlide(props) {
               classes={classes}
               eventDate={eventDate}
               eventFee={eventFee}
+              eventTime={eventTime}
               eventSummary={eventSummary}
             />
           </Grid>
@@ -235,7 +237,7 @@ function EventTitle(props) {
 }
 
 function EventContent(props) {
-  const { classes, eventDate, eventFee, eventSummary } = props
+  const { classes, eventDate, eventTime, eventFee, eventSummary } = props
 
   return (
     <Grid container>
@@ -253,7 +255,23 @@ function EventContent(props) {
             display="inline"
             className={classes.impFieldContent}
           >
-            {eventDate || "To be decided"}
+            {eventDate || "NA"}
+          </Typography>
+        </Grid>
+        <Grid item xs="auto" sm={12}>
+          <Typography
+            variant="h5"
+            display="inline"
+            className={[classes.impFieldContent, classes.impFieldLabel]}
+          >
+            Time:{" "}
+          </Typography>
+          <Typography
+            variant="h5"
+            display="inline"
+            className={classes.impFieldContent}
+          >
+            {eventTime || "NA"}
           </Typography>
         </Grid>
         <Grid item xs="auto" sm={12}>
@@ -269,7 +287,7 @@ function EventContent(props) {
             display="inline"
             className={classes.impFieldContent}
           >
-            {eventFee || "To be decided"}
+            {eventFee || "NA"}
           </Typography>
         </Grid>
       </Grid>

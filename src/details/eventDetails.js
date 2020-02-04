@@ -125,15 +125,13 @@ export const events = [
     registrationLink:
       "https://www.payumoney.com/paybypayumoney/#/FDD5FAEB0B834D653EA32AE59CC4DB14",
   },
-  {
-    id: "robowars",
-    titleA: "Robo",
-    titleB: "Wars",
-    eventDate: "...",
-    eventFee: "...",
-    imageFileName: "robowars.jpg",
-    rightAlign: true,
-    eventSummary: "Self explanatory....",
-    colorScheme: colorScheme.redBlackWhite,
-  },
+  // {
+  //   id: "robowars",
+  //   titleA: "Robo",
+  //   titleB: "Wars",
+  //   imageFileName: "robowars.jpg",
+  //   rightAlign: true,
+  //   eventSummary: "Self explanatory....",
+  //   colorScheme: colorScheme.redBlackWhite,
+  // },
 ]
