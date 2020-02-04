@@ -111,7 +111,7 @@ export const events = [
     id: "iotwithgass",
     titleA: "IoT with",
     titleB: "Google Assistant",
-    rightAlign: false,
+    rightAlign: true,
     colorScheme: colorScheme.blueWhiteBlack,
     eventDate: "6th and 7th March",
     eventFee: 1500,
