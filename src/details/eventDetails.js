@@ -67,6 +67,8 @@ export const events = [
       "Salil Naik - Being a creative front-end developer; " +
       "Ashley D'Souza - Design Thinking; ",
     registrationLink: "https://saavyas.typeform.com/to/Z6X10B",
+    ruleBookLink:
+      "https://www.instagram.com/p/B8JY-wNA9CM/?igshid=nsnlko0ih5o2",
   },
   {
     id: "humanrobot",
