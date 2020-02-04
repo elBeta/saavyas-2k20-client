@@ -57,7 +57,7 @@ export const events = [
     colorScheme: colorScheme.blueWhiteBlack,
     imageFileName: "gdg_ml_wd.png",
     eventDate: "9th February 2020",
-    eventFee: "Free",
+    eventFee: 0,
     eventTime: "10:00 AM to 1:00 PM",
     eventSummary:
       "Saavyas'20 and GDG Goa present you a fun way to spend your Sunday, " +

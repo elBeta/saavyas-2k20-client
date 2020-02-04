@@ -287,7 +287,11 @@ function EventContent(props) {
             display="inline"
             className={classes.impFieldContent}
           >
-            {eventFee || "NA"}
+            {eventFee == null
+              ? "NA"
+              : eventFee === 0
+              ? "Free"
+              : "Rs " + eventFee}
           </Typography>
         </Grid>
       </Grid>
