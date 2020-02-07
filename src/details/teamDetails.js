@@ -40,6 +40,10 @@ export const teamDetails = [
     ]
   },
   {
+    name: "#Content-Head",
+    members: [{ name: "Aditya", phoneNo: "...", emailId: "..." }],
+  },
+  {
     name: "#Design-Head",
     members: [
       { name: "Rajit", phoneNo: "...", emailId: "..." },
