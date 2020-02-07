@@ -186,6 +186,17 @@ function ComingSoon() {
                       </Link>
                     </Grid>
                     <Grid item>
+                      <Link to="/meet-the-team" className={classes.navLink}>
+                        <Button
+                          variant="outlined"
+                          color="inherit"
+                          className={classes.navBtn}
+                        >
+                          Meet the Team
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item>
                       <Link to="/merchandise" className={classes.navLink}>
                         {/* <Badge
                           badgeContent="NEW"
