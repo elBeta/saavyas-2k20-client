@@ -15,6 +15,9 @@ AWS.config.update({ region: process.env.REGION })
 const dynamodb = new AWS.DynamoDB.DocumentClient()
 const tableName = process.env.STORAGE_EVENTSINFODB_NAME
 
+const secretsClient = new AWS.SecretsManager({ region: process.env.REGION })
+const secretName = "dev/saavyas/payu-test"
+
 exports.handler = async (event, context, callback) => {
   // hashSequence =
   // key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5||||||salt;
@@ -34,15 +37,13 @@ exports.handler = async (event, context, callback) => {
       statusCode: 400,
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
       },
       body: JSON.stringify(
         "Error: Missing critical component(s) required to generate hashing sequence"
       ),
     }
   }
-  console.log("middle")
+
   const getItemParams = {
     TableName: tableName,
     Key: {
@@ -52,15 +53,21 @@ exports.handler = async (event, context, callback) => {
 
   try {
     let dbData = await dynamodb.get(getItemParams).promise()
-    console.log(dbData)
+    // console.log(dbData)
     data["amount"] = parseFloat(dbData.Item.amount)
     console.log(
       "Successfully retrieved event amount from database: " +
         data["amount"].toString()
     )
 
+    // Retrieve Salt
+    let salt = JSON.parse(
+      (await secretsClient.getSecretValue({ SecretId: secretName }).promise())
+        .SecretString
+    ).merchantSalt
+    console.log(salt == null ? "Salt not retrieved" : "Salt retreived")
+
     // Generate hashing sequence
-    const salt = "QZpaSP4aQk"
     let hashingSequence =
       "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5"
         .split("|")
@@ -80,25 +87,20 @@ exports.handler = async (event, context, callback) => {
 
     // Return request hash and event amount
     console.log("Returning request hash and event amount")
-    console.log(data["amount"])
     callback(null, {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
       },
       body: JSON.stringify({ hash: hash, amount: data["amount"] }),
     })
   } catch (err) {
-    console.log("Error: Failed to retrieve event amount from database")
+    console.log("Error!")
     console.log(err)
     callback(null, {
       statusCode: 500,
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
       },
       body: JSON.stringify(
         "Error: Failed to retrieve event amount from database"
