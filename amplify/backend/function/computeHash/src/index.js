@@ -19,39 +19,30 @@ const secretsClient = new AWS.SecretsManager({ region: process.env.REGION })
 const secretName = "dev/saavyas/payu-test"
 
 exports.handler = async (event, context, callback) => {
-  // hashSequence =
-  // key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5||||||salt;
-  let data = event["queryStringParameters"]
-
-  // Get important data from given string
-  const isImpDataMissing = "key|txnid|productinfo|firstname|email"
-    .split("|")
-    .map(item => [undefined, null].includes(data[item]))
-    .includes(true)
-
-  // Check if important data is missing
-  if (isImpDataMissing) {
-    console.log("Important data is missing")
-    console.log(event)
-    return {
-      statusCode: 400,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(
-        "Error: Missing critical component(s) required to generate hashing sequence"
-      ),
-    }
-  }
-
-  const getItemParams = {
-    TableName: tableName,
-    Key: {
-      eventID: data["productinfo"],
-    },
-  }
-
   try {
+    // hashSequence =
+    // key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5||||||salt;
+    let data = event["queryStringParameters"]
+
+    // Get important data from given string
+    const isImpDataMissing = "key|txnid|productinfo|firstname|email"
+      .split("|")
+      .map(item => [undefined, null].includes(data[item]))
+      .includes(true)
+
+    // Check if important data is missing
+    if (isImpDataMissing) {
+      console.log(event)
+      throw Error("Important data is missing")
+    }
+
+    const getItemParams = {
+      TableName: tableName,
+      Key: {
+        eventID: data["productinfo"],
+      },
+    }
+
     let dbData = await dynamodb.get(getItemParams).promise()
     // console.log(dbData)
     data["amount"] = parseFloat(dbData.Item.amount)
@@ -102,9 +93,7 @@ exports.handler = async (event, context, callback) => {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify(
-        "Error: Failed to retrieve event amount from database"
-      ),
+      body: JSON.stringify(`Error: ${err.message}`),
     })
   }
 }
