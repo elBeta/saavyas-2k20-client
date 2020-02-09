@@ -81,7 +81,7 @@ module.exports = {
         fonts: [
           {
             family: `Barlow`,
-            variants: [`400`, `700`],
+            variants: [`400`, `600`, `700`],
             subsets: [`latin`],
           },
           {
