@@ -8,9 +8,12 @@ import Button from "@material-ui/core/Button"
 
 import { Helmet } from "react-helmet"
 import Amplify, { API } from "aws-amplify"
+import { navigate } from "gatsby"
+import qs from "querystring"
 
 import awsconfig from "../aws-exports"
-import { navigate } from "gatsby"
+
+import Loader from "../components/Loader"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -98,7 +101,7 @@ function RegistrationForm(props) {
   const { location } = props
   const [formFields, setFormFields] = useState([])
   const [formData, setFormData] = useState({})
-  const eventID = "event-voic"
+  const eventID = qs.parse(location.search.substring(1))["eventID"]
 
   // Get Form Fields from eventId
   useEffect(() => {
@@ -142,7 +145,7 @@ function RegistrationForm(props) {
       .catch(err => {
         console.log(err)
       })
-  }, [])
+  }, [eventID])
 
   const handleInputChange = e => {
     setFormData(
@@ -237,108 +240,106 @@ function RegistrationForm(props) {
     navigate("/")
   }
 
-  return (
-    formFields.length &&
-    formData["Event"] !== "" && (
+  // If loading, render loader
+  const isLoading = !formFields.length
+  if (isLoading) {
+    return (
       <>
         <CssBaseline />
-        <Helmet>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-          />
-          <script
-            id="bolt"
-            src="https://sboxcheckout-static.citruspay.com/bolt/run/bolt.min.js"
-            bolt-
-            color="<color-code>"
-            bolt-logo="<image path>"
-          ></script>
-        </Helmet>
-        <div className={classes.root}>
-          <Grid container alignItems="center" className={classes.rootGrid}>
-            <Grid
-              container
-              item
-              xs={12}
-              md={5}
-              lg={6}
-              className={classes.header}
-            >
-              <Grid container item xs={12} className={classes.titleHolder}>
-                <Grid item xs={12}>
-                  <Typography variant="h3" className={classes.titleTypo}>
-                    Event
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="h4" className={classes.titleTypo}>
-                    Registration
-                  </Typography>
-                </Grid>
+        <Loader size="5rem" bgColor="#333645" iconColor="white" />
+      </>
+    )
+  }
+
+  return (
+    <>
+      <CssBaseline />
+      <Helmet>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        />
+        <script
+          id="bolt"
+          src="https://sboxcheckout-static.citruspay.com/bolt/run/bolt.min.js"
+          bolt-
+          color="<color-code>"
+          bolt-logo="<image path>"
+        ></script>
+      </Helmet>
+      <div className={classes.root}>
+        <Grid container alignItems="center" className={classes.rootGrid}>
+          <Grid container item xs={12} md={5} lg={6} className={classes.header}>
+            <Grid container item xs={12} className={classes.titleHolder}>
+              <Grid item xs={12}>
+                <Typography variant="h3" className={classes.titleTypo}>
+                  Event
+                </Typography>
               </Grid>
-              <Grid item className={classes.titleUnderline} />
+              <Grid item xs={12}>
+                <Typography variant="h4" className={classes.titleTypo}>
+                  Registration
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid container item xs={12} md={7} lg={6}>
-              <Grid container item xs={12} className={classes.formHolder}>
-                {formFields.map(field => (
-                  <Grid
-                    container
-                    item
-                    xs={12}
-                    sm={6}
-                    className={classes.fieldHolder}
-                    key={field}
-                  >
-                    <Grid item xs={12}>
-                      <Typography
-                        variant="h6"
-                        className={classes.fieldLabelTypo}
-                      >
-                        {field + ":"}
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12} className={classes.fieldInputHolder}>
-                      <Input
-                        disableUnderline
-                        fullWidth
-                        readOnly={["Event", "Amount"].includes(field)}
-                        id={field}
-                        value={formData[field] || ""}
-                        onChange={handleInputChange}
-                        className={classes.fieldInput}
-                      />
-                    </Grid>
+            <Grid item className={classes.titleUnderline} />
+          </Grid>
+          <Grid container item xs={12} md={7} lg={6}>
+            <Grid container item xs={12} className={classes.formHolder}>
+              {formFields.map(field => (
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  sm={6}
+                  className={classes.fieldHolder}
+                  key={field}
+                >
+                  <Grid item xs={12}>
+                    <Typography variant="h6" className={classes.fieldLabelTypo}>
+                      {field + ":"}
+                    </Typography>
                   </Grid>
-                ))}
+                  <Grid item xs={12} className={classes.fieldInputHolder}>
+                    <Input
+                      disableUnderline
+                      fullWidth
+                      readOnly={["Event", "Amount"].includes(field)}
+                      id={field}
+                      value={formData[field] || ""}
+                      onChange={handleInputChange}
+                      className={classes.fieldInput}
+                    />
+                  </Grid>
+                </Grid>
+              ))}
+            </Grid>
+            <Grid container item xs={12} className={classes.actionPanel}>
+              <Grid item xs={6}>
+                <Button
+                  className={classes.actionBtn}
+                  onClick={handleCancelClick}
+                >
+                  <Typography variant="h6" className={classes.actionBtnTypo}>
+                    Cancel
+                  </Typography>
+                </Button>
               </Grid>
-              <Grid container item xs={12} className={classes.actionPanel}>
-                <Grid item xs={6}>
-                  <Button
-                    className={classes.actionBtn}
-                    onClick={handleCancelClick}
-                  >
-                    <Typography variant="h6" className={classes.actionBtnTypo}>
-                      Cancel
-                    </Typography>
-                  </Button>
-                </Grid>
-                <Grid item xs={6}>
-                  <Button
-                    className={classes.actionBtn}
-                    onClick={handleRegisterClick}
-                  >
-                    <Typography variant="h6" className={classes.actionBtnTypo}>
-                      Register
-                    </Typography>
-                  </Button>
-                </Grid>
+              <Grid item xs={6}>
+                <Button
+                  className={classes.actionBtn}
+                  onClick={handleRegisterClick}
+                >
+                  <Typography variant="h6" className={classes.actionBtnTypo}>
+                    Register
+                  </Typography>
+                </Button>
               </Grid>
             </Grid>
           </Grid>
-        </div>
-      </>
-    )
+        </Grid>
+      </div>
+    </>
   )
 }
 
