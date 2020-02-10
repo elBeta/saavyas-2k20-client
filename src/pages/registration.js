@@ -181,7 +181,6 @@ function RegistrationForm(props) {
     }
 
     const coreQueryParams = {
-      key: "T5g199Dn",
       productinfo: eventID,
       firstname: formData["Participant Name"] || formData["Team Name"],
       email: formData["Email Id"],
@@ -207,6 +206,7 @@ function RegistrationForm(props) {
             hash: response["hash"],
             amount: response["amount"],
             txnid: response["txnid"],
+            key: response["key"],
           },
           {
             responseHandler: BOLT => {

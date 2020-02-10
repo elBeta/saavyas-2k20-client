@@ -41,7 +41,7 @@ exports.handler = async (event, context, callback) => {
     let data = event["queryStringParameters"]
 
     // Get important data from given string
-    const isImpDataMissing = "key|productinfo|firstname|email"
+    const isImpDataMissing = "productinfo|firstname|email"
       .split("|")
       .map(item => [undefined, null].includes(data[item]))
       .includes(true)
@@ -67,12 +67,14 @@ exports.handler = async (event, context, callback) => {
         data["amount"].toString()
     )
 
-    // Retrieve Salt
-    let salt = JSON.parse(
+    // Retrieve Salt and Key
+    let { merchantSalt, merchantKey } = JSON.parse(
       (await secretsClient.getSecretValue({ SecretId: secretName }).promise())
         .SecretString
-    ).merchantSalt
-    console.log(salt == null ? "Salt not retrieved" : "Salt retreived")
+    )
+    data["key"] = merchantKey
+    console.log(merchantSalt == null ? "Salt not retrieved" : "Salt retreived")
+    console.log(merchantKey == null ? "Key not retrieved" : "Key retreived")
 
     // Generate Transaction ID
     data["txnid"] = "txn" + Date.now().toString() + zfill(RandInt(0, 999999), 6)
@@ -86,7 +88,7 @@ exports.handler = async (event, context, callback) => {
         .filter(item => item !== undefined)
         .join("|") +
       "||||||" +
-      salt
+      merchantSalt
 
     // Compute request hash
     const hash = crypto
@@ -107,6 +109,7 @@ exports.handler = async (event, context, callback) => {
         hash: hash,
         amount: data["amount"],
         txnid: data["txnid"],
+        key: data["key"],
       }),
     })
   } catch (err) {
