@@ -18,6 +18,22 @@ const tableName = process.env.STORAGE_EVENTSINFODB_NAME
 const secretsClient = new AWS.SecretsManager({ region: process.env.REGION })
 const secretName = "dev/saavyas/payu-test"
 
+function zfill(number, length) {
+  // Prefix number with zeroes till it hits desired length
+  number = number.toString()
+  if (number.length < length) {
+    number = "0".repeat(length - number.length) + number
+  }
+  return number
+}
+
+function RandInt(min, max) {
+  // The maximum is inclusive and the minimum is inclusive
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
 exports.handler = async (event, context, callback) => {
   try {
     // hashSequence =
@@ -25,7 +41,7 @@ exports.handler = async (event, context, callback) => {
     let data = event["queryStringParameters"]
 
     // Get important data from given string
-    const isImpDataMissing = "key|txnid|productinfo|firstname|email"
+    const isImpDataMissing = "key|productinfo|firstname|email"
       .split("|")
       .map(item => [undefined, null].includes(data[item]))
       .includes(true)
@@ -43,8 +59,8 @@ exports.handler = async (event, context, callback) => {
       },
     }
 
+    // Retrieve Event Amount
     let dbData = await dynamodb.get(getItemParams).promise()
-    // console.log(dbData)
     data["amount"] = parseFloat(dbData.Item.amount)
     console.log(
       "Successfully retrieved event amount from database: " +
@@ -57,6 +73,10 @@ exports.handler = async (event, context, callback) => {
         .SecretString
     ).merchantSalt
     console.log(salt == null ? "Salt not retrieved" : "Salt retreived")
+
+    // Generate Transaction ID
+    data["txnid"] = "txn" + Date.now().toString() + zfill(RandInt(0, 999999), 6)
+    console.log("Transaction ID: " + data["txnid"])
 
     // Generate hashing sequence
     let hashingSequence =
@@ -83,7 +103,11 @@ exports.handler = async (event, context, callback) => {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify({ hash: hash, amount: data["amount"] }),
+      body: JSON.stringify({
+        hash: hash,
+        amount: data["amount"],
+        txnid: data["txnid"],
+      }),
     })
   } catch (err) {
     console.log("Error!")

@@ -182,7 +182,6 @@ function RegistrationForm(props) {
 
     const coreQueryParams = {
       key: "T5g199Dn",
-      txnid: "tid9777",
       productinfo: eventID,
       firstname: formData["Participant Name"] || formData["Team Name"],
       email: formData["Email Id"],
@@ -207,6 +206,7 @@ function RegistrationForm(props) {
             furl: location.href,
             hash: response["hash"],
             amount: response["amount"],
+            txnid: response["txnid"],
           },
           {
             responseHandler: BOLT => {
