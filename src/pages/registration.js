@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet"
 import Amplify, { API } from "aws-amplify"
 
 import awsconfig from "../aws-exports"
+import { navigate } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -232,7 +233,9 @@ function RegistrationForm(props) {
       .catch(err => console.log(err))
   }
 
-  const handleCancelClick = e => {}
+  const handleCancelClick = e => {
+    navigate("/")
+  }
 
   return (
     formFields.length &&
