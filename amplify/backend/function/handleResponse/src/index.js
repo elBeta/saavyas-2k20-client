@@ -1,17 +1,22 @@
+/* Amplify Params - DO NOT EDIT
+You can access the following resource attributes as environment variables from your Lambda function
+var environment = process.env.ENV
+var region = process.env.REGION
+var storagePaymentsInfoDBName = process.env.STORAGE_PAYMENTSINFODB_NAME
+var storagePaymentsInfoDBArn = process.env.STORAGE_PAYMENTSINFODB_ARN
+
+Amplify Params - DO NOT EDIT */
+
 const AWS = require("aws-sdk")
 const crypto = require("crypto")
 
-AWS.config.update({ region: process.env.TABLE_REGION })
+AWS.config.update({ region: process.env.REGION })
 
 const dynamodb = new AWS.DynamoDB.DocumentClient()
-let tableName = "paymentsDB"
+let tableName = process.env.STORAGE_PAYMENTSINFODB_NAME
 
 const secretsClient = new AWS.SecretsManager({ region: process.env.REGION })
 const secretName = "dev/saavyas/payu-test"
-
-if (process.env.ENV && process.env.ENV !== "NONE") {
-  tableName = tableName + "-" + process.env.ENV
-}
 
 exports.handler = async (event, context, callback) => {
   try {
@@ -86,6 +91,7 @@ exports.handler = async (event, context, callback) => {
         phone: data["phone"],
         eventID: data["productinfo"],
         amount: parseFloat(data["amount"]),
+        email: data["email"],
       },
     }
 
