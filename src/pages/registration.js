@@ -152,6 +152,30 @@ function RegistrationForm(props) {
   }
 
   const handleRegisterClick = e => {
+    // Check if any form field is empty.
+    const emptyFormFields = []
+    for (let field in formData) {
+      if (
+        ["", null, undefined].includes(
+          typeof formData[field] === "string"
+            ? formData[field].trim()
+            : formData[field]
+        )
+      ) {
+        emptyFormFields.push(field)
+      }
+    }
+
+    // Inform the user if any form field is empty.
+    if (emptyFormFields.length !== 0) {
+      alert(
+        "Error!\n\n" +
+          "The following Mandatory Fields are not filled:\n" +
+          emptyFormFields.join("\n")
+      )
+      return
+    }
+
     const coreQueryParams = {
       key: "T5g199Dn",
       txnid: "tid9777",
@@ -287,23 +311,21 @@ function RegistrationForm(props) {
               </Grid>
               <Grid container item xs={12} className={classes.actionPanel}>
                 <Grid item xs={6}>
-                  <Button className={classes.actionBtn}>
-                    <Typography
-                      variant="h6"
-                      className={classes.actionBtnTypo}
-                      onClick={handleCancelClick}
-                    >
+                  <Button
+                    className={classes.actionBtn}
+                    onClick={handleCancelClick}
+                  >
+                    <Typography variant="h6" className={classes.actionBtnTypo}>
                       Cancel
                     </Typography>
                   </Button>
                 </Grid>
                 <Grid item xs={6}>
-                  <Button className={classes.actionBtn}>
-                    <Typography
-                      variant="h6"
-                      className={classes.actionBtnTypo}
-                      onClick={handleRegisterClick}
-                    >
+                  <Button
+                    className={classes.actionBtn}
+                    onClick={handleRegisterClick}
+                  >
+                    <Typography variant="h6" className={classes.actionBtnTypo}>
                       Register
                     </Typography>
                   </Button>
