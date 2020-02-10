@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
@@ -92,40 +92,97 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function RegistrationPage() {
+function RegistrationForm(props) {
+  const classes = useStyles()
+  const { location } = props
+  const [formFields, setFormFields] = useState([])
+  const [formData, setFormData] = useState({})
+  const eventID = "event-voic"
+
+  // Get Form Fields from eventId
   useEffect(() => {
-    const apiName = "requestHashAPI"
-    const path = "/request-hash"
+    const fieldFetchAPIName = "eventFormFieldsFetchAPI"
+    const fieldFetchAPIPath = "/get-form-fields"
+    const fieldFetchQParams = {
+      queryStringParameters: {
+        eventID: eventID,
+      },
+    }
+
+    Amplify.configure(awsconfig)
+
+    API.get(fieldFetchAPIName, fieldFetchAPIPath, fieldFetchQParams)
+      .then(response => {
+        console.log(response)
+
+        // Append Event and Amount to list of Form Fields
+        const formFieldsArr = ["Event", "Amount"].concat(response.formFields)
+        setFormFields(formFieldsArr)
+
+        // Covert response.formFields into object
+        // with key=formFields[i] and value=""
+        const formDataObj = response.formFields.reduce(
+          (accumulator, currentValue) => {
+            accumulator[currentValue] = ""
+            return accumulator
+          },
+          {}
+        )
+
+        // Create entry for Event and Amount using
+        // response data (containing eventName and amount)
+        formDataObj["Event"] = response.eventName
+        formDataObj["Amount"] = response.amount
+        console.log(formDataObj)
+
+        // Set Form Data
+        setFormData(formDataObj)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
+
+  const handleInputChange = e => {
+    setFormData(
+      Object.assign({}, formData, {
+        [e.target.id]: e.target.value,
+      })
+    )
+  }
+
+  const handleRegisterClick = e => {
     const coreQueryParams = {
       key: "T5g199Dn",
-      txnid: "tid9875",
-      productinfo: "event-voic",
-      firstname: "Piyush",
-      email: "piyush.kotian@gmail.com",
+      txnid: "tid9777",
+      productinfo: eventID,
+      firstname: formData["Participant Name"] || formData["Team Name"],
+      email: formData["Email Id"],
     }
     const init = {
       queryStringParameters: coreQueryParams,
     }
-    Amplify.configure(awsconfig)
-    API.get(apiName, path, init)
+
+    console.log(coreQueryParams)
+
+    API.get("requestHashAPI", "/request-hash", init)
       .then(response => {
         console.log(response)
         return response
       })
       .then(response => {
-        console.log(response)
         window.bolt.launch(
           {
             ...coreQueryParams,
-            phone: "7338500594",
-            surl: "localhost:8000/registration",
-            furl: "localhost:8000/registration",
+            phone: formData["Phone Number"],
+            surl: location.href,
+            furl: location.href,
             hash: response["hash"],
             amount: response["amount"],
           },
           {
             responseHandler: BOLT => {
-              alert(BOLT.response.txnStatus)
+              console.log(BOLT.response.txnStatus)
               API.get("txnResponseAPI", "/response", {
                 queryStringParameters: {
                   key: BOLT.response.key,
@@ -143,110 +200,120 @@ function RegistrationPage() {
                 .catch(err => console.log(err))
             },
             catchException: BOLT => {
-              alert(BOLT.message)
+              console.log(BOLT.message)
             },
           }
         )
       })
       .catch(err => console.log(err))
-  }, [])
+  }
+
+  const handleCancelClick = e => {}
 
   return (
-    <>
-      <Helmet>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-        />
-        <script
-          id="bolt"
-          src="https://sboxcheckout-static.citruspay.com/bolt/run/bolt.min.js"
-          bolt-
-          color="<color-code>"
-          bolt-logo="<image path>"
-        ></script>
-      </Helmet>
-      <div></div>
-    </>
-  )
-}
-
-function RegistrationForm(props) {
-  const classes = useStyles()
-
-  const formFields = [
-    "Event",
-    "Participant Name",
-    "College Name",
-    "Phone Number",
-    "Email Id",
-  ]
-
-  return (
-    <>
-      <CssBaseline />
-      <div className={classes.root}>
-        <Grid container alignItems="center" className={classes.rootGrid}>
-          <Grid container item xs={12} md={5} lg={6} className={classes.header}>
-            <Grid container item xs={12} className={classes.titleHolder}>
-              <Grid item xs={12}>
-                <Typography variant="h3" className={classes.titleTypo}>
-                  Event
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="h4" className={classes.titleTypo}>
-                  Registration
-                </Typography>
-              </Grid>
-            </Grid>
-            <Grid item className={classes.titleUnderline} />
-          </Grid>
-          <Grid container item xs={12} md={7} lg={6}>
-            <Grid container item xs={12} className={classes.formHolder}>
-              {formFields.map(field => (
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  sm={field === "Event" ? 12 : 6}
-                  className={classes.fieldHolder}
-                >
-                  <Grid item xs={12}>
-                    <Typography variant="h6" className={classes.fieldLabelTypo}>
-                      {field + ":"}
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12} className={classes.fieldInputHolder}>
-                    <Input
-                      disableUnderline
-                      fullWidth
-                      className={classes.fieldInput}
-                    />
-                  </Grid>
+    formFields.length &&
+    formData["Event"] !== "" && (
+      <>
+        <CssBaseline />
+        <Helmet>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          />
+          <script
+            id="bolt"
+            src="https://sboxcheckout-static.citruspay.com/bolt/run/bolt.min.js"
+            bolt-
+            color="<color-code>"
+            bolt-logo="<image path>"
+          ></script>
+        </Helmet>
+        <div className={classes.root}>
+          <Grid container alignItems="center" className={classes.rootGrid}>
+            <Grid
+              container
+              item
+              xs={12}
+              md={5}
+              lg={6}
+              className={classes.header}
+            >
+              <Grid container item xs={12} className={classes.titleHolder}>
+                <Grid item xs={12}>
+                  <Typography variant="h3" className={classes.titleTypo}>
+                    Event
+                  </Typography>
                 </Grid>
-              ))}
-            </Grid>
-            <Grid container item xs={12} className={classes.actionPanel}>
-              <Grid item xs={6}>
-                <Button className={classes.actionBtn}>
-                  <Typography variant="h6" className={classes.actionBtnTypo}>
-                    Cancel
+                <Grid item xs={12}>
+                  <Typography variant="h4" className={classes.titleTypo}>
+                    Registration
                   </Typography>
-                </Button>
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <Button className={classes.actionBtn}>
-                  <Typography variant="h6" className={classes.actionBtnTypo}>
-                    Register
-                  </Typography>
-                </Button>
+              <Grid item className={classes.titleUnderline} />
+            </Grid>
+            <Grid container item xs={12} md={7} lg={6}>
+              <Grid container item xs={12} className={classes.formHolder}>
+                {formFields.map(field => (
+                  <Grid
+                    container
+                    item
+                    xs={12}
+                    sm={6}
+                    className={classes.fieldHolder}
+                    key={field}
+                  >
+                    <Grid item xs={12}>
+                      <Typography
+                        variant="h6"
+                        className={classes.fieldLabelTypo}
+                      >
+                        {field + ":"}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12} className={classes.fieldInputHolder}>
+                      <Input
+                        disableUnderline
+                        fullWidth
+                        readOnly={["Event", "Amount"].includes(field)}
+                        id={field}
+                        value={formData[field] || ""}
+                        onChange={handleInputChange}
+                        className={classes.fieldInput}
+                      />
+                    </Grid>
+                  </Grid>
+                ))}
+              </Grid>
+              <Grid container item xs={12} className={classes.actionPanel}>
+                <Grid item xs={6}>
+                  <Button className={classes.actionBtn}>
+                    <Typography
+                      variant="h6"
+                      className={classes.actionBtnTypo}
+                      onClick={handleCancelClick}
+                    >
+                      Cancel
+                    </Typography>
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Button className={classes.actionBtn}>
+                    <Typography
+                      variant="h6"
+                      className={classes.actionBtnTypo}
+                      onClick={handleRegisterClick}
+                    >
+                      Register
+                    </Typography>
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
-      </div>
-    </>
+        </div>
+      </>
+    )
   )
 }
 
