@@ -57,6 +57,7 @@ function EventsPage(props) {
             eventDate={event.eventDate}
             eventFee={event.eventFee}
             eventTime={event.eventTime}
+            eventZone={event.eventZone}
             eventSummary={event.eventSummary}
             id={event.id}
             titleA={event.titleA}
