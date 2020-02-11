@@ -68,6 +68,13 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     justifyContent: "center",
   },
+  prizeField: {
+    fontWeight: 700,
+    fontSize: "2rem !important",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.5rem !important",
+    },
+  },
   impFieldContent: props => ({
     fontFamily: "Barlow",
     color: props.contentColor,
@@ -149,6 +156,7 @@ function EventSlide(props) {
     eventFee,
     eventTime,
     eventZone,
+    eventPrize,
     eventSummary,
     id,
     titleA,
@@ -202,6 +210,7 @@ function EventSlide(props) {
               eventFee={eventFee}
               eventTime={eventTime}
               eventZone={eventZone}
+              eventPrize={eventPrize}
               eventSummary={eventSummary}
             />
           </Grid>
@@ -252,6 +261,7 @@ function EventContent(props) {
     eventTime,
     eventFee,
     eventZone,
+    eventPrize,
     eventSummary,
   } = props
 
@@ -326,6 +336,28 @@ function EventContent(props) {
               : "Rs " + eventFee}
           </Typography>
         </Grid>
+        {eventPrize && (
+          <Grid item xs={12}>
+            <Typography
+              variant="h4"
+              display="inline"
+              className={[
+                classes.prizeField,
+                classes.impFieldContent,
+                classes.impFieldLabel,
+              ]}
+            >
+              Prize:{" "}
+            </Typography>
+            <Typography
+              variant="h4"
+              display="inline"
+              className={[classes.prizeField, classes.impFieldContent]}
+            >
+              {eventPrize}
+            </Typography>
+          </Grid>
+        )}
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h5" className={classes.eventSummary}>
