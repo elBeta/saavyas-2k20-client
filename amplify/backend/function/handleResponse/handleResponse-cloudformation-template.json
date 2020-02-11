@@ -12,6 +12,14 @@
 		"storagepaymentsDBArn": {
 			"Type": "String",
 			"Default": "storagepaymentsDBArn"
+		},
+		"storageeventsInfoDBName": {
+			"Type": "String",
+			"Default": "storageeventsInfoDBName"
+		},
+		"storageeventsInfoDBArn": {
+			"Type": "String",
+			"Default": "storageeventsInfoDBArn"
 		}
 	},
 	"Conditions": {
@@ -58,6 +66,18 @@
 						},
 						"REGION": {
 							"Ref": "AWS::Region"
+						},
+						"STORAGE_EVENTSINFODB_NAME": {
+							"Ref": "storageeventsInfoDBName"
+						},
+						"STORAGE_EVENTSINFODB_ARN": {
+							"Ref": "storageeventsInfoDBArn"
+						},
+						"STORAGE_PAYMENTSDB_NAME": {
+							"Ref": "storagepaymentsDBName"
+						},
+						"STORAGE_PAYMENTSDB_ARN": {
+							"Ref": "storagepaymentsDBArn"
 						}
 					}
 				},
@@ -71,7 +91,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-saavyas-2k20-client-dev-222337-deployment",
-					"S3Key": "amplify-builds/handleResponse-50486750687364415131-build.zip"
+					"S3Key": "amplify-builds/handleResponse-5232557032376e567638-build.zip"
 				}
 			}
 		},
@@ -173,6 +193,76 @@
 										[
 											{
 												"Ref": "storagepaymentsDBArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		"AmplifyResourcesPolicy": {
+			"DependsOn": [
+				"LambdaExecutionRole"
+			],
+			"Type": "AWS::IAM::Policy",
+			"Properties": {
+				"PolicyName": "amplify-lambda-execution-policy",
+				"Roles": [
+					{
+						"Ref": "LambdaExecutionRole"
+					}
+				],
+				"PolicyDocument": {
+					"Version": "2012-10-17",
+					"Statement": [
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:Put*",
+								"dynamodb:Create*",
+								"dynamodb:BatchWriteItem"
+							],
+							"Resource": [
+								{
+									"Ref": "storagepaymentsDBArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storagepaymentsDBArn"
+											},
+											"index/*"
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"dynamodb:Get*",
+								"dynamodb:BatchGetItem",
+								"dynamodb:List*",
+								"dynamodb:Describe*",
+								"dynamodb:Scan",
+								"dynamodb:Query"
+							],
+							"Resource": [
+								{
+									"Ref": "storageeventsInfoDBArn"
+								},
+								{
+									"Fn::Join": [
+										"/",
+										[
+											{
+												"Ref": "storageeventsInfoDBArn"
 											},
 											"index/*"
 										]

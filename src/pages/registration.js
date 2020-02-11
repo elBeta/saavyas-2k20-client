@@ -182,7 +182,9 @@ function RegistrationForm(props) {
 
     const coreQueryParams = {
       productinfo: eventID,
-      firstname: formData["Participant Name"] || formData["Team Name"],
+      firstname: (formData["Participant Name"] || formData["Team Name"]).split(
+        " "
+      )[0],
       email: formData["Email Id"],
     }
     const init = {
@@ -222,6 +224,7 @@ function RegistrationForm(props) {
                   phone: BOLT.response.phone,
                   hash: BOLT.response.hash,
                   status: BOLT.response.status,
+                  formData: JSON.stringify(formData),
                 },
               })
                 .then(response => console.log(response))

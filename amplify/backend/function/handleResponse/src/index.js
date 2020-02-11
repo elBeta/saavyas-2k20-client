@@ -2,8 +2,10 @@
 You can access the following resource attributes as environment variables from your Lambda function
 var environment = process.env.ENV
 var region = process.env.REGION
-var storagePaymentsInfoDBName = process.env.STORAGE_PAYMENTSINFODB_NAME
-var storagePaymentsInfoDBArn = process.env.STORAGE_PAYMENTSINFODB_ARN
+var storagePaymentsDBName = process.env.STORAGE_PAYMENTSDB_NAME
+var storagePaymentsDBArn = process.env.STORAGE_PAYMENTSDB_ARN
+var storageEventsInfoDBName = process.env.STORAGE_EVENTSINFODB_NAME
+var storageEventsInfoDBArn = process.env.STORAGE_EVENTSINFODB_ARN
 
 Amplify Params - DO NOT EDIT */
 
@@ -13,7 +15,8 @@ const crypto = require("crypto")
 AWS.config.update({ region: process.env.REGION })
 
 const dynamodb = new AWS.DynamoDB.DocumentClient()
-let tableName = process.env.STORAGE_PAYMENTSINFODB_NAME
+const tableName = process.env.STORAGE_PAYMENTSDB_NAME
+const eventsInfoTableName = process.env.STORAGE_EVENTSINFODB_NAME
 
 const secretsClient = new AWS.SecretsManager({ region: process.env.REGION })
 const secretName = "dev/saavyas/payu-test"
@@ -69,7 +72,6 @@ exports.handler = async (event, context, callback) => {
       .createHash("sha512")
       .update(hashingSequence)
       .digest("hex")
-
     console.log("responseHash: " + hash)
 
     if (data["hash"] !== hash) {
@@ -83,15 +85,53 @@ exports.handler = async (event, context, callback) => {
       }
     }
 
+    const formData = JSON.parse(data["formData"])
+
+    const getItemParams = {
+      TableName: eventsInfoTableName,
+      Key: {
+        eventID: data["productinfo"],
+      },
+    }
+
+    const requiredFormFields = (await dynamodb.get(getItemParams).promise())
+      .Item.formFields
+
+    console.log("requiredFormFields:")
+    console.log(requiredFormFields)
+
+    let requiredFormFieldsPresent = true
+    for (let field of requiredFormFields) {
+      requiredFormFieldsPresent &=
+        formData[field] != null ||
+        (typeof formData[field] === "string" && formData[field] != "")
+    }
+
+    console.log(`Required Form Fields Present: ${requiredFormFieldsPresent}`)
+
+    if (!requiredFormFieldsPresent) {
+      throw Error(
+        "Error: Form Data required for the specified event is incomplete."
+      )
+    }
+
     const putItemParams = {
       TableName: tableName,
       Item: {
         txnid: data["txnid"],
-        firstname: data["firstname"],
-        phone: data["phone"],
         eventID: data["productinfo"],
         amount: parseFloat(data["amount"]),
-        email: data["email"],
+        "Registered At": Date.now(),
+        ...Object.assign(
+          ...Object.keys(formData)
+            .filter(
+              key =>
+                !["txnid", "eventID", "amount", "Registered At"].includes(
+                  key
+                ) && requiredFormFields.includes(key)
+            )
+            .map(key => ({ [key]: formData[key] }))
+        ),
       },
     }
 
