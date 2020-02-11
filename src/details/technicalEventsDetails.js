@@ -1,5 +1,3 @@
-import { colorScheme } from "./slideColorScheme"
-
 export const highlightEvents = [
   {
     title: "GDG ML and WebDev",
@@ -23,7 +21,6 @@ export const events = [
     id: "gdg_ml_wd",
     titleA: "ML and Web Dev",
     titleB: "By Team GDG",
-    colorScheme: colorScheme.blueWhiteBlack,
     imageFileName: "gdg_ml_wd.png",
     eventDate: "9th February 2020",
     eventFee: 0,
@@ -44,7 +41,6 @@ export const events = [
     titleA: "Humanoid",
     titleB: "Robotics",
     rightAlign: true,
-    colorScheme: colorScheme.redBlackWhite,
     eventDate: "6th and 7th March",
     eventFee: 1500,
     eventSummary:
@@ -61,7 +57,6 @@ export const events = [
     id: "ai",
     titleA: "Artificial",
     titleB: "Intelligence",
-    colorScheme: colorScheme.greenBlueWhite,
     eventDate: "6th and 7th March",
     eventFee: 1500,
     eventSummary:
@@ -81,7 +76,6 @@ export const events = [
     titleA: "IoT with",
     titleB: "Google Assistant",
     rightAlign: true,
-    colorScheme: colorScheme.blueWhiteBlack,
     eventDate: "6th and 7th March",
     eventFee: 1500,
     eventSummary:
@@ -103,6 +97,5 @@ export const events = [
   //   imageFileName: "robowars.jpg",
   //   rightAlign: true,
   //   eventSummary: "Self explanatory....",
-  //   colorScheme: colorScheme.redBlackWhite,
   // },
 ]

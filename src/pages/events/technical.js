@@ -8,6 +8,7 @@ import { navigate } from "gatsby"
 import EventSlide from "../../components/events/EventSlide"
 import CategorySelector from "../../components/events/CategorySelector"
 
+import { colorScheme } from "../../details/slideColorScheme"
 import { events, highlightEvents } from "../../details/technicalEventsDetails"
 
 import "../smoothScroll.css"
@@ -50,9 +51,9 @@ function EventsPage(props) {
         <div className={classes.highlightEvents}>
           <CategorySelector categories={highlightEvents} />
         </div>
-        {events.map(event => (
+        {events.map((event, index) => (
           <EventSlide
-            rightAlign={event.rightAlign}
+            rightAlign={index % 2 === 1}
             imageFileName={event.imageFileName}
             eventDate={event.eventDate}
             eventFee={event.eventFee}
@@ -63,7 +64,13 @@ function EventsPage(props) {
             id={event.id}
             titleA={event.titleA}
             titleB={event.titleB}
-            colorScheme={event.colorScheme}
+            colorScheme={
+              colorScheme[
+                Object.keys(colorScheme)[
+                  index % Object.keys(colorScheme).length
+                ]
+              ]
+            }
             ruleBookLink={event.ruleBookLink}
             registrationLink={event.registrationLink}
           />
