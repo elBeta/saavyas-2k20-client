@@ -1,0 +1,5 @@
+{
+    "tableName": "paymentsDB",
+    "partitionKeyName": "txnid",
+    "partitionKeyType": "S"
+}
