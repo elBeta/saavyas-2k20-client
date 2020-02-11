@@ -8,7 +8,7 @@ import { navigate } from "gatsby"
 import EventSlide from "../../components/events/EventSlide"
 import CategorySelector from "../../components/events/CategorySelector"
 
-import { events, highlightEvents } from "../../details/eventDetails"
+import { events, highlightEvents } from "../../details/technicalEventsDetails"
 
 import "../smoothScroll.css"
 
