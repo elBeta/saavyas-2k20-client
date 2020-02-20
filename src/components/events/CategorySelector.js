@@ -17,11 +17,17 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       height: "100%",
     },
+    "&:nth-last-child(1)": {
+      [theme.breakpoints.up("sm")]: {
+        flexGrow: 1,
+        maxWidth: "initial",
+      },
+    },
     width: "100%",
     border: "2px solid black",
     "&:hover": {
       "& $overlay": {
-        opacity: 0.4,
+        opacity: 0.3,
       },
       "& $titleTypo": {
         backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -97,7 +103,7 @@ function CategorySelector(props) {
         <Grid
           item
           xs="auto"
-          sm={(categories.length > 3 ? 24 : 12) / categories.length}
+          sm={parseInt((categories.length > 3 ? 24 : 12) / categories.length)}
           className={classes.categoryContainer}
         >
           <Link to={category.link}>
@@ -109,7 +115,11 @@ function CategorySelector(props) {
             </div>
             <div className={classes.overlay}></div>
             <div className={classes.categoryTitle}>
-              <Typography variant="h2" className={classes.titleTypo}>
+              <Typography
+                variant="h2"
+                align="center"
+                className={classes.titleTypo}
+              >
                 {category.title}
               </Typography>
             </div>
