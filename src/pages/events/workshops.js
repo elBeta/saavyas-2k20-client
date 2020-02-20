@@ -9,7 +9,7 @@ import EventSlide from "../../components/events/EventSlide"
 import CategorySelector from "../../components/events/CategorySelector"
 
 import { colorScheme } from "../../details/slideColorScheme"
-import { events, highlightEvents } from "../../details/technicalEventsDetails"
+import { events, highlightEvents } from "../../details/workshopDetails"
 
 import "../smoothScroll.css"
 
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function EventsPage(props) {
+function WorkshopPage(props) {
   const classes = useStyles()
 
   const handleBackBtnClick = e => {
@@ -82,4 +82,4 @@ function EventsPage(props) {
   )
 }
 
-export default EventsPage
+export default WorkshopPage
