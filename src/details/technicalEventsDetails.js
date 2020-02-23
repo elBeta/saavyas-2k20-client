@@ -19,8 +19,8 @@ export const events = [
     eventDate: "29th Feb to 1st March",
     eventTime: "11:00AM",
     eventZone: "NIT Goa",
-    eventFee: 0,
-    eventPrize: "1st prize: Rs 6k +++ 2nd Price: Rs 3k",
+    eventFee: 100,
+    eventPrize: "1st prize: Rs 6k & 2nd Price: Rs 3k",
     eventSummary:
       "Saavyas'20 in association  with Coding Blocks, Delhi and GDG Goa bring to you HACKATHAW an exciting technical pre-event, ( 24 hour Hackathon) being held from 29-FEB-20 to 1-MAR-29. Hope you guys are excited and enthralled as much as we are, lots of prizes to win for!." +
       `Timings : 
