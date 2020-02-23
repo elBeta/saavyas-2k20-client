@@ -1,0 +1,32 @@
+export const colorScheme = {
+  blueWhiteBlack: {
+    backgroundColor: "#3aafa9",
+    titleAColor: "white",
+    titleBColor: "#18262a",
+    fieldColor: "#18262a",
+    contentColor: "white",
+    btnBGColor: "#05396b",
+    btnHoverColor: "#052442",
+    btnTypoColor: "white",
+  },
+  redBlackWhite: {
+    backgroundColor: "#dc3d24",
+    titleAColor: "white",
+    titleBColor: "#18262a",
+    fieldColor: "#18262a",
+    contentColor: "white",
+    btnBGColor: "#18262a",
+    btnHoverColor: "#1e1e1e",
+    btnTypoColor: "white",
+  },
+  greenBlueWhite: {
+    backgroundColor: "#5cdb95",
+    titleAColor: "#05386b",
+    titleBColor: "#edf5e1",
+    fieldColor: "#05386b",
+    contentColor: "#edf5e1",
+    btnBGColor: "#05386b",
+    btnHoverColor: "#05284a",
+    btnTypoColor: "#edf5e1",
+  },
+}

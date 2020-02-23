@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/get-form-fields",
+            "lambdaFunction": "getFormFieldsFromEventName",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "eventFormFieldsFetchAPI",
+    "apiName": "eventFormFieldsFetchAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "getFormFieldsFromEventName"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-saavyas-2k20-client-dev-222337-authRole",
+        "unAuthRoleName": "amplify-saavyas-2k20-client-dev-222337-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "getFormFieldsFromEventName",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

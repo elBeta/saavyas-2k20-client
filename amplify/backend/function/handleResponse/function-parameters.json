@@ -1,0 +1,12 @@
+{
+    "permissions": {
+        "storage": {
+            "paymentsDB": [
+                "create"
+            ],
+            "eventsInfoDB": [
+                "read"
+            ]
+        }
+    }
+}

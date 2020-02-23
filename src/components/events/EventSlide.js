@@ -44,6 +44,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "3.5rem",
+      overflowWrap: "break-word",
     },
   }),
   titleB: props => ({
@@ -60,22 +61,35 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down("xs")]: {
       fontSize: "3.5rem",
+      overflowWrap: "break-word",
     },
   }),
   mobileCenterAlign: {
     display: "flex",
     justifyContent: "center",
   },
+  prizeField: {
+    fontWeight: 700,
+    fontSize: "2rem !important",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.5rem !important",
+    },
+  },
   impFieldContent: props => ({
     fontFamily: "Barlow",
     color: props.contentColor,
     [theme.breakpoints.down("xs")]: {
       fontSize: "1rem",
+      display: "block",
+      textAlign: "center",
     },
   }),
   impFieldLabel: props => ({
     fontWeight: 700,
     color: props.fieldColor,
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+    },
   }),
   eventSummary: props => ({
     color: props.contentColor,
@@ -141,6 +155,8 @@ function EventSlide(props) {
     eventDate,
     eventFee,
     eventTime,
+    eventZone,
+    eventPrize,
     eventSummary,
     id,
     titleA,
@@ -193,6 +209,8 @@ function EventSlide(props) {
               eventDate={eventDate}
               eventFee={eventFee}
               eventTime={eventTime}
+              eventZone={eventZone}
+              eventPrize={eventPrize}
               eventSummary={eventSummary}
             />
           </Grid>
@@ -237,12 +255,20 @@ function EventTitle(props) {
 }
 
 function EventContent(props) {
-  const { classes, eventDate, eventTime, eventFee, eventSummary } = props
+  const {
+    classes,
+    eventDate,
+    eventTime,
+    eventFee,
+    eventZone,
+    eventPrize,
+    eventSummary,
+  } = props
 
   return (
     <Grid container>
       <Grid container justify="space-between" item xs={12}>
-        <Grid item xs="auto" sm={12}>
+        <Grid item xs={6} sm={12}>
           <Typography
             variant="h5"
             display="inline"
@@ -258,7 +284,7 @@ function EventContent(props) {
             {eventDate || "NA"}
           </Typography>
         </Grid>
-        <Grid item xs="auto" sm={12}>
+        <Grid item xs={6} sm={12}>
           <Typography
             variant="h5"
             display="inline"
@@ -274,7 +300,23 @@ function EventContent(props) {
             {eventTime || "NA"}
           </Typography>
         </Grid>
-        <Grid item xs="auto" sm={12}>
+        <Grid item xs={6} sm={12}>
+          <Typography
+            variant="h5"
+            display="inline"
+            className={[classes.impFieldContent, classes.impFieldLabel]}
+          >
+            Zone:{" "}
+          </Typography>
+          <Typography
+            variant="h5"
+            display="inline"
+            className={classes.impFieldContent}
+          >
+            {eventZone || "NA"}
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={12}>
           <Typography
             variant="h5"
             display="inline"
@@ -294,6 +336,28 @@ function EventContent(props) {
               : "Rs " + eventFee}
           </Typography>
         </Grid>
+        {eventPrize && (
+          <Grid item xs={12}>
+            <Typography
+              variant="h4"
+              display="inline"
+              className={[
+                classes.prizeField,
+                classes.impFieldContent,
+                classes.impFieldLabel,
+              ]}
+            >
+              Prize:{" "}
+            </Typography>
+            <Typography
+              variant="h4"
+              display="inline"
+              className={[classes.prizeField, classes.impFieldContent]}
+            >
+              {eventPrize}
+            </Typography>
+          </Grid>
+        )}
       </Grid>
       <Grid item xs={12}>
         <Typography variant="h5" className={classes.eventSummary}>
