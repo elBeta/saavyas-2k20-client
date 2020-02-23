@@ -1,8 +1,8 @@
 export const highlightEvents = [
   {
-    title: "Artificial Intelligence",
-    fileName: "event-posters/ai.jpg",
-    link: "/events/workshops/#ai",
+    title: "Week of Learning",
+    fileName: "event-posters/wol.jpeg",
+    link: "/events/workshops/#wol",
   },
   {
     title: "IoT w. Google Asst.",
