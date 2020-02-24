@@ -163,6 +163,7 @@ function EventSlide(props) {
     titleB,
     ruleBookLink,
     registrationLink,
+    registrationLink2,
   } = props
   const classes = useStyles(colorScheme)
 
@@ -222,6 +223,7 @@ function EventSlide(props) {
             mobileMode={mobileMode}
             ruleBookLink={ruleBookLink}
             registrationLink={registrationLink}
+            registrationLink2={registrationLink2}
           />
         </Grid>
       </Grid>
@@ -369,7 +371,13 @@ function EventContent(props) {
 }
 
 function ActionPanel(props) {
-  const { classes, mobileMode, ruleBookLink, registrationLink } = props
+  const {
+    classes,
+    mobileMode,
+    ruleBookLink,
+    registrationLink,
+    registrationLink2,
+  } = props
 
   return (
     <Grid container justify={mobileMode ? "center" : "space-between"}>
@@ -403,7 +411,24 @@ function ActionPanel(props) {
             className={classes.knowMoreBtn}
           >
             <Typography variant="h3" className={classes.btnTypo}>
-              Register
+              Register: Step 1
+            </Typography>
+          </Button>
+        </a>
+      </Grid>
+      <Grid item>
+        <a
+          href={registrationLink2}
+          rel="noopener noreferrer"
+          style={{ textDecoration: "inherit", color: "inherit" }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.knowMoreBtn}
+          >
+            <Typography variant="h3" className={classes.btnTypo}>
+              Register: Step 2
             </Typography>
           </Button>
         </a>

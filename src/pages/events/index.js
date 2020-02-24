@@ -10,6 +10,7 @@ import { navigate } from "gatsby"
 import BackIcon from "@material-ui/icons/ArrowBack"
 
 import CategorySelector from "../../components/events/CategorySelector"
+import { eventCategories } from "../../details/eventCategories"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,21 +51,6 @@ const useStyles = makeStyles(theme => ({
 
 function EventsCategory(props) {
   const classes = useStyles()
-
-  const eventCategories = [
-    { title: "Technical", fileName: "tech.jpg", link: "/events/technical" },
-    { title: "Cultural", fileName: "cultural.jpg", link: "/events/cultural" },
-    {
-      title: "Entertainment",
-      fileName: "entertainment.jpg",
-      link: "/events/entertainment",
-    },
-    {
-      title: "Sports and eSports",
-      fileName: "sports_esports.jpg",
-      link: "/events/sports_esports",
-    },
-  ]
 
   const handleBackBtnClick = e => {
     navigate("/")

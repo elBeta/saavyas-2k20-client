@@ -1,81 +1,27 @@
-export const colorScheme = {
-  blueWhiteBlack: {
-    backgroundColor: "#3aafa9",
-    titleAColor: "white",
-    titleBColor: "#18262a",
-    fieldColor: "#18262a",
-    contentColor: "white",
-    btnBGColor: "#05396b",
-    btnHoverColor: "#052442",
-    btnTypoColor: "white",
-  },
-  redBlackWhite: {
-    backgroundColor: "#dc3d24",
-    titleAColor: "white",
-    titleBColor: "#18262a",
-    fieldColor: "#18262a",
-    contentColor: "white",
-    btnBGColor: "#18262a",
-    btnHoverColor: "#1e1e1e",
-    btnTypoColor: "white",
-  },
-  greenBlueWhite: {
-    backgroundColor: "#5cdb95",
-    titleAColor: "#05386b",
-    titleBColor: "#edf5e1",
-    fieldColor: "#05386b",
-    contentColor: "#edf5e1",
-    btnBGColor: "#05386b",
-    btnHoverColor: "#05284a",
-    btnTypoColor: "#edf5e1",
-  },
-}
-
 export const highlightEvents = [
   {
-    title: "GDG ML and WebDev",
-    fileName: "event-posters/gdg_ml_wd.png",
-    link: "/events/technical/#gdg_ml_wd",
+    title: "Week of Learning",
+    fileName: "event-posters/wol.jpeg",
+    link: "/events/workshops/#wol",
   },
   {
     title: "IoT w. Google Asst.",
     fileName: "event-posters/iot_with_gass.jpg",
-    link: "/events/technical/#iotwithgass",
+    link: "/events/workshops/#iotwithgass",
   },
   {
     title: "Humanoid Robotics",
     fileName: "event-posters/humanoid.jpg",
-    link: "/events/technical/#humanrobot",
+    link: "/events/workshops/#humanrobot",
   },
 ]
 
 export const events = [
   {
-    id: "gdg_ml_wd",
-    titleA: "ML and Web Dev",
-    titleB: "By Team GDG",
-    colorScheme: colorScheme.blueWhiteBlack,
-    imageFileName: "gdg_ml_wd.png",
-    eventDate: "9th February 2020",
-    eventFee: 0,
-    eventTime: "10:00 AM to 1:00 PM",
-    eventSummary:
-      "Saavyas'20 and GDG Goa present you a fun way to spend your Sunday, " +
-      "a workshop on Machine Learning and Web development, topics that are " +
-      "omnipresent in every our every modern day routine - By Team GDG. " +
-      "Rudra Sawant - Intro to ML and DL; " +
-      "Salil Naik - Being a creative front-end developer; " +
-      "Ashley D'Souza - Design Thinking; ",
-    registrationLink: "https://saavyas.typeform.com/to/Z6X10B",
-    ruleBookLink:
-      "https://www.instagram.com/p/B8JY-wNA9CM/?igshid=nsnlko0ih5o2",
-  },
-  {
     id: "humanrobot",
     titleA: "Humanoid",
     titleB: "Robotics",
     rightAlign: true,
-    colorScheme: colorScheme.redBlackWhite,
     eventDate: "6th and 7th March",
     eventFee: 1500,
     eventSummary:
@@ -92,7 +38,6 @@ export const events = [
     id: "ai",
     titleA: "Artificial",
     titleB: "Intelligence",
-    colorScheme: colorScheme.greenBlueWhite,
     eventDate: "6th and 7th March",
     eventFee: 1500,
     eventSummary:
@@ -112,7 +57,6 @@ export const events = [
     titleA: "IoT with",
     titleB: "Google Assistant",
     rightAlign: true,
-    colorScheme: colorScheme.blueWhiteBlack,
     eventDate: "6th and 7th March",
     eventFee: 1500,
     eventSummary:
@@ -128,12 +72,22 @@ export const events = [
       "https://www.payumoney.com/paybypayumoney/#/FDD5FAEB0B834D653EA32AE59CC4DB14",
   },
   // {
-  //   id: "robowars",
-  //   titleA: "Robo",
-  //   titleB: "Wars",
-  //   imageFileName: "robowars.jpg",
-  //   rightAlign: true,
-  //   eventSummary: "Self explanatory....",
-  //   colorScheme: colorScheme.redBlackWhite,
+  //   id: "gdg_ml_wd",
+  //   titleA: "ML and Web Dev",
+  //   titleB: "By Team GDG",
+  //   imageFileName: "gdg_ml_wd.png",
+  //   eventDate: "9th February 2020",
+  //   eventFee: 0,
+  //   eventTime: "10:00 AM to 1:00 PM",
+  //   eventSummary:
+  //     "Saavyas'20 and GDG Goa present you a fun way to spend your Sunday, " +
+  //     "a workshop on Machine Learning and Web development, topics that are " +
+  //     "omnipresent in every our every modern day routine - By Team GDG. " +
+  //     "Rudra Sawant - Intro to ML and DL; " +
+  //     "Salil Naik - Being a creative front-end developer; " +
+  //     "Ashley D'Souza - Design Thinking; ",
+  //   registrationLink: "https://saavyas.typeform.com/to/Z6X10B",
+  //   ruleBookLink:
+  //     "https://www.instagram.com/p/B8JY-wNA9CM/?igshid=nsnlko0ih5o2",
   // },
 ]

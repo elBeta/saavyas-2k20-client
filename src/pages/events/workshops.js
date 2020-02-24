@@ -6,10 +6,11 @@ import BackIcon from "@material-ui/icons/ArrowBack"
 import { navigate } from "gatsby"
 
 import EventSlide from "../../components/events/EventSlide"
+import WOLEvent from "../../components/events/WOLEvent"
 import CategorySelector from "../../components/events/CategorySelector"
 
 import { colorScheme } from "../../details/slideColorScheme"
-import { events, highlightEvents } from "../../details/technicalEventsDetails"
+import { events, highlightEvents } from "../../details/workshopDetails"
 
 import "../smoothScroll.css"
 
@@ -30,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function EventsPage(props) {
+function WorkshopPage(props) {
   const classes = useStyles()
 
   const handleBackBtnClick = e => {
@@ -53,6 +54,25 @@ function EventsPage(props) {
             <CategorySelector categories={highlightEvents} />
           </div>
         )}
+        <WOLEvent
+          rightAlign={true}
+          titleA="Week of"
+          titleB="learning"
+          id="wol"
+          imageFileName="wol.jpeg"
+          colorScheme={colorScheme.redBlackWhite}
+          eventDate="24, Feb 2020  to 06, Mar 2020"
+          eventFee={0}
+          eventSummary={
+            `Week of Learning is here! 
+          Here is your chance to learn the most in-demand technologies and be ready for your next internship! 
+          Week of Learning is an intensive week-long learning program from Progate Japan. It is a combination of online and offline learning where you will learn web development from absolute basics and build your own first project! 
+          Saavyas'20, NIT Goa is happy to bring Week of Learning for all students in NIT Goa. This program is scheduled from 24, Feb 2020  to 06, Mar 2020; ` +
+            `Join the team on Progate first (step 1), then complete the registration using link 2`
+          }
+          registrationLink="http://bit.ly/joinprogatewolnitgoa"
+          registrationLink2="http://bit.ly/registerforwolnitgoa"
+        />
         {events.map((event, index) => (
           <EventSlide
             rightAlign={index % 2 === 1}
@@ -82,4 +102,4 @@ function EventsPage(props) {
   )
 }
 
-export default EventsPage
+export default WorkshopPage
