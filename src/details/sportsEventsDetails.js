@@ -10,7 +10,8 @@ export const events = [
     eventZone: "Alpha",
     eventLocation: "N2/N4",
     eventPrize: "Rs 11k",
-    eventSummary: "",
+    eventSummary:
+      "Wanna a play of game of strategy? Impress everyone by showcasing your intelligence!",
   },
   {
     id: "table-tennis",
@@ -21,7 +22,8 @@ export const events = [
     eventZone: "Bravo",
     eventLocation: "N5/N6",
     eventPrize: "Rs 7.5k",
-    eventSummary: "",
+    eventSummary:
+      "Smash those balls across the court and get those amazing points!",
   },
   {
     id: "football",
@@ -32,7 +34,8 @@ export const events = [
     eventZone: "Echo",
     eventLocation: "Ground Sector 2",
     eventPrize: "Rs 24k",
-    eventSummary: "",
+    eventSummary:
+      "Smash those balls across the court and get those amazing points!",
   },
   {
     id: "pro-cricket",
@@ -43,7 +46,8 @@ export const events = [
     eventZone: "Echo",
     eventLocation: "Ground Sector 2",
     eventPrize: "Rs 6k",
-    eventSummary: "",
+    eventSummary:
+      "Unleash your inner Dhonis and Virats! Its time to apply your best cricketing tactics to drive your team to its glory!",
   },
   {
     id: "pubg",
@@ -53,7 +57,8 @@ export const events = [
     eventZone: "Bravo",
     eventLocation: "N8",
     eventPrize: "Rs 5k",
-    eventSummary: "",
+    eventSummary:
+      "Winner winner chicken dinner! Engage in this addicting Battle Royale to put your gaming skills to the test!",
   },
   {
     id: "fifa",
@@ -63,6 +68,7 @@ export const events = [
     eventZone: "Delta",
     eventLocation: "2A/2B",
     eventPrize: "Rs 5.5k",
-    eventSummary: "",
+    eventSummary:
+      "Kick, pass, shoot and GOAALLL! Send that ball flying into your opponents post and score!",
   },
 ]
