@@ -35,25 +35,25 @@ exports.handler = async (event, context, callback) => {
 
     // Check if important data is missing
     if (isImpDataMissing) {
-      console.log("Important data is missing")
-      console.log(event)
-      return {
-        statusCode: 400,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify(
-          "Error: Missing critical component(s) required to generate hashing sequence"
-        ),
-      }
+      console.log(data)
+      throw Error(
+        "Missing critical component(s) required to generate response hashing sequence"
+      )
     }
 
     // Retrieve salt
-    const salt = JSON.parse(
-      (await secretsClient.getSecretValue({ SecretId: secretName }).promise())
-        .SecretString
-    ).merchantSalt
-    console.log(salt == null ? "Salt not retrieved" : "Salt retreived")
+    const secret = await secretsClient
+      .getSecretValue({ SecretId: secretName })
+      .promise()
+    if (
+      !secret ||
+      !secret.SecretString ||
+      !JSON.parse(secret.SecretString).merchantSalt
+    ) {
+      throw Error("Unable to retrieve merchant salt from database")
+    }
+    const salt = JSON.parse(secret.SecretString).merchantSalt
+    console.log("Merchant Salt retreived")
 
     // Generate hashing sequence
     let hashingSequence =
@@ -74,15 +74,11 @@ exports.handler = async (event, context, callback) => {
       .digest("hex")
     console.log("responseHash: " + hash)
 
+    // Verify response hash
     if (data["hash"] !== hash) {
-      console.log("Error: Request hash doesn't match one provided.")
-      return {
-        statusCode: 400,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify("Error: Request hash doesn't match one provided."),
-      }
+      console.log(`Request hash: ${hash}`)
+      console.log(`Provided hash: ${data["hash"]}`)
+      throw Error("Request hash doesn't match one provided.")
     }
 
     const formData = JSON.parse(data["formData"])
@@ -94,12 +90,18 @@ exports.handler = async (event, context, callback) => {
       },
     }
 
-    const requiredFormFields = (await dynamodb.get(getItemParams).promise())
-      .Item.formFields
-
-    console.log("requiredFormFields:")
+    // Get required form fields
+    const reqffDBData = await dynamodb.get(getItemParams).promise()
+    if (!reqffDBData || !reqffDBData.Item) {
+      throw Error("Unable to retreive required form fields from database")
+    }
+    const requiredFormFields = reqffDBData.Item.formFields
+    console.log("Fetched required form fields from db")
+    console.log("Required form fields:")
     console.log(requiredFormFields)
 
+    // Check if all required form fields provided
+    // in the request data is present or not
     let requiredFormFieldsPresent = true
     for (let field of requiredFormFields) {
       requiredFormFieldsPresent &=
@@ -115,40 +117,45 @@ exports.handler = async (event, context, callback) => {
       )
     }
 
+    // Create entry to be put in db
+    const entryItem = {
+      txnid: data["txnid"],
+      eventID: data["productinfo"],
+      amount: parseFloat(data["amount"]),
+      "Registered At": Date.now(),
+      ...Object.assign(
+        ...Object.keys(formData)
+          .filter(
+            key =>
+              !["txnid", "eventID", "amount", "Registered At"].includes(key) &&
+              requiredFormFields.includes(key)
+          )
+          .map(key => ({ [key]: formData[key] }))
+      ),
+    }
+    console.log(`Entry item:\n ${entryItem}`)
+
     const putItemParams = {
       TableName: tableName,
-      Item: {
-        txnid: data["txnid"],
-        eventID: data["productinfo"],
-        amount: parseFloat(data["amount"]),
-        "Registered At": Date.now(),
-        ...Object.assign(
-          ...Object.keys(formData)
-            .filter(
-              key =>
-                !["txnid", "eventID", "amount", "Registered At"].includes(
-                  key
-                ) && requiredFormFields.includes(key)
-            )
-            .map(key => ({ [key]: formData[key] }))
-        ),
-      },
+      Item: entryItem,
     }
 
+    // Insert entry into database
     const dbResponse = await dynamodb.put(putItemParams).promise()
     console.log("Successfully inserted record into database")
     console.log(dbResponse)
 
-    return {
+    callback(null, {
       statusCode: 200,
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify("Successfully inserted record into database"),
-    }
+      body: JSON.stringify(
+        `Transaction Successful.\nTransaction ID: ${data["txnid"]}`
+      ),
+    })
   } catch (err) {
-    console.log("Error!")
-    console.log(err)
+    console.error(err)
     callback(null, {
       statusCode: 500,
       headers: {

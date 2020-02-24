@@ -59,15 +59,15 @@ function WorkshopPage(props) {
           titleA="Week of"
           titleB="learning"
           id="wol"
-          imageFileName="wol.jpeg"
+          imageFileName="wol.png"
           colorScheme={colorScheme.redBlackWhite}
-          eventDate="24, Feb 2020  to 06, Mar 2020"
+          eventDate="25 Feb 2020 to 07 Mar 2020"
           eventFee={0}
           eventSummary={
             `Week of Learning is here! 
           Here is your chance to learn the most in-demand technologies and be ready for your next internship! 
           Week of Learning is an intensive week-long learning program from Progate Japan. It is a combination of online and offline learning where you will learn web development from absolute basics and build your own first project! 
-          Saavyas'20, NIT Goa is happy to bring Week of Learning for all students in NIT Goa. This program is scheduled from 24, Feb 2020  to 06, Mar 2020; ` +
+          Saavyas'20, NIT Goa is happy to bring Week of Learning for all students in NIT Goa.` +
             `Join the team on Progate first (step 1), then complete the registration using link 2`
           }
           registrationLink="http://bit.ly/joinprogatewolnitgoa"
@@ -81,6 +81,7 @@ function WorkshopPage(props) {
             eventFee={event.eventFee}
             eventTime={event.eventTime}
             eventZone={event.eventZone}
+            eventLocation={event.eventLocation}
             eventPrize={event.eventPrize}
             eventSummary={event.eventSummary}
             id={event.id}
