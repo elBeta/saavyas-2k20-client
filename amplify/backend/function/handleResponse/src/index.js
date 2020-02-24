@@ -164,7 +164,7 @@ exports.handler = async (event, context, callback) => {
     })
 
     const mailBody =
-      `Transaction Id: ${data["txnid"]}\n` +
+      `Registration Id: ${data["txnid"]}\n` +
       `Event Name: ${formData["Event"]}\n` +
       (payLater
         ? `Amount to be paid: ${data["amount"]}\n` +
@@ -177,7 +177,7 @@ exports.handler = async (event, context, callback) => {
     const mailOptions = {
       from: process.env.MAILER_USERID,
       to: formData["Email Id"],
-      subject: `Saavyas '20 Transaction Successful for ${formData["Event"]}`,
+      subject: `Saavyas '20 Registration Successful for ${formData["Event"]}`,
       text: mailBody,
     }
 
