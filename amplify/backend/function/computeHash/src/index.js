@@ -48,8 +48,8 @@ exports.handler = async (event, context, callback) => {
 
     // Check if important data is missing
     if (isImpDataMissing) {
-      console.log(event)
-      throw Error("Important data is missing")
+      console.log(data)
+      throw Error("Unable to compute request hash. Required data is missing")
     }
 
     const getItemParams = {
@@ -60,7 +60,10 @@ exports.handler = async (event, context, callback) => {
     }
 
     // Retrieve Event Amount
-    let dbData = await dynamodb.get(getItemParams).promise()
+    const dbData = await dynamodb.get(getItemParams).promise()
+    if (!dbData || !dbData.Item) {
+      throw Error("Unable to retrieve event amount from database")
+    }
     data["amount"] = parseFloat(dbData.Item.amount)
     console.log(
       "Successfully retrieved event amount from database: " +
@@ -68,10 +71,13 @@ exports.handler = async (event, context, callback) => {
     )
 
     // Retrieve Salt and Key
-    let { merchantSalt, merchantKey } = JSON.parse(
-      (await secretsClient.getSecretValue({ SecretId: secretName }).promise())
-        .SecretString
-    )
+    const secret = await secretsClient
+      .getSecretValue({ SecretId: secretName })
+      .promise()
+    if (!secret || !secret.SecretString) {
+      throw Error("Unable to retrieve merchant salt and key")
+    }
+    const { merchantSalt, merchantKey } = JSON.parse(secret.SecretString)
     data["key"] = merchantKey
     console.log(merchantSalt == null ? "Salt not retrieved" : "Salt retreived")
     console.log(merchantKey == null ? "Key not retrieved" : "Key retreived")
@@ -81,7 +87,7 @@ exports.handler = async (event, context, callback) => {
     console.log("Transaction ID: " + data["txnid"])
 
     // Generate hashing sequence
-    let hashingSequence =
+    const hashingSequence =
       "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5"
         .split("|")
         .map(item => (data[item] ? data[item] : ""))
@@ -113,8 +119,7 @@ exports.handler = async (event, context, callback) => {
       }),
     })
   } catch (err) {
-    console.log("Error!")
-    console.log(err)
+    console.error(err)
     callback(null, {
       statusCode: 500,
       headers: {
