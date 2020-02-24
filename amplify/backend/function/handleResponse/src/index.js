@@ -165,19 +165,19 @@ exports.handler = async (event, context, callback) => {
 
     const mailBody =
       `Transaction Id: ${data["txnid"]}\n` +
-      `Event Name: ${data["Event Name"]}\n` +
+      `Event Name: ${formData["Event"]}\n` +
       (payLater
         ? `Amount to be paid: ${data["amount"]}\n` +
-          `Payment link will be mailed to you shortly upon the activation of the payment portal.
-          Kindly complete the payment.`
+          "Payment link will be mailed to you shortly upon the activation of the payment portal.\n" +
+          "Kindly complete the payment."
         : `Amount paid: ${data["amount"]}\n`) +
-      "Thank You\n" +
-      "Team Saavyas\n"
+      "\n\n\nThank You\n" +
+      "Team Saavyas'20\n"
 
     const mailOptions = {
-      from: MAILER_USERID,
+      from: process.env.MAILER_USERID,
       to: formData["Email Id"],
-      subject: "Subject of your email",
+      subject: `Saavyas '20 Transaction Successful for ${formData["Event"]}`,
       text: mailBody,
     }
 
