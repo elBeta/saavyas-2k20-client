@@ -10,7 +10,9 @@ export const events = [
     eventZone: "Charlie",
     eventLocation: "Library Lawn",
     eventPrize: "Rs 1.5k",
-    eventSummary: "",
+    eventSummary: `Hungry?
+    Take all food in the world to eat,
+    But be warned, it ain't an easy feat.`,
   },
   {
     id: "ipl-auction",
@@ -32,7 +34,9 @@ export const events = [
     eventZone: "Bravo",
     eventLocation: "Seminar Hall",
     eventPrize: "Rs 3k",
-    eventSummary: "",
+    eventSummary: `Hungry?
+    Take all food in the world to eat,
+    But be warned, it ain't an easy feat.`,
   },
   {
     id: "trivium",
@@ -43,7 +47,8 @@ export const events = [
     eventZone: "Bravo",
     eventLocation: "Seminar Hall",
     eventPrize: "Rs 3k",
-    eventSummary: "",
+    eventSummary: `Are those books and newspapers in your luggage?
+    Shall we quiz you about general knowledge?`,
   },
   {
     id: "min-to-win",
@@ -54,5 +59,7 @@ export const events = [
     eventZone: "Bravo",
     eventLocation: "Seminar Hall",
     eventPrize: "Rs 2k",
+    eventSummary: `Let's hear you talk, for just a minute,
+    Be careful not to exceed your limit.`,
   },
 ]
