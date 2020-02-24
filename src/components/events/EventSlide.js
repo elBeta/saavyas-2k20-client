@@ -33,34 +33,34 @@ const useStyles = makeStyles(theme => ({
   titleA: props => ({
     color: props.titleAColor,
     fontFamily: "Barlow Semi Condensed",
-    fontSize: "8rem",
+    fontSize: "7.5rem",
     fontWeight: 900,
     textTransform: "uppercase",
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
 
     [theme.breakpoints.only("sm")]: {
-      fontSize: "6.5rem",
+      fontSize: "6.25rem",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "3.5rem",
+      fontSize: "3.25rem",
       overflowWrap: "break-word",
     },
   }),
   titleB: props => ({
     color: props.titleBColor,
     fontFamily: "Barlow Semi Condensed",
-    fontSize: "7rem",
+    fontSize: "6.5rem",
     fontWeight: 900,
     textTransform: "uppercase",
     letterSpacing: "0.00938em",
     lineHeight: 0.8,
 
     [theme.breakpoints.only("sm")]: {
-      fontSize: "6.5rem",
+      fontSize: "4.5rem",
     },
     [theme.breakpoints.down("xs")]: {
-      fontSize: "3.5rem",
+      fontSize: "2.5rem",
       overflowWrap: "break-word",
     },
   }),
