@@ -11,6 +11,7 @@ Amplify Params - DO NOT EDIT */
 
 const AWS = require("aws-sdk")
 const crypto = require("crypto")
+const nodemailer = require("nodemailer")
 
 AWS.config.update({ region: process.env.REGION })
 
@@ -151,6 +152,49 @@ exports.handler = async (event, context, callback) => {
       )
     }
 
+    //=========================
+    // Mailer code
+    //=========================
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.MAILER_USERID,
+        pass: process.env.MAILER_PASS,
+      },
+    })
+
+    const mailBody =
+      `Transaction Id: ${data["txnid"]}\n` +
+      `Event Name: ${data["Event Name"]}\n` +
+      (payLater
+        ? `Amount to be paid: ${data["amount"]}\n` +
+          `Payment link will be mailed to you shortly upon the activation of the payment portal.
+          Kindly complete the payment.`
+        : `Amount paid: ${data["amount"]}\n`) +
+      "Thank You\n" +
+      "Team Saavyas\n"
+
+    const mailOptions = {
+      from: MAILER_USERID,
+      to: formData["Email Id"],
+      subject: "Subject of your email",
+      text: mailBody,
+    }
+
+    let mailSent = false
+    try {
+      const info = await transporter.sendMail(mailOptions)
+      console.log(`Mail sent to ${formData["Email Id"]}`)
+      console.log(info)
+      mailSent = true
+    } catch (e) {
+      console.log(`Unable to send mail to ${formData["Email Id"]}`)
+      console.log(e)
+      mailSent = false
+    }
+
+    //=========================
+
     // Create entry to be put in db
     const entryItem = {
       txnid: data["txnid"],
@@ -161,11 +205,22 @@ exports.handler = async (event, context, callback) => {
         ...Object.keys(formData)
           .filter(
             key =>
-              !["txnid", "eventID", "amount", "Registered At"].includes(key) &&
-              requiredFormFields.includes(key)
+              ![
+                "txnid",
+                "eventID",
+                "amount",
+                "Registered At",
+                "paid",
+                "mailSent",
+              ].includes(key) && requiredFormFields.includes(key)
           )
           .map(key => ({ [key]: formData[key] }))
       ),
+      paid: true,
+      mailSent: mailSent,
+    }
+    if (payLater) {
+      entryItem.paid = false
     }
     console.log(`Entry item:\n ${entryItem}`)
 
