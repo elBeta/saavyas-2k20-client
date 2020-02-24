@@ -1,7 +1,7 @@
 export const highlightEvents = [
   {
     title: "Week of Learning",
-    fileName: "event-posters/wol.jpeg",
+    fileName: "event-posters/wol.png",
     link: "/events/workshops/#wol",
   },
   {
