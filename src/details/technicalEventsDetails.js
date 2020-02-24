@@ -88,4 +88,7 @@ export const events = [
     eventSummary:
       "More speed, more power with minimum time and perfection - Here comes the racing series for humans and artificial intelligence. The way you enter, the way you proceed, the way you reveal your speed to other beings here at the enthralling event of “Highway through Hell”. We provide you a track to open your enthusiasm and rush you to win with your bot . The fast speeds, tight turns, and exciting collisions in our hot wheels takes place on track. It is the event where you to get to test the efficiency and power, skills of your droid/robot. Race your bots till the finish line and earn accolades.",
   },
-]
+].map(item => ({
+  ...item,
+  registrationLink: `/registration?eventID=${item.id}`,
+}))

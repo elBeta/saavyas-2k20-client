@@ -90,4 +90,7 @@ export const events = [
   //   ruleBookLink:
   //     "https://www.instagram.com/p/B8JY-wNA9CM/?igshid=nsnlko0ih5o2",
   // },
-]
+].map(item => ({
+  ...item,
+  registrationLink: `/registration?eventID=${item.id}`,
+}))
