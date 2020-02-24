@@ -446,7 +446,7 @@ function TransactionStatus(props) {
               className={classes.titleTypo}
               // style={{ overflowWrap: "anywhere" }}
             >
-              Transaction {txnSuccess ? "Successful" : "Failed"}
+              Registration {txnSuccess ? "Successful" : "Failed"}
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.txnStatusIconHolder}>
@@ -464,9 +464,21 @@ function TransactionStatus(props) {
               className={classes.fieldLabelTypo}
               style={{ overflowWrap: "anywhere" }}
             >
-              Transaction Id: {txnid}
+              Registration Id: {txnid}
             </Typography>
           </Grid>
+          {txnSuccess && (
+            <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                align="center"
+                className={classes.fieldLabelTypo}
+              >
+                The registration id and event name has beent sent to your email.
+                Thank you for registering.
+              </Typography>
+            </Grid>
+          )}
         </Grid>
       </div>
     </>
