@@ -70,7 +70,8 @@ export const events = [
     eventTime: "11:00 AM",
     eventZone: "Campus",
     eventLocation: "Campus",
-    eventSummary: "",
+    eventSummary: `Follow a series of clue or clues,
+      Be clever and skillful and don't be blue.`,
   },
   {
     id: "face-paint",
@@ -90,7 +91,8 @@ export const events = [
     eventTime: "10:00 AM",
     eventZone: "Echo",
     eventLocation: "Ground Sector 1",
-    eventSummary: "",
+    eventSummary: `Show us a story, with your limbs and face,
+    Shhhh don't talk, else you'll be replaced.`,
   },
   {
     id: "third-degree",
@@ -100,7 +102,8 @@ export const events = [
     eventTime: "11:00 AM",
     eventZone: "Golf",
     eventLocation: "Parking Lot",
-    eventSummary: "",
+    eventSummary:
+      "Fight the bulls by the horns. An euphemism for torture, prepare yourself for TRIALS OF FIRE.",
   },
   {
     id: "mono-act",
@@ -120,7 +123,8 @@ export const events = [
     eventTime: "10:00 AM",
     eventZone: "Bravo",
     eventLocation: "N8",
-    eventSummary: "",
+    eventSummary: `Show your skills with Rangoli powder on the floor,
+    Fail to succeed, and there's the door.`,
   },
   {
     id: "suprise-event",
@@ -130,7 +134,8 @@ export const events = [
     eventTime: "2:00 PM",
     eventZone: "Echo",
     eventLocation: "Ground Sector 1",
-    eventSummary: "",
+    eventSummary:
+      "Introducing CHILL THRILLS. When we experience a surprise, when we have a set of expectations and we get something else, our brain doesn't really know what to do with it -- as opposed to looking forward to the future plans or looking to the past memories, like what am I doing this weekend? Come over to our campus during SAAVYAS to experience the unexpected.",
   },
   {
     id: "standup-comedy",
@@ -140,6 +145,8 @@ export const events = [
     eventTime: "2:00 PM",
     eventZone: "Echo",
     eventLocation: "Ground Sector 1",
-    eventSummary: "",
+    eventSummary: `Get your best your jokes, don't u forget,
+    The stage is yours,
+    Let's see how many Olafs u get.`,
   },
 ]
