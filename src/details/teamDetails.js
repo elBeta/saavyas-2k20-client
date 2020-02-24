@@ -23,13 +23,11 @@ export const teamDetails = [
       { name: "Ashutosh", phoneNo: "...", emailId: "..." },
       { name: "Rahul", phoneNo: "...", emailId: "..." },
       { name: "Shrenik", phoneNo: "...", emailId: "..." },
-    ]
+    ],
   },
   {
     name: "#Finance-Head",
-    members: [
-      { name: "Prince", phoneNo: "...", emailId: "..." },
-    ]
+    members: [{ name: "Prince", phoneNo: "...", emailId: "..." }],
   },
   {
     name: "#Marketing-Head",
@@ -37,7 +35,7 @@ export const teamDetails = [
       { name: "Archit", phoneNo: "...", emailId: "..." },
       { name: "Richa", phoneNo: "...", emailId: "..." },
       { name: "Rakesh", phoneNo: "...", emailId: "..." },
-    ]
+    ],
   },
   {
     name: "#Content-Head",
@@ -48,7 +46,7 @@ export const teamDetails = [
     members: [
       { name: "Rajit", phoneNo: "...", emailId: "..." },
       { name: "Aparimeet", phoneNo: "...", emailId: "..." },
-    ]
+    ],
   },
   {
     name: "#Photography-Head",
@@ -79,6 +77,6 @@ export const teamDetails = [
     members: [
       { name: "Sireeja", phoneNo: "...", emailId: "..." },
       { name: "Pratyay", phoneNo: "...", emailId: "..." },
-    ]
+    ],
   },
 ]
