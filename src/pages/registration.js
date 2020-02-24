@@ -6,6 +6,9 @@ import Typography from "@material-ui/core/Typography"
 import Input from "@material-ui/core/Input"
 import Button from "@material-ui/core/Button"
 
+import DoneIcon from "@material-ui/icons/Done"
+import FailIcon from "@material-ui/icons/Close"
+
 import { Helmet } from "react-helmet"
 import Amplify, { API } from "aws-amplify"
 import { navigate } from "gatsby"
@@ -94,6 +97,21 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 700,
     color: "#fafafa",
   },
+  txnStatusIconHolder: {
+    display: "flex",
+    justifyContent: "center",
+    padding: "7rem 0",
+    [theme.breakpoints.down("xs")]: {
+      padding: "2rem 0",
+    },
+  },
+  txnStatusIcon: {
+    fontSize: "15rem",
+    fill: "#fafafa",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "10rem",
+    },
+  },
 }))
 
 function RegistrationForm(props) {
@@ -101,10 +119,19 @@ function RegistrationForm(props) {
   const { location } = props
   const [formFields, setFormFields] = useState([])
   const [formData, setFormData] = useState({})
+  const [txnStatus, setTxnStatus] = useState({
+    performed: false,
+    success: false,
+    txnid: "",
+  })
   const eventID = qs.parse(location.search.substring(1))["eventID"]
 
   // Get Form Fields from eventId
   useEffect(() => {
+    if (txnStatus.performed) {
+      return
+    }
+
     const fieldFetchAPIName = "eventFormFieldsFetchAPI"
     const fieldFetchAPIPath = "/get-form-fields"
     const fieldFetchQParams = {
@@ -145,7 +172,7 @@ function RegistrationForm(props) {
       .catch(err => {
         console.log(err)
       })
-  }, [eventID])
+  }, [eventID, txnStatus.performed])
 
   const handleInputChange = e => {
     setFormData(
@@ -227,8 +254,22 @@ function RegistrationForm(props) {
                   formData: JSON.stringify(formData),
                 },
               })
-                .then(response => console.log(response))
-                .catch(err => console.log(err))
+                .then(response => {
+                  console.log(response)
+                  setTxnStatus({
+                    performed: true,
+                    success: true,
+                    txnid: BOLT.response.txnid,
+                  })
+                })
+                .catch(err => {
+                  console.log(err)
+                  setTxnStatus({
+                    performed: true,
+                    success: false,
+                    txnid: BOLT.response.txnid,
+                  })
+                })
             },
             catchException: BOLT => {
               console.log(BOLT.message)
@@ -236,7 +277,10 @@ function RegistrationForm(props) {
           }
         )
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err)
+        setTxnStatus({ performed: true, success: false, txnid: "" })
+      })
   }
 
   const handleCancelClick = e => {
@@ -244,13 +288,23 @@ function RegistrationForm(props) {
   }
 
   // If loading, render loader
-  const isLoading = !formFields.length
+  const isLoading = !formFields.length && !txnStatus.performed
   if (isLoading) {
     return (
       <>
         <CssBaseline />
         <Loader size="5rem" bgColor="#333645" iconColor="white" />
       </>
+    )
+  }
+
+  if (txnStatus.performed) {
+    return (
+      <TransactionStatus
+        txnSuccess={txnStatus.success}
+        txnid={txnStatus.txnid}
+        classes={classes}
+      />
     )
   }
 
@@ -339,6 +393,48 @@ function RegistrationForm(props) {
                 </Button>
               </Grid>
             </Grid>
+          </Grid>
+        </Grid>
+      </div>
+    </>
+  )
+}
+
+function TransactionStatus(props) {
+  const { txnSuccess, txnid, classes } = props
+
+  return (
+    <>
+      <CssBaseline />
+      <div className={classes.root}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography
+              variant="h5"
+              align="center"
+              className={classes.titleTypo}
+              // style={{ overflowWrap: "anywhere" }}
+            >
+              Transaction {txnSuccess ? "Successful" : "Failed"}
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.txnStatusIconHolder}>
+            {txnSuccess ? (
+              <DoneIcon className={classes.txnStatusIcon} />
+            ) : (
+              <FailIcon className={classes.txnStatusIcon} />
+            )}
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography
+              variant="h6"
+              align="center"
+              className={classes.fieldLabelTypo}
+              style={{ overflowWrap: "anywhere" }}
+            >
+              Transaction Id: {txnid}
+            </Typography>
           </Grid>
         </Grid>
       </div>
