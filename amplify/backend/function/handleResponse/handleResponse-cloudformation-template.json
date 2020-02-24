@@ -91,7 +91,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-saavyas-2k20-client-dev-222337-deployment",
-					"S3Key": "amplify-builds/handleResponse-4f6e31694772504a675a-build.zip"
+					"S3Key": "amplify-builds/handleResponse-2b4f6f656b6f6543394e-build.zip"
 				}
 			}
 		},
