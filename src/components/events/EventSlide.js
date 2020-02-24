@@ -156,6 +156,7 @@ function EventSlide(props) {
     eventFee,
     eventTime,
     eventZone,
+    eventLocation,
     eventPrize,
     eventSummary,
     id,
@@ -210,6 +211,7 @@ function EventSlide(props) {
               eventFee={eventFee}
               eventTime={eventTime}
               eventZone={eventZone}
+              eventLocation={eventLocation}
               eventPrize={eventPrize}
               eventSummary={eventSummary}
             />
@@ -261,6 +263,7 @@ function EventContent(props) {
     eventTime,
     eventFee,
     eventZone,
+    eventLocation,
     eventPrize,
     eventSummary,
   } = props
@@ -314,6 +317,22 @@ function EventContent(props) {
             className={classes.impFieldContent}
           >
             {eventZone || "NA"}
+          </Typography>
+        </Grid>
+        <Grid item xs={6} sm={12}>
+          <Typography
+            variant="h5"
+            display="inline"
+            className={[classes.impFieldContent, classes.impFieldLabel]}
+          >
+            Location:{" "}
+          </Typography>
+          <Typography
+            variant="h5"
+            display="inline"
+            className={classes.impFieldContent}
+          >
+            {eventLocation || "NA"}
           </Typography>
         </Grid>
         <Grid item xs={6} sm={12}>
