@@ -9,7 +9,7 @@ export const eventCategories = [
   {
     title: "Sports and eSports",
     fileName: "sports_esports.jpg",
-    link: "/events/sports_esports",
+    link: "/events/sports-esports",
   },
   {
     title: "Workshops and Guest Lectures",
