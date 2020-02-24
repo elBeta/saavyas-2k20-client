@@ -71,4 +71,7 @@ export const events = [
     eventSummary:
       "Kick, pass, shoot and GOAALLL! Send that ball flying into your opponents post and score!",
   },
-]
+].map(item => ({
+  ...item,
+  registrationLink: `/registration?eventID=${item.id}`,
+}))

@@ -149,4 +149,7 @@ export const events = [
     The stage is yours,
     Let's see how many Olafs u get.`,
   },
-]
+].map(item => ({
+  ...item,
+  registrationLink: `/registration?eventID=${item.id}`,
+}))

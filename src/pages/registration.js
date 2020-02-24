@@ -220,67 +220,98 @@ function RegistrationForm(props) {
 
     console.log(coreQueryParams)
 
-    API.get("requestHashAPI", "/request-hash", init)
+    // =================================================================
+    // Payment Part
+    // =================================================================
+    // API.get("requestHashAPI", "/request-hash", init)
+    //   .then(response => {
+    //     console.log(response)
+    //     return response
+    //   })
+    //   .then(response => {
+    //     window.bolt.launch(
+    //       {
+    //         ...coreQueryParams,
+    //         phone: formData["Phone Number"],
+    //         surl: location.href,
+    //         furl: location.href,
+    //         hash: response["hash"],
+    //         amount: response["amount"],
+    //         txnid: response["txnid"],
+    //         key: response["key"],
+    //       },
+    //       {
+    //         responseHandler: BOLT => {
+    //           console.log(BOLT.response.txnStatus)
+    //           API.get("txnResponseAPI", "/response", {
+    //             queryStringParameters: {
+    //               key: BOLT.response.key,
+    //               txnid: BOLT.response.txnid,
+    //               amount: BOLT.response.amount,
+    //               productinfo: BOLT.response.productinfo,
+    //               firstname: BOLT.response.firstname,
+    //               email: BOLT.response.email,
+    //               phone: BOLT.response.phone,
+    //               hash: BOLT.response.hash,
+    //               status: BOLT.response.status,
+    //               formData: JSON.stringify(formData),
+    //             },
+    //           })
+    //             .then(response => {
+    //               console.log(response)
+    //               setTxnStatus({
+    //                 performed: true,
+    //                 success: true,
+    //                 txnid: BOLT.response.txnid,
+    //               })
+    //             })
+    //             .catch(err => {
+    //               console.log(err)
+    //               setTxnStatus({
+    //                 performed: true,
+    //                 success: false,
+    //                 txnid: BOLT.response.txnid,
+    //               })
+    //             })
+    //         },
+    //         catchException: BOLT => {
+    //           console.log(BOLT.message)
+    //         },
+    //       }
+    //     )
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //     setTxnStatus({ performed: true, success: false, txnid: "" })
+    //   })
+    // =================================================================
+
+    // =================================================================
+    // Pay later part (comment out once salt and key recieved)
+    // =================================================================
+    API.get("txnResponseAPI", "/response", {
+      queryStringParameters: {
+        ...coreQueryParams,
+        formData: JSON.stringify(formData),
+      },
+    })
       .then(response => {
         console.log(response)
-        return response
-      })
-      .then(response => {
-        window.bolt.launch(
-          {
-            ...coreQueryParams,
-            phone: formData["Phone Number"],
-            surl: location.href,
-            furl: location.href,
-            hash: response["hash"],
-            amount: response["amount"],
-            txnid: response["txnid"],
-            key: response["key"],
-          },
-          {
-            responseHandler: BOLT => {
-              console.log(BOLT.response.txnStatus)
-              API.get("txnResponseAPI", "/response", {
-                queryStringParameters: {
-                  key: BOLT.response.key,
-                  txnid: BOLT.response.txnid,
-                  amount: BOLT.response.amount,
-                  productinfo: BOLT.response.productinfo,
-                  firstname: BOLT.response.firstname,
-                  email: BOLT.response.email,
-                  phone: BOLT.response.phone,
-                  hash: BOLT.response.hash,
-                  status: BOLT.response.status,
-                  formData: JSON.stringify(formData),
-                },
-              })
-                .then(response => {
-                  console.log(response)
-                  setTxnStatus({
-                    performed: true,
-                    success: true,
-                    txnid: BOLT.response.txnid,
-                  })
-                })
-                .catch(err => {
-                  console.log(err)
-                  setTxnStatus({
-                    performed: true,
-                    success: false,
-                    txnid: BOLT.response.txnid,
-                  })
-                })
-            },
-            catchException: BOLT => {
-              console.log(BOLT.message)
-            },
-          }
-        )
+        setTxnStatus({
+          performed: true,
+          success: true,
+          txnid: response.txnid,
+        })
       })
       .catch(err => {
         console.log(err)
-        setTxnStatus({ performed: true, success: false, txnid: "" })
+        setTxnStatus({
+          performed: true,
+          success: false,
+          txnid: "",
+        })
       })
+    // =================================================================
   }
 
   const handleCancelClick = e => {
@@ -415,7 +446,7 @@ function TransactionStatus(props) {
               className={classes.titleTypo}
               // style={{ overflowWrap: "anywhere" }}
             >
-              Transaction {txnSuccess ? "Successful" : "Failed"}
+              Registration {txnSuccess ? "Successful" : "Failed"}
             </Typography>
           </Grid>
           <Grid item xs={12} className={classes.txnStatusIconHolder}>
@@ -433,9 +464,21 @@ function TransactionStatus(props) {
               className={classes.fieldLabelTypo}
               style={{ overflowWrap: "anywhere" }}
             >
-              Transaction Id: {txnid}
+              Registration Id: {txnid}
             </Typography>
           </Grid>
+          {txnSuccess && (
+            <Grid item xs={12}>
+              <Typography
+                variant="h6"
+                align="center"
+                className={classes.fieldLabelTypo}
+              >
+                The registration id and event name has beent sent to your email.
+                Thank you for registering.
+              </Typography>
+            </Grid>
+          )}
         </Grid>
       </div>
     </>
