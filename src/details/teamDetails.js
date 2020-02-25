@@ -6,6 +6,7 @@ export const teamDetails = [
       { name: "Devanshi", phoneNo: "...", emailId: "..." },
       { name: "Damodar", phoneNo: "...", emailId: "..." },
       { name: "Nihal", phoneNo: "...", emailId: "..." },
+      { name: "Vishal", phoneNo: "...", emailId: "..." },
     ],
   },
   {
@@ -59,6 +60,10 @@ export const teamDetails = [
   {
     name: "#Hospitality-Head",
     members: [{ name: "Kaustubh", phoneNo: "...", emailId: "..." }],
+  },
+  {
+    name: "#Security-Head",
+    members: [{ name: "Pushkar", phoneNo: "...", emailId: "..." }],
   },
   {
     name: "#Pronites-Head",
