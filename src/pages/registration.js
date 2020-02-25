@@ -130,6 +130,7 @@ function RegistrationForm(props) {
     success: false,
     txnid: "",
   })
+  const [isLoading, setIsLoading] = useState(false)
   const eventID = location.state.eventID
 
   // Get Form Fields from eventId
@@ -138,6 +139,7 @@ function RegistrationForm(props) {
       return
     }
 
+    setIsLoading(true)
     const fieldFetchAPIName = "eventFormFieldsFetchAPI"
     const fieldFetchAPIPath = "/get-form-fields"
     const fieldFetchQParams = {
@@ -178,6 +180,7 @@ function RegistrationForm(props) {
       .catch(err => {
         console.log(err)
       })
+      .finally(() => setIsLoading(false))
   }, [eventID, txnStatus.performed])
 
   const handleInputChange = e => {
@@ -213,6 +216,7 @@ function RegistrationForm(props) {
       return
     }
 
+    setIsLoading(true)
     const coreQueryParams = {
       productinfo: eventID,
       firstname: (formData["Participant Name"] || formData["Team Name"]).split(
@@ -317,6 +321,7 @@ function RegistrationForm(props) {
           txnid: "",
         })
       })
+      .finally(() => setIsLoading(false))
     // =================================================================
   }
 
@@ -325,7 +330,7 @@ function RegistrationForm(props) {
   }
 
   // If loading, render loader
-  const isLoading = !formFields.length && !txnStatus.performed
+  // const isLoading = !formFields.length && !txnStatus.performed
   if (isLoading) {
     return (
       <>
