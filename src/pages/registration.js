@@ -131,7 +131,7 @@ function RegistrationForm(props) {
     txnid: "",
   })
   const [isLoading, setIsLoading] = useState(false)
-  const eventID = location.state.eventID
+  const eventID = location.state ? location.state.eventID : ""
 
   // Get Form Fields from eventId
   useEffect(() => {
