@@ -124,7 +124,7 @@ function RegistrationForm(props) {
     success: false,
     txnid: "",
   })
-  const eventID = qs.parse(location.search.substring(1))["eventID"]
+  const eventID = location.state.eventID
 
   // Get Form Fields from eventId
   useEffect(() => {
