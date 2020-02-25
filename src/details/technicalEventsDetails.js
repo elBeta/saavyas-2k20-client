@@ -1,12 +1,12 @@
 export const highlightEvents = [
   {
     title: "Blaze A Way",
-    fileName: "event-posters/line_follower.png",
+    fileName: "line_follower.png",
     link: "/events/technical/#line-follower",
   },
   {
     title: "Hackathaw",
-    fileName: "event-posters/hackathaw.png",
+    fileName: "hackathaw.png",
     link: "/events/technical/#hackathaw",
   },
 ]
@@ -37,6 +37,7 @@ export const events = [
     // eventLocation: "Parking Lot",
     eventFee: 500,
     eventPrize: "Rs 14k",
+    imageFileName: "drone-prix.png",
     eventSummary:
       "Drone Prix: SAAVYAS-20 presents you a robotic platform that has been successfully used to develop a competition (called Drone Challenge) in which students has to program the navigation system for a simulated unmanned aerial vehicle (or drone).",
   },

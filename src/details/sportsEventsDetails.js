@@ -24,6 +24,7 @@ export const events = [
     // eventLocation: "N5/N6",
     eventPrize: "Rs 4.5k",
     eventFee: 50,
+    imageFileName: "table-tennis.png",
     eventSummary:
       "Smash those balls across the court and get those amazing points!",
   },
@@ -50,6 +51,7 @@ export const events = [
     // eventLocation: "Ground Sector 2",
     eventPrize: "Rs 1.5k",
     eventFee: 50,
+    imageFileName: "pro-cricket.png",
     eventSummary:
       "Unleash your inner Dhonis and Virats! Its time to apply your best cricketing tactics to drive your team to its glory!",
   },
@@ -63,6 +65,7 @@ export const events = [
     // eventLocation: "N8",
     eventPrize: "Rs 4.5k",
     eventFee: 200,
+    imageFileName: "pubg.jpeg",
     eventSummary:
       "Winner winner chicken dinner! Engage in this addicting Battle Royale to put your gaming skills to the test!",
   },
@@ -75,6 +78,7 @@ export const events = [
     // eventLocation: "2A/2B",
     eventPrize: "Rs 4k",
     eventFee: 100,
+    imageFileName: "fifa.jpeg",
     eventSummary:
       "Kick, pass, shoot and GOAALLL! Send that ball flying into your opponents post and score!",
   },
@@ -85,6 +89,7 @@ export const events = [
     eventZone: "Delta",
     eventPrize: "Rs 4k",
     eventFee: 200,
+    imageFileName: "csgo.jpeg",
     eventSummary: "",
   },
 ]
