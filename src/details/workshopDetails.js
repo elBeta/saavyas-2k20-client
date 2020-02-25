@@ -1,17 +1,17 @@
 export const highlightEvents = [
   {
     title: "Week of Learning",
-    fileName: "event-posters/wol.png",
+    fileName: "wol.png",
     link: "/events/workshops/#wol",
   },
   {
     title: "IoT w. Google Asst.",
-    fileName: "event-posters/iot_with_gass.jpg",
+    fileName: "iot_with_gass.jpg",
     link: "/events/workshops/#iotwithgass",
   },
   {
     title: "Humanoid Robotics",
-    fileName: "event-posters/humanoid.jpg",
+    fileName: "humanoid.jpg",
     link: "/events/workshops/#humanrobot",
   },
 ]
