@@ -109,7 +109,13 @@ const useStyles = makeStyles(theme => ({
     fontSize: "15rem",
     fill: "#fafafa",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "10rem",
+      fontSize: "8rem",
+    },
+  },
+  verticalPad: {
+    padding: "2rem 0",
+    [theme.breakpoints.down("xs")]: {
+      padding: "1rem 0",
     },
   },
 }))
@@ -438,7 +444,7 @@ function TransactionStatus(props) {
     <>
       <CssBaseline />
       <div className={classes.root}>
-        <Grid container>
+        <Grid container justify="center">
           <Grid item xs={12}>
             <Typography
               variant="h5"
@@ -457,7 +463,7 @@ function TransactionStatus(props) {
             )}
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.verticalPad}>
             <Typography
               variant="h6"
               align="center"
@@ -475,10 +481,21 @@ function TransactionStatus(props) {
                 className={classes.fieldLabelTypo}
               >
                 The registration id and event name has beent sent to your email.
+                <br />
                 Thank you for registering.
               </Typography>
             </Grid>
           )}
+          <Grid item className={classes.verticalPad}>
+            <Button
+              className={classes.actionBtn}
+              onClick={() => navigate("/events")}
+            >
+              <Typography variant="h6" className={classes.actionBtnTypo}>
+                Go back
+              </Typography>
+            </Button>
+          </Grid>
         </Grid>
       </div>
     </>
