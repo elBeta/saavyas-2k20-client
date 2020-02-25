@@ -92,5 +92,6 @@ export const events = [
   // },
 ].map(item => ({
   ...item,
-  registrationLink: item.registrationLink || `/registration?eventID=${item.id}`,
+  registrationLink:
+    item.registrationLink || `/registration/?eventID=${item.id}`,
 }))
