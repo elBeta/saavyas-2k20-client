@@ -69,6 +69,7 @@ const useStyles = makeStyles(theme => ({
     color: "#fafafa",
   },
   titleTypo: {
+    fontFamily: "Kaushan Script",
     [theme.breakpoints.down("xs")]: {
       fontSize: "1.75rem",
     },

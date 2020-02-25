@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
 
 import FluidImage from "../image"
+import Link from "../Link"
 
 const useStyles = makeStyles(theme => ({
   root: props => ({
@@ -222,6 +223,7 @@ function EventSlide(props) {
           <ActionPanel
             classes={classes}
             mobileMode={mobileMode}
+            eventID={id}
             ruleBookLink={ruleBookLink}
             registrationLink={registrationLink}
           />
@@ -388,15 +390,13 @@ function EventContent(props) {
 }
 
 function ActionPanel(props) {
-  const { classes, mobileMode, ruleBookLink, registrationLink } = props
+  const { classes, mobileMode, eventID, ruleBookLink } = props
 
   return (
     <Grid container justify={mobileMode ? "center" : "space-between"}>
       <Grid item>
-        <a
-          href={ruleBookLink}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to={ruleBookLink}
           style={{ textDecoration: "inherit", color: "inherit" }}
         >
           <Button
@@ -408,12 +408,12 @@ function ActionPanel(props) {
               Know More
             </Typography>
           </Button>
-        </a>
+        </Link>
       </Grid>
       <Grid item>
-        <a
-          href={registrationLink}
-          rel="noopener noreferrer"
+        <Link
+          to="/registration"
+          state={{ eventID: eventID }}
           style={{ textDecoration: "inherit", color: "inherit" }}
         >
           <Button
@@ -425,7 +425,7 @@ function ActionPanel(props) {
               Register
             </Typography>
           </Button>
-        </a>
+        </Link>
       </Grid>
     </Grid>
   )

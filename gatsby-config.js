@@ -106,6 +106,11 @@ module.exports = {
             subsets: [`latin`],
             text: `FACE`,
           },
+          {
+            family: `Kaushan Script`,
+            variants: [`400`],
+            subsets: [`latin`],
+          },
         ],
       },
     },

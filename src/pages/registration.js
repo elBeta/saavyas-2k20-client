@@ -109,7 +109,13 @@ const useStyles = makeStyles(theme => ({
     fontSize: "15rem",
     fill: "#fafafa",
     [theme.breakpoints.down("xs")]: {
-      fontSize: "10rem",
+      fontSize: "8rem",
+    },
+  },
+  verticalPad: {
+    padding: "2rem 0",
+    [theme.breakpoints.down("xs")]: {
+      padding: "1rem 0",
     },
   },
 }))
@@ -124,7 +130,8 @@ function RegistrationForm(props) {
     success: false,
     txnid: "",
   })
-  const eventID = qs.parse(location.search.substring(1))["eventID"]
+  const [isLoading, setIsLoading] = useState(false)
+  const eventID = location.state ? location.state.eventID : ""
 
   // Get Form Fields from eventId
   useEffect(() => {
@@ -132,6 +139,7 @@ function RegistrationForm(props) {
       return
     }
 
+    setIsLoading(true)
     const fieldFetchAPIName = "eventFormFieldsFetchAPI"
     const fieldFetchAPIPath = "/get-form-fields"
     const fieldFetchQParams = {
@@ -172,6 +180,7 @@ function RegistrationForm(props) {
       .catch(err => {
         console.log(err)
       })
+      .finally(() => setIsLoading(false))
   }, [eventID, txnStatus.performed])
 
   const handleInputChange = e => {
@@ -207,6 +216,7 @@ function RegistrationForm(props) {
       return
     }
 
+    setIsLoading(true)
     const coreQueryParams = {
       productinfo: eventID,
       firstname: (formData["Participant Name"] || formData["Team Name"]).split(
@@ -311,6 +321,7 @@ function RegistrationForm(props) {
           txnid: "",
         })
       })
+      .finally(() => setIsLoading(false))
     // =================================================================
   }
 
@@ -319,7 +330,7 @@ function RegistrationForm(props) {
   }
 
   // If loading, render loader
-  const isLoading = !formFields.length && !txnStatus.performed
+  // const isLoading = !formFields.length && !txnStatus.performed
   if (isLoading) {
     return (
       <>
@@ -438,7 +449,7 @@ function TransactionStatus(props) {
     <>
       <CssBaseline />
       <div className={classes.root}>
-        <Grid container>
+        <Grid container justify="center">
           <Grid item xs={12}>
             <Typography
               variant="h5"
@@ -457,7 +468,7 @@ function TransactionStatus(props) {
             )}
           </Grid>
 
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.verticalPad}>
             <Typography
               variant="h6"
               align="center"
@@ -475,10 +486,21 @@ function TransactionStatus(props) {
                 className={classes.fieldLabelTypo}
               >
                 The registration id and event name has beent sent to your email.
+                <br />
                 Thank you for registering.
               </Typography>
             </Grid>
           )}
+          <Grid item className={classes.verticalPad}>
+            <Button
+              className={classes.actionBtn}
+              onClick={() => navigate("/events")}
+            >
+              <Typography variant="h6" className={classes.actionBtnTypo}>
+                Go back
+              </Typography>
+            </Button>
+          </Grid>
         </Grid>
       </div>
     </>
