@@ -390,7 +390,7 @@ function EventContent(props) {
 }
 
 function ActionPanel(props) {
-  const { classes, mobileMode, eventID, ruleBookLink } = props
+  const { classes, mobileMode, eventID, ruleBookLink, registrationLink } = props
 
   return (
     <Grid container justify={mobileMode ? "center" : "space-between"}>
@@ -412,7 +412,7 @@ function ActionPanel(props) {
       </Grid>
       <Grid item>
         <Link
-          to="/registration"
+          to={registrationLink ? registrationLink : "/registration"}
           state={{ eventID: eventID }}
           style={{ textDecoration: "inherit", color: "inherit" }}
         >
