@@ -5,9 +5,9 @@ export const highlightEvents = [
     link: "/events/workshops/#wol",
   },
   {
-    title: "IoT w. Google Asst.",
-    fileName: "iot_with_gass.jpg",
-    link: "/events/workshops/#iotwithgass",
+    title: "Women in Data Science",
+    fileName: "wids.png",
+    link: "/events/workshops/#wids",
   },
   {
     title: "Humanoid Robotics",
@@ -17,6 +17,31 @@ export const highlightEvents = [
 ]
 
 export const events = [
+  {
+    id: "wids",
+    titleA: "Women in",
+    titleB: "Data Science",
+    eventDate: "28th February",
+    eventTime: "2:00 PM",
+    eventFee: 0,
+    imageFileName: "wids.png",
+    eventSummary: `Open to girls and boys
+
+    Greetings from Women in Data Science at Stanford University Goa Chapter
+    
+    Saavyas'20 and WiDS Goa brings to you a session on Data Science on 28th February 2020, at NIT Goa from 02:00 PM onwards
+    
+    The Women in Data Science (WiDS) initiative aims to inspire and educate data scientists worldwide, regardless of gender, and to support women in the field.
+    
+    The speakers for the session include:
+    Dikshita Desai, the WiDS 2020 ambassador for Goa.
+    Nithya Shivshankar, Data Scientist from SAP India Pvt Ltd.
+    Stella Tom, Chapter lead for Women in Data Science and Machine Learning Goa.
+    
+    For more details, visit: https://widsgoa.github.io/2020/`,
+    registrationLink: "https://widsgoa.github.io/2020/",
+    ruleBookLink: "https://widsgoa.github.io/2020/",
+  },
   {
     id: "humanrobot",
     titleA: "Humanoid",

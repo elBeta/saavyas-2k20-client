@@ -24,8 +24,10 @@ export const events = [
     eventZone: "Campus",
     eventLocation: "Campus",
     eventSummary:
-      "Saavyas'20 in association  with Coding Blocks, Delhi and GDG Goa bring to you HACKATHAW an exciting technical pre-event, ( 24 hour Hackathon) being held from 29-FEB-20 to 1-MAR-29. Hope you guys are excited and enthralled as much as we are, lots of prizes and goodies to win for!.",
+      "Saavyas'20 in association with Coding Blocks, Delhi and GDG Goa bring to you HACKATHAW, an exciting technical pre-event (24 hour Hackathon) being held from 29-FEB-20 to 1-MAR-29. Hope you guys are excited and enthralled as much as we are, lots of prizes and goodies to win for!.",
     registrationLink: "https://saavyas.typeform.com/to/OuB5Oy",
+    ruleBookLink:
+      "https://docs.google.com/document/d/1IjPX9u4UMVufUawYnLb-Vqn8WY2P3mGsYDkSWMRCRXY/edit?usp=sharing",
   },
   {
     id: "drone-prix",
