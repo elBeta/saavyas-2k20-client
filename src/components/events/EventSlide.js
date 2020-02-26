@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
   titleB: props => ({
     color: props.titleBColor,
     fontFamily: "Barlow Semi Condensed",
-    fontSize: "6.5rem",
+    fontSize: "5.5rem",
     fontWeight: 900,
     textTransform: "uppercase",
     letterSpacing: "0.00938em",
@@ -101,10 +101,17 @@ const useStyles = makeStyles(theme => ({
       fontSize: "0.9rem",
     },
   }),
+  eventImageHolder: {
+    display: "flex",
+    alignContent: "center",
+  },
   eventImage: {
+    flexGrow: 1,
     maxHeight: "30rem",
+    maxWidth: "35rem",
     [theme.breakpoints.down("xs")]: {
       maxHeight: "12rem",
+      maxWidth: "12rem",
     },
   },
   knowMoreBtn: props => ({
@@ -173,7 +180,13 @@ function EventSlide(props) {
   const eventImageHAlign = mobileMode ? "center" : rightAlign ? "left" : "right"
 
   const imageComponent = imageFileName && (
-    <Grid item xs={12} md={6}>
+    <Grid
+      item
+      xs={12}
+      md={6}
+      className={classes.eventImageHolder}
+      style={{ justifyContent: rightAlign ? "flex-start" : "flex-end" }}
+    >
       <FluidImage
         fileName={"event-posters/" + imageFileName}
         className={classes.eventImage}
@@ -289,7 +302,7 @@ function EventContent(props) {
             {eventDate || "NA"}
           </Typography>
         </Grid>
-        <Grid item xs={6} sm={12}>
+        {/* <Grid item xs={6} sm={12}>
           <Typography
             variant="h5"
             display="inline"
@@ -336,7 +349,7 @@ function EventContent(props) {
           >
             {eventLocation || "NA"}
           </Typography>
-        </Grid>
+        </Grid> */}
         <Grid item xs={6} sm={12}>
           <Typography
             variant="h5"

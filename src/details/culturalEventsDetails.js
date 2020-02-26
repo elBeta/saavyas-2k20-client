@@ -1,4 +1,15 @@
-export const highlightEvents = []
+export const highlightEvents = [
+  {
+    title: "Mr. and Ms. Saavyas",
+    fileName: "m-rs-saavyas.jpeg",
+    link: "/events/cultural/#m-rs-saavyas",
+  },
+  {
+    title: "Shake it UP",
+    fileName: "solo-dance.jpeg",
+    link: "/events/cultural/#solo-dance",
+  },
+]
 
 export const events = [
   {
@@ -44,7 +55,7 @@ export const events = [
   {
     id: "solo-dance",
     titleA: "Shake it UP",
-    titleB: "Solo Dance",
+    titleB: "Solo Street Dance",
     eventDate: "8th March",
     // eventTime: "10:00 AM",
     eventZone: "Echo",

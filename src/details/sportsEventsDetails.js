@@ -1,4 +1,15 @@
-export const highlightEvents = []
+export const highlightEvents = [
+  {
+    title: "Futsal",
+    fileName: "futsal.jpeg",
+    link: "/events/sports-esports/#football",
+  },
+  {
+    title: "PUBG",
+    fileName: "pubg.jpeg",
+    link: "/events/sports-esports/#pubg",
+  },
+]
 
 export const events = [
   {
