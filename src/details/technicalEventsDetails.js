@@ -39,7 +39,7 @@ export const events = [
     eventPrize: "Rs 14k",
     imageFileName: "drone-prix.png",
     eventSummary:
-      "Drone Prix: SAAVYAS-20 presents you a robotic platform that has been successfully used to develop a competition (called Drone Challenge) in which students has to program the navigation system for a simulated unmanned aerial vehicle (or drone).",
+      "SAAVYAS ‘20 presents you first Edition of Drone Flying Competition which tests your aerial skills to the apogee as your drone flies through toughest obstacle course designed. Earn the title of being one of the best Aviator in Goa",
   },
   {
     id: "robo-soccer",
