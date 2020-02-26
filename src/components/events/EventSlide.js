@@ -101,10 +101,17 @@ const useStyles = makeStyles(theme => ({
       fontSize: "0.9rem",
     },
   }),
+  eventImageHolder: {
+    display: "flex",
+    alignContent: "center",
+  },
   eventImage: {
+    flexGrow: 1,
     maxHeight: "30rem",
+    maxWidth: "35rem",
     [theme.breakpoints.down("xs")]: {
       maxHeight: "12rem",
+      maxWidth: "12rem",
     },
   },
   knowMoreBtn: props => ({
@@ -173,7 +180,13 @@ function EventSlide(props) {
   const eventImageHAlign = mobileMode ? "center" : rightAlign ? "left" : "right"
 
   const imageComponent = imageFileName && (
-    <Grid item xs={12} md={6}>
+    <Grid
+      item
+      xs={12}
+      md={6}
+      className={classes.eventImageHolder}
+      style={{ justifyContent: rightAlign ? "flex-start" : "flex-end" }}
+    >
       <FluidImage
         fileName={"event-posters/" + imageFileName}
         className={classes.eventImage}
