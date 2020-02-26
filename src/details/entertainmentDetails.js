@@ -23,6 +23,8 @@ export const events = [
     eventPrize: "Rs 1.5k",
     eventFee: 50,
     imageFileName: "binge-eating.jpeg",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1O-ziTO_lHFRe1JnscXgU1oH8GJUhHiIU",
     eventSummary: `Hungry?
     Take all food in the world to eat,
     But be warned, it ain't an easy feat.`,
@@ -37,6 +39,8 @@ export const events = [
     eventPrize: "Rs 2k",
     eventFee: 50,
     imageFileName: "ipl-auction.jpeg",
+    ruleBookLink:
+      "https://drive.google.com/file/d/1TZsFSPbX_VtRqGV4F2ts9XRVXEISghB4/view?usp=sharing",
     eventSummary: "",
   },
   {
@@ -50,6 +54,8 @@ export const events = [
     eventPrize: "Rs 6k",
     eventFee: 100,
     imageFileName: "bazinga.jpeg",
+    ruleBookLink:
+      "https://drive.google.com/file/d/1yWd1R6rP0qAEnC0j61wMXtN1J23zLoHU/view?usp=sharing",
     eventSummary: `Hungry?
     Friends, GOT , you know the rest,
     Let's put all your bingewatch hours to test.`,
@@ -65,6 +71,8 @@ export const events = [
     eventPrize: "Rs 12k",
     eventFee: 100,
     imageFileName: "trivium.jpeg",
+    ruleBookLink:
+      "https://drive.google.com/file/d/14PMv2unMsZCIngCg0cAwYXuTfC8TnJLB/view?usp=sharing",
     eventSummary: `Are those books and newspapers in your luggage?
     Shall we quiz you about general knowledge?`,
   },
@@ -79,6 +87,8 @@ export const events = [
     eventPrize: "Rs 2k",
     eventFee: 50,
     imageFileName: "min-to-win.jpeg",
+    ruleBookLink:
+      "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
     eventSummary: `Let's hear you talk, for just a minute,
     Be careful not to exceed your limit.`,
   },

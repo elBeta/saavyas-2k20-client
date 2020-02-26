@@ -36,6 +36,8 @@ export const events = [
     eventPrize: "Rs 4.5k",
     eventFee: 50,
     imageFileName: "table-tennis.png",
+    ruleBookLink:
+      "https://docs.google.com/document/d/10rM1RjfdQYJm5MyQ3bKys7NraIxAimzM00KmhhHaWNM/edit?usp=sharing",
     eventSummary:
       "Smash those balls across the court and get those amazing points!",
   },
@@ -49,6 +51,8 @@ export const events = [
     // eventLocation: "Ground Sector 2",
     eventPrize: "Rs 24k",
     eventFee: 1000,
+    ruleBookLink:
+      "https://docs.google.com/document/d/1k4ezIpSCKc2BNGWr5YEoAANWGKY5XJinC7mFmxRk-oU/edit?usp=sharing",
     eventSummary:
       "Smash those balls across the court and get those amazing points!",
   },
@@ -63,6 +67,8 @@ export const events = [
     eventPrize: "Rs 1.5k",
     eventFee: 50,
     imageFileName: "pro-cricket.png",
+    ruleBookLink:
+      "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
     eventSummary:
       "Unleash your inner Dhonis and Virats! Its time to apply your best cricketing tactics to drive your team to its glory!",
   },
@@ -77,6 +83,8 @@ export const events = [
     eventPrize: "Rs 4.5k",
     eventFee: 200,
     imageFileName: "pubg.jpeg",
+    ruleBookLink:
+      "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
     eventSummary:
       "Winner winner chicken dinner! Engage in this addicting Battle Royale to put your gaming skills to the test!",
   },
@@ -90,6 +98,8 @@ export const events = [
     eventPrize: "Rs 4k",
     eventFee: 100,
     imageFileName: "fifa.jpeg",
+    ruleBookLink:
+      "https://drive.google.com/file/d/1s7ImiJ7kclPWATViVxs0-X7nmXJsMrc0/view?usp=sharing",
     eventSummary:
       "Kick, pass, shoot and GOAALLL! Send that ball flying into your opponents post and score!",
   },
@@ -101,6 +111,8 @@ export const events = [
     eventPrize: "Rs 4k",
     eventFee: 200,
     imageFileName: "csgo.jpeg",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1Qhf_imZot-_dNjLfLcb94CeeLFtFlu5q7BQALt5HVPw",
     eventSummary: "",
   },
 ]
