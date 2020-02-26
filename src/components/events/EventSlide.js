@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
   titleB: props => ({
     color: props.titleBColor,
     fontFamily: "Barlow Semi Condensed",
-    fontSize: "6.5rem",
+    fontSize: "5.5rem",
     fontWeight: 900,
     textTransform: "uppercase",
     letterSpacing: "0.00938em",
@@ -289,7 +289,7 @@ function EventContent(props) {
             {eventDate || "NA"}
           </Typography>
         </Grid>
-        <Grid item xs={6} sm={12}>
+        {/* <Grid item xs={6} sm={12}>
           <Typography
             variant="h5"
             display="inline"
@@ -336,7 +336,7 @@ function EventContent(props) {
           >
             {eventLocation || "NA"}
           </Typography>
-        </Grid>
+        </Grid> */}
         <Grid item xs={6} sm={12}>
           <Typography
             variant="h5"
