@@ -5,13 +5,13 @@
 		"env": {
 			"Type": "String"
 		},
-		"storageeventsInfoDBName": {
+		"storagepaymentsDBName": {
 			"Type": "String",
-			"Default": "storageeventsInfoDBName"
+			"Default": "storagepaymentsDBName"
 		},
-		"storageeventsInfoDBArn": {
+		"storagepaymentsDBArn": {
 			"Type": "String",
-			"Default": "storageeventsInfoDBArn"
+			"Default": "storagepaymentsDBArn"
 		}
 	},
 	"Conditions": {
@@ -36,12 +36,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"computeRequestHash",
+						"getTxnDetails",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"computeRequestHash",
+									"getTxnDetails",
 									"-",
 									{
 										"Ref": "env"
@@ -59,11 +59,11 @@
 						"REGION": {
 							"Ref": "AWS::Region"
 						},
-						"STORAGE_EVENTSINFODB_NAME": {
-							"Ref": "storageeventsInfoDBName"
+						"STORAGE_PAYMENTSDB_NAME": {
+							"Ref": "storagepaymentsDBName"
 						},
-						"STORAGE_EVENTSINFODB_ARN": {
-							"Ref": "storageeventsInfoDBArn"
+						"STORAGE_PAYMENTSDB_ARN": {
+							"Ref": "storagepaymentsDBArn"
 						}
 					}
 				},
@@ -77,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-saavyas-2k20-client-dev-222337-deployment",
-					"S3Key": "amplify-builds/computeHash-6c6c33623848624d6a4e-build.zip"
+					"S3Key": "amplify-builds/getTxnDetails-3057322b52454d4a4379-build.zip"
 				}
 			}
 		},
@@ -87,12 +87,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"saavyas2k20clientLambdaRole6ec05167",
+						"saavyas2k20clientLambdaRolebf6b5ece",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"saavyas2k20clientLambdaRole6ec05167",
+									"saavyas2k20clientLambdaRolebf6b5ece",
 									"-",
 									{
 										"Ref": "env"
@@ -190,14 +190,14 @@
 							],
 							"Resource": [
 								{
-									"Ref": "storageeventsInfoDBArn"
+									"Ref": "storagepaymentsDBArn"
 								},
 								{
 									"Fn::Join": [
 										"/",
 										[
 											{
-												"Ref": "storageeventsInfoDBArn"
+												"Ref": "storagepaymentsDBArn"
 											},
 											"index/*"
 										]
