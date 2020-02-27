@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
   makeStyles,
   createMuiTheme,
@@ -14,6 +14,9 @@ import Input from "@material-ui/core/Input"
 import PhotoIcon from "@material-ui/icons/PhotoCamera"
 
 import QrReader from "react-qr-reader"
+import Amplify, { API } from "aws-amplify"
+import awsconfig from "../aws-exports"
+import Loader from "../components/Loader"
 
 let theme = responsiveFontSizes(createMuiTheme())
 
@@ -77,7 +80,33 @@ const useStyles = makeStyles(theme => ({
 
 function QRScanner(props) {
   const classes = useStyles()
-  const [qrResult, setQrResult] = useState("a")
+  const [qrResult, setQrResult] = useState("txn1235")
+  const [txnDetails, setTxnDetails] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+
+  useEffect(() => {
+    if (qrResult === "") {
+      return
+    }
+
+    setIsLoading(true)
+    Amplify.configure(awsconfig)
+    API.get("txnDetailsFetchAPI", "/fetch-txn-details", {
+      queryStringParameters: {
+        txnid: qrResult,
+      },
+    })
+      .then(details => {
+        console.log(details)
+        setTxnDetails(details)
+      })
+      .catch(err => {
+        console.log(err.response.data)
+        alert(err.response.data)
+        setQrResult("")
+      })
+      .finally(() => setIsLoading(false))
+  }, [qrResult])
 
   const handleError = err => {}
 
@@ -90,6 +119,15 @@ function QRScanner(props) {
   const handlePhotoClick = e => {
     console.log("clicked")
     setQrResult("")
+  }
+
+  if (isLoading) {
+    return (
+      <>
+        <CssBaseline />
+        <Loader size="5rem" bgColor="#333645" iconColor="white" />
+      </>
+    )
   }
 
   return (
@@ -108,7 +146,7 @@ function QRScanner(props) {
             </div>
           ) : (
             <RegDetails
-              txnId={qrResult}
+              txnDetails={txnDetails}
               photoClickHandler={handlePhotoClick}
               classes={classes}
             />
@@ -120,23 +158,19 @@ function QRScanner(props) {
 }
 
 function RegDetails(props) {
-  const { txnid, photoClickHandler, classes } = props
-  const [txnDetails, setTxnDetails] = useState({
-    txnid: "abc",
-    "Participant Name": "Piyush",
-    "College Name": "NIT Goa",
-    "Event Name": "XYZ",
-    amount: 100,
-    paid: false,
-    mailSent: true,
-    "Phone Number": "9359542853",
-    "Email Id": "piyush.kotian@gmail.com",
-    "Registered At": Date.now(),
-  })
+  const { txnDetails, photoClickHandler, classes } = props
 
   const getShortDate = timestamp => {
-    const date = new Date(timestamp)
-    return date.toLocaleString()
+    const date = new Date(parseInt(timestamp))
+    return (
+      date.getDate() +
+      "/" +
+      date.getMonth() +
+      "/" +
+      date.getFullYear() +
+      " at " +
+      date.toLocaleTimeString()
+    )
   }
 
   return (
