@@ -31,11 +31,7 @@ const useStyles = makeStyles(theme => ({
       flexDirection: "row-reverse",
     },
   },
-  header: {
-    paddingBottom: "1rem",
-  },
   titleHolder: {
-    paddingBottom: "1rem",
     [theme.breakpoints.up("md")]: {
       padding: "6rem 4rem",
       borderLeft: "8px solid #fafafa",
@@ -57,6 +53,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
+  },
+  payLaterNote: {
+    paddingTop: "1rem",
   },
   formHolder: {
     padding: "1rem 0",
@@ -368,7 +367,7 @@ function RegistrationForm(props) {
       </Helmet>
       <div className={classes.root}>
         <Grid container alignItems="center" className={classes.rootGrid}>
-          <Grid container item xs={12} md={5} lg={6} className={classes.header}>
+          <Grid container item xs={12} md={5} lg={6}>
             <Grid container item xs={12} className={classes.titleHolder}>
               <Grid item xs={12}>
                 <Typography variant="h3" className={classes.titleTypo}>
@@ -380,8 +379,16 @@ function RegistrationForm(props) {
                   Registration
                 </Typography>
               </Grid>
+              <Grid item className={classes.titleUnderline} />
+              <Grid item xs={12}>
+                <Typography
+                  className={[classes.fieldLabelTypo, classes.payLaterNote]}
+                >
+                  ** Register without payment now. Payment link will be emailed
+                  to you soon upon activation of Payment Portal.
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item className={classes.titleUnderline} />
           </Grid>
           <Grid container item xs={12} md={7} lg={6}>
             <Grid container item xs={12} className={classes.formHolder}>
@@ -430,7 +437,7 @@ function RegistrationForm(props) {
                   onClick={handleRegisterClick}
                 >
                   <Typography variant="h6" className={classes.actionBtnTypo}>
-                    Register
+                    Register **
                   </Typography>
                 </Button>
               </Grid>
