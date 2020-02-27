@@ -64,7 +64,7 @@ export const events = [
     id: "trivium",
     titleA: "Rapid Fire",
     titleB: "Trivium",
-    eventDate: "9th March",
+    eventDate: "8th March",
     // eventTime: "10:00 AM",
     eventZone: "Bravo",
     // eventLocation: "Seminar Hall",
