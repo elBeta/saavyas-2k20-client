@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
       "& $titleTypo": {
         backgroundColor: "rgba(0, 0, 0, 0.6)",
         padding: "1rem",
+        border: "2px solid white",
       },
     },
   },
@@ -73,6 +74,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down("xs")]: {
       fontSize: "1.75rem",
     },
+    padding: "1rem",
+    border: "2px solid rgba(255, 255, 255, 0)",
+    transition: "border-color 0.5s",
   },
 }))
 
