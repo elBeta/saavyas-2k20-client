@@ -425,8 +425,11 @@ function ActionPanel(props) {
       </Grid>
       <Grid item>
         <Link
-          to={registrationLink ? registrationLink : "/registration"}
-          state={{ eventID: eventID }}
+          to={
+            registrationLink
+              ? registrationLink
+              : `/registration/?eventID=${eventID}`
+          }
           style={{ textDecoration: "inherit", color: "inherit" }}
         >
           <Button
