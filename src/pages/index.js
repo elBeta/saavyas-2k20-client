@@ -28,7 +28,7 @@ import ShareButtons from "../components/ShareButtons"
 import FluidImage from "../components/image"
 import SEO from "../components/seo"
 
-import { Link } from "gatsby"
+import Link from "../components/Link"
 
 const theme = responsiveFontSizes(createMuiTheme())
 theme.typography.body1 = {
@@ -104,6 +104,9 @@ const useStyles = makeStyles({
     color: "white",
     borderRadius: 0,
     fontWeight: 700,
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+    },
   },
   navBtnBadge: {
     color: "white",
@@ -115,6 +118,12 @@ const useStyles = makeStyles({
     padding: 0,
     [theme.breakpoints.down("xs")]: {
       paddingBottom: "1rem",
+    },
+  },
+  menuBtnHolder: {
+    [theme.breakpoints.down("xs")]: {
+      display: "flex",
+      justifyContent: "center",
     },
   },
 })
@@ -155,7 +164,12 @@ function ComingSoon() {
                 className={classes.mainSectionArea}
               >
                 <Grid container justify="space-between" item>
-                  <Grid item>
+                  <Grid
+                    item
+                    xs={12}
+                    sm="auto"
+                    className={classes.menuBtnHolder}
+                  >
                     <IconButton
                       className={classes.menuBtn}
                       onClick={handleMoreInfoClick}
@@ -168,13 +182,8 @@ function ComingSoon() {
                     </IconButton>
                   </Grid>
                   <Grid container item spacing={2} style={{ width: "auto" }}>
-                    <Grid item>
+                    <Grid item xs={12} sm="auto">
                       <Link to="/events" className={classes.navLink}>
-                        {/* <Badge
-                          badgeContent="NEW"
-                          color="secondary"
-                          className={classes.navBtnBadge}
-                        > */}
                         <Button
                           variant="outlined"
                           color="inherit"
@@ -182,10 +191,23 @@ function ComingSoon() {
                         >
                           Events
                         </Button>
-                        {/* </Badge> */}
                       </Link>
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={12} sm="auto">
+                      <Link
+                        to="https://drive.google.com/open?id=1wWg1QPw0TBk4bDqEX7881elWWSLLvS2W"
+                        className={classes.navLink}
+                      >
+                        <Button
+                          variant="outlined"
+                          color="inherit"
+                          className={classes.navBtn}
+                        >
+                          Coordinators List
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={12} sm="auto">
                       <Link to="/meet-the-team" className={classes.navLink}>
                         <Button
                           variant="outlined"
@@ -196,13 +218,8 @@ function ComingSoon() {
                         </Button>
                       </Link>
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={12} sm="auto">
                       <Link to="/merchandise" className={classes.navLink}>
-                        {/* <Badge
-                          badgeContent="NEW"
-                          color="secondary"
-                          className={classes.navBtnBadge}
-                        > */}
                         <Button
                           variant="outlined"
                           color="inherit"
@@ -210,7 +227,6 @@ function ComingSoon() {
                         >
                           Merchandise
                         </Button>
-                        {/* </Badge> */}
                       </Link>
                     </Grid>
                   </Grid>
