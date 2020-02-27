@@ -325,7 +325,7 @@ function RegistrationForm(props) {
   }
 
   const handleCancelClick = e => {
-    navigate("/")
+    navigate("/events")
   }
 
   // If loading, render loader
