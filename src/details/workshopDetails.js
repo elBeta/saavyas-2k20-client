@@ -47,7 +47,7 @@ export const events = [
     titleA: "Humanoid",
     titleB: "Robotics",
     rightAlign: true,
-    eventDate: "6th and 7th March",
+    eventDate: "7th and 8th March",
     eventFee: 1500,
     eventSummary:
       "Humanoid robots are being developed to perform human tasks like " +
@@ -63,7 +63,7 @@ export const events = [
     id: "ai",
     titleA: "Artificial",
     titleB: "Intelligence",
-    eventDate: "6th and 7th March",
+    eventDate: "7th and 8th March",
     eventFee: 1500,
     eventSummary:
       "Today, the amount of data that is generated, by " +
@@ -82,7 +82,7 @@ export const events = [
     titleA: "IoT with",
     titleB: "Google Assistant",
     rightAlign: true,
-    eventDate: "6th and 7th March",
+    eventDate: "7th and 8th March",
     eventFee: 1500,
     eventSummary:
       "Internet of Things (IoT) is an ecosystem of connected physical " +
