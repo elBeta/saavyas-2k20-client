@@ -1,7 +1,7 @@
 export const highlightEvents = [
   {
     title: "Futsal",
-    fileName: "futsal.jpeg",
+    fileName: "football.jpeg",
     link: "/events/sports-esports/#football",
   },
   {
@@ -40,7 +40,7 @@ export const events = [
     // eventTime: "10:30 AM",
     eventZone: "Bravo",
     // eventLocation: "N5/N6",
-    eventPrize: "Rs 4.5k",
+    eventPrize: "Rs 4k",
     eventFee: 50,
     imageFileName: "table-tennis.jpeg",
     coordinators: [
@@ -135,7 +135,7 @@ export const events = [
     // eventTime: "10:30 AM",
     eventZone: "Delta",
     // eventLocation: "2A/2B",
-    eventPrize: "Rs 4.5k",
+    eventPrize: "Rs 4k",
     eventFee: 50,
     imageFileName: "fifa.jpeg",
     coordinators: [

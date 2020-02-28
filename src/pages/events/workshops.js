@@ -83,6 +83,7 @@ function WorkshopPage(props) {
             eventZone={event.eventZone}
             eventLocation={event.eventLocation}
             eventPrize={event.eventPrize}
+            eventCoordinators={event.coordinators}
             eventSummary={event.eventSummary}
             id={event.id}
             titleA={event.titleA}
@@ -94,6 +95,7 @@ function WorkshopPage(props) {
                 ]
               ]
             }
+            moreInfoLink={event.moreInfoLink}
             ruleBookLink={event.ruleBookLink}
             registrationLink={event.registrationLink}
           />

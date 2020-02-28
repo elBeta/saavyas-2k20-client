@@ -166,10 +166,12 @@ function EventSlide(props) {
     eventZone,
     eventLocation,
     eventPrize,
+    eventCoordinators,
     eventSummary,
     id,
     titleA,
     titleB,
+    moreInfoLink,
     ruleBookLink,
     registrationLink,
   } = props
@@ -227,6 +229,7 @@ function EventSlide(props) {
               eventZone={eventZone}
               eventLocation={eventLocation}
               eventPrize={eventPrize}
+              eventCoordinators={eventCoordinators}
               eventSummary={eventSummary}
             />
           </Grid>
@@ -237,6 +240,7 @@ function EventSlide(props) {
             classes={classes}
             mobileMode={mobileMode}
             eventID={id}
+            moreInfoLink={moreInfoLink}
             ruleBookLink={ruleBookLink}
             registrationLink={registrationLink}
           />
@@ -280,6 +284,7 @@ function EventContent(props) {
     eventZone,
     eventLocation,
     eventPrize,
+    eventCoordinators,
     eventSummary,
   } = props
 
@@ -370,6 +375,21 @@ function EventContent(props) {
               : "Rs " + eventFee}
           </Typography>
         </Grid>
+        {eventCoordinators && (
+          <Grid item xs={12}>
+            <Typography
+              variant="h5"
+              className={[classes.impFieldContent, classes.impFieldLabel]}
+            >
+              Coordinators:{" "}
+            </Typography>
+            {eventCoordinators.map(item => (
+              <Typography variant="h5" className={classes.impFieldContent}>
+                {item.name + " (" + item.phoneNo + ")"}
+              </Typography>
+            ))}
+          </Grid>
+        )}
         {eventPrize && (
           <Grid item xs={12}>
             <Typography
@@ -403,7 +423,14 @@ function EventContent(props) {
 }
 
 function ActionPanel(props) {
-  const { classes, mobileMode, eventID, ruleBookLink, registrationLink } = props
+  const {
+    classes,
+    mobileMode,
+    eventID,
+    moreInfoLink,
+    ruleBookLink,
+    registrationLink,
+  } = props
 
   return (
     <Grid container justify={mobileMode ? "center" : "space-between"}>
@@ -423,6 +450,24 @@ function ActionPanel(props) {
           </Button>
         </Link>
       </Grid>
+      {moreInfoLink && (
+        <Grid item>
+          <Link
+            to={moreInfoLink}
+            style={{ textDecoration: "inherit", color: "inherit" }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.knowMoreBtn}
+            >
+              <Typography variant="h3" className={classes.btnTypo}>
+                More Info
+              </Typography>
+            </Button>
+          </Link>
+        </Grid>
+      )}
       <Grid item>
         <Link
           to={

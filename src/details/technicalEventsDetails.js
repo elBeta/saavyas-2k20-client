@@ -83,7 +83,7 @@ export const events = [
     eventZone: "Foxtrot",
     // eventLocation: "ITI Lawn",
     eventFee: 1000,
-    eventPrize: "Rs 45k",
+    eventPrize: "Rs 50k",
     imageFileName: "robo-wars.jpeg",
     coordinators: [
       {
