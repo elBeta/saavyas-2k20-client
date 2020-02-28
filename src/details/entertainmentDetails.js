@@ -23,6 +23,12 @@ export const events = [
     eventPrize: "Rs 1.5k",
     eventFee: 50,
     imageFileName: "binge-eating.jpeg",
+    coordinators: [
+      {
+        name: "Sachin Sajeevan",
+        phoneNo: "8078115183",
+      },
+    ],
     ruleBookLink:
       "https://drive.google.com/open?id=1O-ziTO_lHFRe1JnscXgU1oH8GJUhHiIU",
     eventSummary: `Hungry?
@@ -37,8 +43,18 @@ export const events = [
     eventZone: "Bravo",
     // eventLocation: "Seminar Hall",
     eventPrize: "Rs 2k",
-    eventFee: 50,
+    eventFee: 100,
     imageFileName: "ipl-auction.jpeg",
+    coordinators: [
+      {
+        name: "Mayank Solanki",
+        phoneNo: "9579934427",
+      },
+      {
+        name: "Mayank Raj",
+        phoneNo: "9521280023",
+      },
+    ],
     ruleBookLink:
       "https://drive.google.com/file/d/1TZsFSPbX_VtRqGV4F2ts9XRVXEISghB4/view?usp=sharing",
     eventSummary: "",
@@ -54,8 +70,14 @@ export const events = [
     eventPrize: "Rs 6k",
     eventFee: 100,
     imageFileName: "bazinga.jpeg",
+    coordinators: [
+      {
+        name: "Sumit Katre",
+        phoneNo: "7507463815",
+      },
+    ],
     ruleBookLink:
-      "https://drive.google.com/file/d/1yWd1R6rP0qAEnC0j61wMXtN1J23zLoHU/view?usp=sharing",
+      "https://drive.google.com/open?id=1GHS598IsI6fI-8KXAaXbD9wmr_Rx4cEn",
     eventSummary: `Hungry?
     Friends, GOT , you know the rest,
     Let's put all your bingewatch hours to test.`,
@@ -71,8 +93,14 @@ export const events = [
     eventPrize: "Rs 12k",
     eventFee: 100,
     imageFileName: "trivium.jpeg",
+    coordinators: [
+      {
+        name: "Snehil Mishra",
+        phoneNo: "9340350831",
+      },
+    ],
     ruleBookLink:
-      "https://drive.google.com/file/d/14PMv2unMsZCIngCg0cAwYXuTfC8TnJLB/view?usp=sharing",
+      "https://drive.google.com/open?id=1_MmN2s-9IawHXrM6RxhUkVnSZlg-BM6e",
     eventSummary: `Are those books and newspapers in your luggage?
     Shall we quiz you about general knowledge?`,
   },
@@ -87,6 +115,12 @@ export const events = [
     eventPrize: "Rs 2k",
     eventFee: 50,
     imageFileName: "min-to-win.jpeg",
+    coordinators: [
+      {
+        name: "Apurva Kanekar",
+        phoneNo: "9021351070",
+      },
+    ],
     ruleBookLink:
       "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
     eventSummary: `Let's hear you talk, for just a minute,
