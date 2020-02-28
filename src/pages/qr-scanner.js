@@ -135,7 +135,7 @@ function QRScanner(props) {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
-          {qrResult === "" ? (
+          {qrResult === "" && typeof window !== undefined ? (
             <div className={classes.qrReaderHolder}>
               <QrReader
                 onScan={handleScan}

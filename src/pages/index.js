@@ -208,6 +208,34 @@ function ComingSoon() {
                       </Link>
                     </Grid>
                     <Grid item xs={12} sm="auto">
+                      <Link
+                        to="https://drive.google.com/open?id=18aANojqgp8b72oIC-GIyTb42PmXJOkC_"
+                        className={classes.navLink}
+                      >
+                        <Button
+                          variant="outlined"
+                          color="inherit"
+                          className={classes.navBtn}
+                        >
+                          Technical Rulebook
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={12} sm="auto">
+                      <Link
+                        to="https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd"
+                        className={classes.navLink}
+                      >
+                        <Button
+                          variant="outlined"
+                          color="inherit"
+                          className={classes.navBtn}
+                        >
+                          Cultural Rulebook
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={12} sm="auto">
                       <Link to="/meet-the-team" className={classes.navLink}>
                         <Button
                           variant="outlined"
