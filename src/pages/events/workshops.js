@@ -95,6 +95,7 @@ function WorkshopPage(props) {
                 ]
               ]
             }
+            moreInfoLink={event.moreInfoLink}
             ruleBookLink={event.ruleBookLink}
             registrationLink={event.registrationLink}
           />

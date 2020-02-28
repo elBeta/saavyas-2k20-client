@@ -171,6 +171,7 @@ function EventSlide(props) {
     id,
     titleA,
     titleB,
+    moreInfoLink,
     ruleBookLink,
     registrationLink,
   } = props
@@ -239,6 +240,7 @@ function EventSlide(props) {
             classes={classes}
             mobileMode={mobileMode}
             eventID={id}
+            moreInfoLink={moreInfoLink}
             ruleBookLink={ruleBookLink}
             registrationLink={registrationLink}
           />
@@ -421,7 +423,14 @@ function EventContent(props) {
 }
 
 function ActionPanel(props) {
-  const { classes, mobileMode, eventID, ruleBookLink, registrationLink } = props
+  const {
+    classes,
+    mobileMode,
+    eventID,
+    moreInfoLink,
+    ruleBookLink,
+    registrationLink,
+  } = props
 
   return (
     <Grid container justify={mobileMode ? "center" : "space-between"}>
@@ -441,6 +450,24 @@ function ActionPanel(props) {
           </Button>
         </Link>
       </Grid>
+      {moreInfoLink && (
+        <Grid item>
+          <Link
+            to={moreInfoLink}
+            style={{ textDecoration: "inherit", color: "inherit" }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.knowMoreBtn}
+            >
+              <Typography variant="h3" className={classes.btnTypo}>
+                More Info
+              </Typography>
+            </Button>
+          </Link>
+        </Grid>
+      )}
       <Grid item>
         <Link
           to={
