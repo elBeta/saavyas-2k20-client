@@ -166,6 +166,7 @@ function EventSlide(props) {
     eventZone,
     eventLocation,
     eventPrize,
+    eventCoordinators,
     eventSummary,
     id,
     titleA,
@@ -227,6 +228,7 @@ function EventSlide(props) {
               eventZone={eventZone}
               eventLocation={eventLocation}
               eventPrize={eventPrize}
+              eventCoordinators={eventCoordinators}
               eventSummary={eventSummary}
             />
           </Grid>
@@ -280,6 +282,7 @@ function EventContent(props) {
     eventZone,
     eventLocation,
     eventPrize,
+    eventCoordinators,
     eventSummary,
   } = props
 
@@ -370,6 +373,21 @@ function EventContent(props) {
               : "Rs " + eventFee}
           </Typography>
         </Grid>
+        {eventCoordinators && (
+          <Grid item xs={12}>
+            <Typography
+              variant="h5"
+              className={[classes.impFieldContent, classes.impFieldLabel]}
+            >
+              Coordinators:{" "}
+            </Typography>
+            {eventCoordinators.map(item => (
+              <Typography variant="h5" className={classes.impFieldContent}>
+                {item.name + " (" + item.phoneNo + ")"}
+              </Typography>
+            ))}
+          </Grid>
+        )}
         {eventPrize && (
           <Grid item xs={12}>
             <Typography
