@@ -80,7 +80,7 @@ const useStyles = makeStyles(theme => ({
 
 function QRScanner(props) {
   const classes = useStyles()
-  const [qrResult, setQrResult] = useState("txn1235")
+  const [qrResult, setQrResult] = useState("")
   const [txnDetails, setTxnDetails] = useState({})
   const [isLoading, setIsLoading] = useState(false)
 
