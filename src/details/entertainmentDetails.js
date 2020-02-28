@@ -16,7 +16,7 @@ export const events = [
     id: "binge-eating",
     titleA: "Icy Spicy",
     titleB: "Binge Eating",
-    eventDate: "9th March",
+    eventDate: "8th March",
     // eventTime: "2:00 PM",
     eventZone: "Charlie",
     // eventLocation: "Library Lawn",
