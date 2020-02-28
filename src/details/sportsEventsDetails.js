@@ -22,6 +22,13 @@ export const events = [
     // eventLocation: "N2/N4",
     eventPrize: "Rs 7k",
     eventFee: 100,
+    imageFileName: "chess.jpeg",
+    coordinators: [
+      {
+        name: "Pranay",
+        phoneNo: "9892255340",
+      },
+    ],
     eventSummary:
       "Wanna a play of game of strategy? Impress everyone by showcasing your intelligence!",
   },
@@ -35,7 +42,17 @@ export const events = [
     // eventLocation: "N5/N6",
     eventPrize: "Rs 4.5k",
     eventFee: 50,
-    imageFileName: "table-tennis.png",
+    imageFileName: "table-tennis.jpeg",
+    coordinators: [
+      {
+        name: "Sanat Shetye",
+        phoneNo: "8669131688",
+      },
+      {
+        name: "Pawan Gulati",
+        phoneNo: "8949353438",
+      },
+    ],
     ruleBookLink:
       "https://docs.google.com/document/d/10rM1RjfdQYJm5MyQ3bKys7NraIxAimzM00KmhhHaWNM/edit?usp=sharing",
     eventSummary:
@@ -49,8 +66,15 @@ export const events = [
     // eventTime: "10:30 AM",
     eventZone: "Echo",
     // eventLocation: "Ground Sector 2",
-    eventPrize: "Rs 24k",
-    eventFee: 1000,
+    eventPrize: "Rs 18k",
+    eventFee: 400,
+    imageFileName: "football.jpeg",
+    coordinators: [
+      {
+        name: "Harsh Yadav",
+        phoneNo: "8329335941",
+      },
+    ],
     ruleBookLink:
       "https://docs.google.com/document/d/1k4ezIpSCKc2BNGWr5YEoAANWGKY5XJinC7mFmxRk-oU/edit?usp=sharing",
     eventSummary:
@@ -66,7 +90,17 @@ export const events = [
     // eventLocation: "Ground Sector 2",
     eventPrize: "Rs 1.5k",
     eventFee: 50,
-    imageFileName: "pro-cricket.png",
+    imageFileName: "pro-cricket.jpeg",
+    coordinators: [
+      {
+        name: "Jatin Kumar",
+        phoneNo: "6355437002",
+      },
+      {
+        name: "Kartik",
+        phoneNo: "6304702297",
+      },
+    ],
     ruleBookLink:
       "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
     eventSummary:
@@ -81,8 +115,14 @@ export const events = [
     eventZone: "Bravo",
     // eventLocation: "N8",
     eventPrize: "Rs 4k",
-    eventFee: 200,
+    eventFee: 100,
     imageFileName: "pubg.jpeg",
+    coordinators: [
+      {
+        name: "Sai Nikhil",
+        phoneNo: "9032632114",
+      },
+    ],
     ruleBookLink:
       "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
     eventSummary:
@@ -96,8 +136,18 @@ export const events = [
     eventZone: "Delta",
     // eventLocation: "2A/2B",
     eventPrize: "Rs 4.5k",
-    eventFee: 100,
+    eventFee: 50,
     imageFileName: "fifa.jpeg",
+    coordinators: [
+      {
+        name: "Mayank Raj",
+        phoneNo: "9521280023",
+      },
+      {
+        name: "Sourabh Rane",
+        phoneNo: "7768065360",
+      },
+    ],
     ruleBookLink:
       "https://drive.google.com/file/d/1s7ImiJ7kclPWATViVxs0-X7nmXJsMrc0/view?usp=sharing",
     eventSummary:
@@ -109,10 +159,16 @@ export const events = [
     eventDate: "8th March",
     eventZone: "Delta",
     eventPrize: "Rs 4k",
-    eventFee: 200,
+    eventFee: 100,
     imageFileName: "csgo.jpeg",
+    coordinators: [
+      {
+        name: "Piyush",
+        phoneNo: "9359542853",
+      },
+    ],
     ruleBookLink:
       "https://drive.google.com/open?id=1Qhf_imZot-_dNjLfLcb94CeeLFtFlu5q7BQALt5HVPw",
-    eventSummary: "",
+    eventSummary: "One shot, One Kill. No luck, Only skill!",
   },
 ]
