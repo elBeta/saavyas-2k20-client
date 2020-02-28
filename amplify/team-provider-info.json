@@ -17,7 +17,8 @@
                 "handleResponse": {},
                 "eventsInfoDB": {},
                 "paymentsDB": {},
-                "getFormFieldsFromEventName": {}
+                "getFormFieldsFromEventName": {},
+                "getTxnDetails": {}
             }
         }
     },
