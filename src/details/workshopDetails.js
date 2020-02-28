@@ -47,13 +47,11 @@ export const events = [
     titleA: "Humanoid",
     titleB: "Robotics",
     rightAlign: true,
-    eventDate: "6th and 7th March",
+    eventDate: "7th and 8th March",
     eventFee: 1500,
     eventSummary:
-      "Humanoid robots are being developed to perform human tasks like " +
-      "personal assistance, through which they should be able to assist " +
-      "the sick and elderly, and dirty or dangerous jobs. The robotic " +
-      "industry will see an increase in humanoid robots.",
+      "Humanoid robots are being developed to perform human tasks like  personal assistance, through which they should be able to assist the sick and elderly, and dirty or dangerous jobs. The robotic industry will see an increase in humanoid robots.",
+    moreInfoLink: "https://bit.ly/2T8kp8S",
     ruleBookLink:
       "https://drive.google.com/open?id=1s5RmGtFfz2b9lche1AdkyatDzlIUSRpa",
     registrationLink:
@@ -63,7 +61,7 @@ export const events = [
     id: "ai",
     titleA: "Artificial",
     titleB: "Intelligence",
-    eventDate: "6th and 7th March",
+    eventDate: "7th and 8th March",
     eventFee: 1500,
     eventSummary:
       "Today, the amount of data that is generated, by " +
@@ -74,6 +72,7 @@ export const events = [
       "decision making.",
     ruleBookLink:
       "https://drive.google.com/open?id=1hYYpwkavE8z3eaHtZ1inMeTYyzR1CXbq",
+    moreInfoLink: "https://bit.ly/2T8kp8S",
     registrationLink:
       "https://www.payumoney.com/paybypayumoney/#/FDD5FAEB0B834D653EA32AE59CC4DB14",
   },
@@ -82,7 +81,7 @@ export const events = [
     titleA: "IoT with",
     titleB: "Google Assistant",
     rightAlign: true,
-    eventDate: "6th and 7th March",
+    eventDate: "7th and 8th March",
     eventFee: 1500,
     eventSummary:
       "Internet of Things (IoT) is an ecosystem of connected physical " +
@@ -91,6 +90,7 @@ export const events = [
       "built-in-sensors, i.e. objects that have been assigned an IP address " +
       "and could collect and transfer data over a network without manual " +
       "intervention.",
+    moreInfoLink: "https://bit.ly/2T8kp8S",
     ruleBookLink:
       "https://drive.google.com/open?id=1_B4qjVQCczijVXZO0tP-5Rmr1xZd61bA",
     registrationLink:
