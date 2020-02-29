@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
-import Input from "@material-ui/core/Input"
+import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
 
 import DoneIcon from "@material-ui/icons/Done"
@@ -131,6 +131,9 @@ function RegistrationForm(props) {
   })
   const [isLoading, setIsLoading] = useState(false)
   const eventID = qs.parse(location.search.substring(1))["eventID"]
+
+  // Check if it is hostel accomodation
+  const isForHostel = eventID === "hostel-accomodation"
 
   // Get Form Fields from eventId
   useEffect(() => {
@@ -371,12 +374,12 @@ function RegistrationForm(props) {
             <Grid container item xs={12} className={classes.titleHolder}>
               <Grid item xs={12}>
                 <Typography variant="h3" className={classes.titleTypo}>
-                  Event
+                  {isForHostel ? "Hostel" : "Event"}
                 </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="h4" className={classes.titleTypo}>
-                  Registration
+                  {isForHostel ? "Accomodation" : "Registration"}
                 </Typography>
               </Grid>
               <Grid item className={classes.titleUnderline} />
@@ -385,7 +388,10 @@ function RegistrationForm(props) {
                   className={[classes.fieldLabelTypo, classes.payLaterNote]}
                 >
                   ** Register without payment now. Payment link will be emailed
-                  to you soon upon activation of Payment Portal.
+                  to you soon upon activation of Payment Portal.{" "}
+                  {eventID === "hostel-accomodation"
+                    ? "1 day of accomodation is from 11 AM to 9 AM."
+                    : ""}
                 </Typography>
               </Grid>
             </Grid>
@@ -403,18 +409,28 @@ function RegistrationForm(props) {
                 >
                   <Grid item xs={12}>
                     <Typography variant="h6" className={classes.fieldLabelTypo}>
-                      {field + ":"}
+                      {field +
+                        (isForHostel && field === "Amount"
+                          ? " (per day)"
+                          : "") +
+                        ":"}
                     </Typography>
                   </Grid>
                   <Grid item xs={12} className={classes.fieldInputHolder}>
-                    <Input
-                      disableUnderline
+                    <TextField
+                      InputProps={{
+                        className: classes.fieldInput,
+                        disableUnderline: true,
+                      }}
                       fullWidth
                       readOnly={["Event", "Amount"].includes(field)}
+                      type={
+                        isForHostel && field.includes("Date") ? "date" : "text"
+                      }
                       id={field}
                       value={formData[field] || ""}
                       onChange={handleInputChange}
-                      className={classes.fieldInput}
+                      // className={classes.fieldInput}
                     />
                   </Grid>
                 </Grid>
