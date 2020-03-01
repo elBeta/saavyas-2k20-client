@@ -207,9 +207,9 @@ function ComingSoon() {
                         </Button>
                       </Link>
                     </Grid>
-                    {/* <Grid item xs={12} sm="auto">
+                    <Grid item xs={12} sm="auto">
                       <Link
-                        to="https://drive.google.com/open?id=18aANojqgp8b72oIC-GIyTb42PmXJOkC_"
+                        to="https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg"
                         className={classes.navLink}
                       >
                         <Button
@@ -220,7 +220,7 @@ function ComingSoon() {
                           Technical Rulebook
                         </Button>
                       </Link>
-                    </Grid> */}
+                    </Grid>
                     <Grid item xs={12} sm="auto">
                       <Link
                         to="https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd"

@@ -50,6 +50,8 @@ export const events = [
       "Hold your breath, to witness an event like never before. For the first time in the history of Saavyas an event with such a huge spectacle is being conducted. “FIREFLIES” brought to you by IDRL (Indian Drone Racing League) and Canara Bank SAAVYAS’20.",
     moreInfoLink:
       "https://droneracingindia.com/events/7383c500-5ad9-11ea-8241-1166bebc814d",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "robo-soccer",
@@ -74,6 +76,8 @@ export const events = [
     ],
     eventSummary:
       "A delight for all the football fans, as Canara Bank SAAVYAS’20 along with Sree Vinayaka Enterprises, present to you “Ball Busters”- soccer played by robots. Bring your footballing bots and stand a chance to win exciting cash prizes.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "robo-wars",
@@ -97,6 +101,8 @@ export const events = [
     ],
     eventSummary:
       "Canara Bank SAAVYAS’20 presents the Reign of Fire! One of Goa’s Largest Robo-Combat Competition, where participants from across India, battle it out to be reigned as Robowars-Champion. Brace yourselves to be a part of one of the most striking event of the fest.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "ard-challenge",
@@ -114,6 +120,8 @@ export const events = [
     ],
     eventSummary:
       "“You don’t need someone’s permission to create something great.” - Canara Bank SAAVYAS’20 along with Shree Chemicals presents “FIRE PROOF”- an ARDINO CHALLENGE.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "line-follower",
@@ -135,6 +143,8 @@ export const events = [
     ],
     eventSummary:
       "Be an innovator and BLAZE A WAY. Canara Bank SAAVYAS’20 along with Made Easy present “Blaze A Way”. Build a line follower robot, which is capable of following paths and can pave its way to glory.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "robo-race",
@@ -159,5 +169,7 @@ export const events = [
     ],
     eventSummary:
       "“More speed, more accuracy with minimum time and perfection” - Canara Bank SAAVYAS’20 presents “Highway through Hell”. Race your bots till the finish line and earn accolades.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
 ]
