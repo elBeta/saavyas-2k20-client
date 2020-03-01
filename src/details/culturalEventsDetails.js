@@ -33,6 +33,8 @@ export const events = [
         phoneNo: "7507763915",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary:
       "Personality hunt competition. Long ago, tribes used daring feats of skill and bravery to choose the worthiest amongst them. The stage sets on fire, when the unseen, unforgettable, ultimate accessory and perception of fashion heralds the arrival of blistering and dynamic youth of this country which finally leads to a classic style of a competition.",
   },
@@ -57,6 +59,8 @@ export const events = [
         phoneNo: "6377738495",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary: "",
   },
   {
@@ -76,6 +80,8 @@ export const events = [
         phoneNo: "9552714122",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary: "",
   },
   {
@@ -99,6 +105,8 @@ export const events = [
         phoneNo: "9146384057",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary: "",
   },
   {
@@ -122,6 +130,8 @@ export const events = [
         phoneNo: "8886321272",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary: "",
   },
   {
@@ -145,6 +155,8 @@ export const events = [
         phoneNo: "9420644232",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary: `Follow a series of clue or clues,
       Be clever and skillful and don't be blue.`,
   },
@@ -169,6 +181,8 @@ export const events = [
         phoneNo: "8330988069",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary: "",
   },
   {
@@ -192,6 +206,8 @@ export const events = [
         phoneNo: "9067826501",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary:
       "Fight the bulls by the horns. An euphemism for torture, prepare yourself for TRIALS OF FIRE.",
   },
@@ -212,6 +228,8 @@ export const events = [
         phoneNo: "9502542067",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary: "",
   },
   {
@@ -235,6 +253,8 @@ export const events = [
         phoneNo: "8330988069",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary: `Show your skills with Rangoli powder on the floor,
     Fail to succeed, and there's the door.`,
   },
@@ -259,6 +279,8 @@ export const events = [
         phoneNo: "8275857201",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary:
       "Introducing CHILL THRILLS. When we experience a surprise, when we have a set of expectations and we get something else, our brain doesn't really know what to do with it -- as opposed to looking forward to the future plans or looking to the past memories, like what am I doing this weekend? Come over to our campus during SAAVYAS to experience the unexpected.",
   },
@@ -283,6 +305,8 @@ export const events = [
         phoneNo: "9207602425",
       },
     ],
+    ruleBookLink:
+      "https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd",
     eventSummary: `Get your best your jokes, don't u forget,
     The stage is yours,
     Let's see how many Olafs u get.`,

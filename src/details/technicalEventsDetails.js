@@ -1,34 +1,34 @@
 export const highlightEvents = [
   {
-    title: "Blaze A Way",
-    fileName: "line_follower.png",
-    link: "/events/technical/#line-follower",
+    title: "Drone Prix",
+    fileName: "drone-prix.jpeg",
+    link: "/events/technical/#drone-prix",
   },
   {
-    title: "Hackathaw",
-    fileName: "hackathaw.png",
-    link: "/events/technical/#hackathaw",
+    title: "Robo Race",
+    fileName: "robo-race.jpeg",
+    link: "/events/technical/#robo-race",
   },
 ]
 
 export const events = [
-  {
-    id: "hackathaw",
-    titleA: "Hackathaw",
-    imageFileName: "hackathaw.png",
-    eventDate: "29th Feb to 1st March",
-    eventTime: "11:00AM",
-    eventZone: "NIT Goa",
-    eventFee: 100,
-    eventPrize: "1st prize: Rs 6k & 2nd Price: Rs 3k",
-    eventZone: "Campus",
-    eventLocation: "Campus",
-    eventSummary:
-      "Saavyas'20 in association with Coding Blocks, Delhi and GDG Goa bring to you HACKATHAW, an exciting technical pre-event (24 hour Hackathon) being held from 29-FEB-20 to 1-MAR-29. Hope you guys are excited and enthralled as much as we are, lots of prizes and goodies to win for!.",
-    registrationLink: "https://saavyas.typeform.com/to/OuB5Oy",
-    ruleBookLink:
-      "https://docs.google.com/document/d/1IjPX9u4UMVufUawYnLb-Vqn8WY2P3mGsYDkSWMRCRXY/edit?usp=sharing",
-  },
+  // {
+  //   id: "hackathaw",
+  //   titleA: "Hackathaw",
+  //   imageFileName: "hackathaw.png",
+  //   eventDate: "29th Feb to 1st March",
+  //   eventTime: "11:00AM",
+  //   eventZone: "NIT Goa",
+  //   eventFee: 100,
+  //   eventPrize: "1st prize: Rs 6k & 2nd Price: Rs 3k",
+  //   eventZone: "Campus",
+  //   eventLocation: "Campus",
+  //   eventSummary:
+  //     "Saavyas'20 in association with Coding Blocks, Delhi and GDG Goa bring to you HACKATHAW, an exciting technical pre-event (24 hour Hackathon) being held from 29-FEB-20 to 1-MAR-29. Hope you guys are excited and enthralled as much as we are, lots of prizes and goodies to win for!.",
+  //   registrationLink: "https://saavyas.typeform.com/to/OuB5Oy",
+  //   ruleBookLink:
+  //     "https://docs.google.com/document/d/1IjPX9u4UMVufUawYnLb-Vqn8WY2P3mGsYDkSWMRCRXY/edit?usp=sharing",
+  // },
   {
     id: "drone-prix",
     titleA: "Fireflies",
