@@ -54,6 +54,11 @@ const useStyles = makeStyles({
       fontSize: "2.6rem",
     },
   },
+  presentsTypo: {
+    fontFamily: "Kaushan Script",
+    fontWeight: 700,
+    color: "#fafafa",
+  },
   slidesContainer: {
     position: "absolute",
     top: 0,
@@ -209,7 +214,7 @@ function ComingSoon() {
                     </Grid>
                     <Grid item xs={12} sm="auto">
                       <Link
-                        to="https://drive.google.com/open?id=18aANojqgp8b72oIC-GIyTb42PmXJOkC_"
+                        to="https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg"
                         className={classes.navLink}
                       >
                         <Button
@@ -268,6 +273,22 @@ function ComingSoon() {
                   spacing={1}
                   className={classes.mainSectionInnerArea}
                 >
+                  <Grid item style={{ paddingTop: "2rem" }}>
+                    <FluidImage
+                      fileName="canara-bank-logo.png"
+                      className={classes.saavyasLogo}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography
+                      color="secondary"
+                      variant="h3"
+                      align="right"
+                      className={classes.presentsTypo}
+                    >
+                      Presents...
+                    </Typography>
+                  </Grid>
                   <Grid item>
                     <FluidImage
                       fileName="saavyas_logo_with_text.png"

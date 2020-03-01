@@ -421,9 +421,9 @@ function RegistrationForm(props) {
                       InputProps={{
                         className: classes.fieldInput,
                         disableUnderline: true,
+                        readOnly: ["Event", "Amount"].includes(field),
                       }}
                       fullWidth
-                      readOnly={["Event", "Amount"].includes(field)}
                       type={
                         isForHostel && field.includes("Date") ? "date" : "text"
                       }

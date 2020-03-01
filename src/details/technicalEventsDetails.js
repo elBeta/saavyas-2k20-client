@@ -1,34 +1,34 @@
 export const highlightEvents = [
   {
-    title: "Blaze A Way",
-    fileName: "line_follower.png",
-    link: "/events/technical/#line-follower",
+    title: "Drone Prix",
+    fileName: "drone-prix.jpeg",
+    link: "/events/technical/#drone-prix",
   },
   {
-    title: "Hackathaw",
-    fileName: "hackathaw.png",
-    link: "/events/technical/#hackathaw",
+    title: "Robo Race",
+    fileName: "robo-race.jpeg",
+    link: "/events/technical/#robo-race",
   },
 ]
 
 export const events = [
-  {
-    id: "hackathaw",
-    titleA: "Hackathaw",
-    imageFileName: "hackathaw.png",
-    eventDate: "29th Feb to 1st March",
-    eventTime: "11:00AM",
-    eventZone: "NIT Goa",
-    eventFee: 100,
-    eventPrize: "1st prize: Rs 6k & 2nd Price: Rs 3k",
-    eventZone: "Campus",
-    eventLocation: "Campus",
-    eventSummary:
-      "Saavyas'20 in association with Coding Blocks, Delhi and GDG Goa bring to you HACKATHAW, an exciting technical pre-event (24 hour Hackathon) being held from 29-FEB-20 to 1-MAR-29. Hope you guys are excited and enthralled as much as we are, lots of prizes and goodies to win for!.",
-    registrationLink: "https://saavyas.typeform.com/to/OuB5Oy",
-    ruleBookLink:
-      "https://docs.google.com/document/d/1IjPX9u4UMVufUawYnLb-Vqn8WY2P3mGsYDkSWMRCRXY/edit?usp=sharing",
-  },
+  // {
+  //   id: "hackathaw",
+  //   titleA: "Hackathaw",
+  //   imageFileName: "hackathaw.png",
+  //   eventDate: "29th Feb to 1st March",
+  //   eventTime: "11:00AM",
+  //   eventZone: "NIT Goa",
+  //   eventFee: 100,
+  //   eventPrize: "1st prize: Rs 6k & 2nd Price: Rs 3k",
+  //   eventZone: "Campus",
+  //   eventLocation: "Campus",
+  //   eventSummary:
+  //     "Saavyas'20 in association with Coding Blocks, Delhi and GDG Goa bring to you HACKATHAW, an exciting technical pre-event (24 hour Hackathon) being held from 29-FEB-20 to 1-MAR-29. Hope you guys are excited and enthralled as much as we are, lots of prizes and goodies to win for!.",
+  //   registrationLink: "https://saavyas.typeform.com/to/OuB5Oy",
+  //   ruleBookLink:
+  //     "https://docs.google.com/document/d/1IjPX9u4UMVufUawYnLb-Vqn8WY2P3mGsYDkSWMRCRXY/edit?usp=sharing",
+  // },
   {
     id: "drone-prix",
     titleA: "Fireflies",
@@ -38,7 +38,6 @@ export const events = [
     eventZone: "Golf",
     // eventLocation: "Parking Lot",
     eventFee: 800,
-    eventPrize: "Rs 50k",
     imageFileName: "drone-prix.jpeg",
     coordinators: [
       { name: "Gaurav Yadav", phoneNo: "9400085779" },
@@ -48,7 +47,11 @@ export const events = [
       },
     ],
     eventSummary:
-      "SAAVYAS ‘20 presents you first Edition of Drone Flying Competition which tests your aerial skills to the apogee as your drone flies through toughest obstacle course designed. Earn the title of being one of the best Aviator in Goa",
+      "Hold your breath, to witness an event like never before. For the first time in the history of Saavyas an event with such a huge spectacle is being conducted. “FIREFLIES” brought to you by IDRL (Indian Drone Racing League) and Canara Bank SAAVYAS’20.",
+    moreInfoLink:
+      "https://droneracingindia.com/events/7383c500-5ad9-11ea-8241-1166bebc814d",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "robo-soccer",
@@ -72,7 +75,9 @@ export const events = [
       },
     ],
     eventSummary:
-      "Its football time and no-one plays soccer better than the engineers, in our own sophisticated way we hail this event ROBO SOCCER. All you soccer fans hold your breath, as SAAVYAS present to you soccer with an entirely new dimension. So if you are up for the challenge get your manual soccer playing bots ready in order to compete on the biggest platform and bring out the hidden RONALDO, MESSI in you…its time to stop watching soccer on screens. Come over during the fest and take a chance to win exciting cash prizes.",
+      "A delight for all the football fans, as Canara Bank SAAVYAS’20 along with Sree Vinayaka Enterprises, present to you “Ball Busters”- soccer played by robots. Bring your footballing bots and stand a chance to win exciting cash prizes.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "robo-wars",
@@ -83,7 +88,6 @@ export const events = [
     eventZone: "Foxtrot",
     // eventLocation: "ITI Lawn",
     eventFee: 1000,
-    eventPrize: "Rs 50k",
     imageFileName: "robo-wars.jpeg",
     coordinators: [
       {
@@ -96,7 +100,9 @@ export const events = [
       },
     ],
     eventSummary:
-      "SAAVYAS presents the Reign of Fire! One of Goa’s Largest Robot Combat Competition where participants across India battle each other for the coveted Robowars Champion Title. Witness sparks fly as metal crushes metal in the most glorious battles interspersed with magnificent artist performances for non-stop entertainment. Brace yourselves to be a part of one of the most striking event here at NIT Goa during Saavyas.",
+      "Canara Bank SAAVYAS’20 presents the Reign of Fire! One of Goa’s Largest Robo-Combat Competition, where participants from across India, battle it out to be reigned as Robowars-Champion. Brace yourselves to be a part of one of the most striking event of the fest.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "ard-challenge",
@@ -113,7 +119,9 @@ export const events = [
       },
     ],
     eventSummary:
-      "SAAVYAS presents the Reign of Fire! One of Goa’s Largest Robot Combat Competition where participants across India battle each other for the coveted Robowars Champion Title. Witness sparks fly as metal crushes metal in the most glorious battles interspersed with magnificent artist performances for non-stop entertainment. Brace yourselves to be a part of one of the most striking event here at NIT Goa during Saavyas.",
+      "“You don’t need someone’s permission to create something great.” - Canara Bank SAAVYAS’20 along with Shree Chemicals presents “FIRE PROOF”- an ARDINO CHALLENGE.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "line-follower",
@@ -134,7 +142,9 @@ export const events = [
       },
     ],
     eventSummary:
-      "Be an innovator and BLAZE A WAY. A simple event based on robotics. Build a line follower robot, which is capable of following line path which is produced in front of it. The robots should be designed to quickly follow the black line. However, they may meet different obstacles on the track – split and join of the line, objects on the track and line interruptions. Only robots that overcome all obstacles can succeed.",
+      "Be an innovator and BLAZE A WAY. Canara Bank SAAVYAS’20 along with Made Easy present “Blaze A Way”. Build a line follower robot, which is capable of following paths and can pave its way to glory.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
   {
     id: "robo-race",
@@ -158,6 +168,8 @@ export const events = [
       },
     ],
     eventSummary:
-      "More speed, more power with minimum time and perfection - Here comes the racing series for humans and artificial intelligence. The way you enter, the way you proceed, the way you reveal your speed to other beings here at the enthralling event of “Highway through Hell”. We provide you a track to open your enthusiasm and rush you to win with your bot . The fast speeds, tight turns, and exciting collisions in our hot wheels takes place on track. It is the event where you to get to test the efficiency and power, skills of your droid/robot. Race your bots till the finish line and earn accolades.",
+      "“More speed, more accuracy with minimum time and perfection” - Canara Bank SAAVYAS’20 presents “Highway through Hell”. Race your bots till the finish line and earn accolades.",
+    ruleBookLink:
+      "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
   },
 ]
