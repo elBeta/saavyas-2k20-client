@@ -31,9 +31,8 @@ export const events = [
     ],
     ruleBookLink:
       "https://drive.google.com/open?id=1O-ziTO_lHFRe1JnscXgU1oH8GJUhHiIU",
-    eventSummary: `Hungry?
-    Take all food in the world to eat,
-    But be warned, it ain't an easy feat.`,
+    eventSummary:
+      "This isn’t a battle of will power and making positive choices, its all about filling your tummy to its brim. Canara Bank SAAVYAS’20 presents “ICY SPICY”- Binge eating challenge.",
   },
   {
     id: "ipl-auction",
@@ -57,12 +56,13 @@ export const events = [
     ],
     ruleBookLink:
       "https://drive.google.com/file/d/1TZsFSPbX_VtRqGV4F2ts9XRVXEISghB4/view?usp=sharing",
-    eventSummary: "",
+    eventSummary:
+      "If you love cricket, if you can mix your common sense with passion into your bidding strategy, this event is a must for you! Canara bank SAAVYAS'20 presents IPL Auction - The Thrill, The Suspense, The Bids, and the passion to form the best of teams with the most amazing players.",
   },
   {
     id: "bazinga",
     titleA: "The Ice Storm",
-    titleB: "Entertainment Quiz",
+    titleB: "Sports & Entertainment Quiz",
     eventDate: "8th March",
     // eventTime: "2:00 PM",
     eventZone: "Bravo",
@@ -78,9 +78,8 @@ export const events = [
     ],
     ruleBookLink:
       "https://drive.google.com/open?id=1GHS598IsI6fI-8KXAaXbD9wmr_Rx4cEn",
-    eventSummary: `Hungry?
-    Friends, GOT , you know the rest,
-    Let's put all your bingewatch hours to test.`,
+    eventSummary:
+      "All TV series and Sports enthusiasts are in for a joyous ride. Put your binge-watching sessions of ‘Friends’, ‘Game of Thrones’, ‘Breaking Bad’, etc to a test and don't forget to tune in to your favourite sports channel to stay updated on the sports feed. Canara Bank SAAVYAS’20 brings to you “The Ice Storm”- SPENT(Sports + Entertainment Quiz) revise all the seasons for the 'night is long'.",
   },
   {
     id: "trivium",
@@ -98,11 +97,15 @@ export const events = [
         name: "Snehil Mishra",
         phoneNo: "9340350831",
       },
+      {
+        name: "Sanket Zanwar",
+        phoneNo: "9828616671",
+      },
     ],
     ruleBookLink:
       "https://drive.google.com/open?id=1_MmN2s-9IawHXrM6RxhUkVnSZlg-BM6e",
-    eventSummary: `Are those books and newspapers in your luggage?
-    Shall we quiz you about general knowledge?`,
+    eventSummary:
+      "Canara Bank SAAVYAS'20 presents Rapid Fire(Trivium) - Open General Quiz. Don't just brag about having knowledge own the bragging rights as well. Team of 2(One student compulsory). Entry fee: Team of 2 students: ₹100, Online or Onspot registeration. Team of 1 Student and 1 Non Student: ₹150, Onspot registration only.",
   },
   {
     id: "min-to-win",
@@ -123,7 +126,6 @@ export const events = [
     ],
     ruleBookLink:
       "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
-    eventSummary: `Let's hear you talk, for just a minute,
-    Be careful not to exceed your limit.`,
+    eventSummary: `Canara Bank SAAVYAS'20 presents FEEL THE HEAT - put words to what you think of the topic, for a minute, and that is all it takes. They may forget what you said but not how you made them feel.`,
   },
 ]

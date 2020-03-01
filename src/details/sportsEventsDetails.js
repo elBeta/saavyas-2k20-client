@@ -126,7 +126,7 @@ export const events = [
     ruleBookLink:
       "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
     eventSummary:
-      "Winner winner chicken dinner! Engage in this addicting Battle Royale to put your gaming skills to the test!",
+      "A one-of-a-kind, the biggest PUBG tournament is going to be held at Canara Bank Saavyas'20, for you to show off all your skills and win a prize poll worth 4000/- Come and challenge the best, you have trained for it!",
   },
   {
     id: "fifa",
@@ -151,7 +151,7 @@ export const events = [
     ruleBookLink:
       "https://drive.google.com/file/d/1s7ImiJ7kclPWATViVxs0-X7nmXJsMrc0/view?usp=sharing",
     eventSummary:
-      "Kick, pass, shoot and GOAALLL! Send that ball flying into your opponents post and score!",
+      "Canara Bank SAAVYAS'20 presents- Fifa'19 competition. Defense: Anticipate, Devastate, Dominate - Show us the difference between Champs and Chumps !!",
   },
   {
     id: "csgo",
@@ -169,6 +169,7 @@ export const events = [
     ],
     ruleBookLink:
       "https://drive.google.com/open?id=1Qhf_imZot-_dNjLfLcb94CeeLFtFlu5q7BQALt5HVPw",
-    eventSummary: "One shot, One Kill. No luck, Only skill!",
+    eventSummary:
+      "Fire in the hole! Canara Bank SAAVYAS'20 presents Counter Strike Global Offensive.  Is your team the best or is it only an intuition? It's time you showed'em all",
   },
 ]
