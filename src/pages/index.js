@@ -27,6 +27,7 @@ import CountdownTimer from "../components/CountdownTimer"
 import ShareButtons from "../components/ShareButtons"
 import FluidImage from "../components/image"
 import SEO from "../components/seo"
+import SelectDownload from "../components/SelectDownload"
 
 import Link from "../components/Link"
 
@@ -120,7 +121,7 @@ const useStyles = makeStyles({
     textDecoration: "solid",
   },
   menuBtn: {
-    padding: 0,
+    padding: "0 2rem 0 0",
     [theme.breakpoints.down("xs")]: {
       paddingBottom: "1rem",
     },
@@ -129,6 +130,11 @@ const useStyles = makeStyles({
     [theme.breakpoints.down("xs")]: {
       display: "flex",
       justifyContent: "center",
+    },
+  },
+  topbar: {
+    [theme.breakpoints.down("xs")]: {
+      flexWrap: "wrap",
     },
   },
 })
@@ -168,7 +174,13 @@ function ComingSoon() {
                 direction="column"
                 className={classes.mainSectionArea}
               >
-                <Grid container justify="space-between" item>
+                <Grid
+                  container
+                  wrap="nowrap"
+                  justify="space-between"
+                  item
+                  className={classes.topbar}
+                >
                   <Grid
                     item
                     xs={12}
@@ -186,7 +198,14 @@ function ComingSoon() {
                       />
                     </IconButton>
                   </Grid>
-                  <Grid container item spacing={2} style={{ width: "auto" }}>
+                  <Grid
+                    container
+                    justify="flex-end"
+                    item
+                    xs={12}
+                    sm="auto"
+                    spacing={2}
+                  >
                     <Grid item xs={12} sm="auto">
                       <Link to="/events" className={classes.navLink}>
                         <Button
@@ -213,32 +232,25 @@ function ComingSoon() {
                       </Link>
                     </Grid>
                     <Grid item xs={12} sm="auto">
-                      <Link
-                        to="https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg"
-                        className={classes.navLink}
-                      >
-                        <Button
-                          variant="outlined"
-                          color="inherit"
-                          className={classes.navBtn}
-                        >
-                          Technical Rulebook
-                        </Button>
-                      </Link>
-                    </Grid>
-                    <Grid item xs={12} sm="auto">
-                      <Link
-                        to="https://drive.google.com/open?id=13g2xhx_PsZ-QPgJ07gk9QJ4M8_JIwEtd"
-                        className={classes.navLink}
-                      >
-                        <Button
-                          variant="outlined"
-                          color="inherit"
-                          className={classes.navBtn}
-                        >
-                          Cultural Rulebook
-                        </Button>
-                      </Link>
+                      <SelectDownload
+                        items={[
+                          {
+                            title: "Technical Rulebook",
+                            link:
+                              "https://drive.google.com/open?id=1iUAzPyBl468_ckS4FF1GuYG4zm9dDiwg",
+                          },
+                          {
+                            title: "Cultural Rulebook",
+                            link:
+                              "https://drive.google.com/open?id=1CbdgTDpUvYADNoIGFM2v2qWh6fS8CHFa",
+                          },
+                          {
+                            title: "Sports Rulebook",
+                            link:
+                              "https://drive.google.com/open?id=1actzBbz3J4vSnY02KgzZcxoAVciFjRj7",
+                          },
+                        ]}
+                      />
                     </Grid>
                     <Grid item xs={12} sm="auto">
                       <Link to="/meet-the-team" className={classes.navLink}>

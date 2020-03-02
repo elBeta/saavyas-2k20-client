@@ -102,7 +102,7 @@ export const events = [
       },
     ],
     ruleBookLink:
-      "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
+      "https://drive.google.com/open?id=1xWG45xUjJcrUksNKEj6pASmyLHIMKODc",
     eventSummary:
       "Unleash your inner Dhonis and Virats! Its time to apply your best cricketing tactics to drive your team to its glory!",
   },
@@ -124,7 +124,7 @@ export const events = [
       },
     ],
     ruleBookLink:
-      "https://drive.google.com/file/d/1K8Y4R18Ob8YKeUoShwY9WebvoldrcWcp/view?usp=sharing",
+      "https://drive.google.com/open?id=1JHnLRpPgT-Jho2S6ebUipdL6o59MtjPU",
     eventSummary:
       "A one-of-a-kind, the biggest PUBG tournament is going to be held at Canara Bank Saavyas'20, for you to show off all your skills and win a prize poll worth 4000/- Come and challenge the best, you have trained for it!",
   },
