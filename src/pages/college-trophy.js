@@ -4,6 +4,11 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import Button from "@material-ui/core/Button"
+import Table from "@material-ui/core/Table"
+import TableBody from "@material-ui/core/TableBody"
+import TableCell from "@material-ui/core/TableCell"
+import TableHead from "@material-ui/core/TableHead"
+import TableRow from "@material-ui/core/TableRow"
 
 import {
   createMuiTheme,
@@ -97,6 +102,42 @@ const useStyles = makeStyles(theme => ({
       background: "#974244",
     },
   },
+  rulesSection: {
+    paddingTop: "3rem",
+  },
+  rulesSectionTitleHolder: {
+    display: "flex",
+    justifyContent: "center",
+    paddingBottom: "1rem",
+  },
+  rulesTitleA: {
+    fontFamily: "Barlow",
+    fontWeight: 700,
+    color: "#F7EDE1",
+    paddingRight: "0.75rem",
+  },
+  rulesTitleB: {
+    fontFamily: "Barlow",
+    fontWeight: 700,
+    color: "#D7595D",
+  },
+  titleA: {
+    fontFamily: "Barlow",
+    fontWeight: 700,
+    color: "#F7EDE1",
+  },
+  tableHeadCell: {
+    background: "#D7595D",
+    color: "#F7EDE1",
+    fontWeight: 700,
+  },
+  bulletsHolder: {
+    paddingLeft: "0.5rem",
+    color: "#F7EDE1",
+    fontFamily: "Barlow",
+    fontWeight: 600,
+    fontSize: "0.95rem",
+  },
 }))
 
 function CollegeTrophy(props) {
@@ -121,6 +162,9 @@ function CollegeTrophy(props) {
             </Grid>
             <Grid item xs={12}>
               <MidSection classes={classes} />
+            </Grid>
+            <Grid item xs={12}>
+              <RulesSection classes={classes} />
             </Grid>
           </Grid>
         </div>
@@ -263,6 +307,151 @@ function MidSection(props) {
         <div className={classes.halfMidLine} />
       </Grid>
     </Grid>
+  )
+}
+
+function RulesSection(props) {
+  const { classes } = props
+
+  return (
+    <Grid container className={classes.rulesSection}>
+      <Grid item xs={12} className={classes.rulesSectionTitleHolder}>
+        <Typography
+          variant="h2"
+          display="inline"
+          className={classes.rulesTitleA}
+        >
+          Important
+        </Typography>
+        <Typography
+          variant="h2"
+          display="inline"
+          className={classes.rulesTitleB}
+        >
+          Rules
+        </Typography>
+      </Grid>
+      <Grid container item xs={12}>
+        <Grid item xs={12} style={{ paddingBottom: "0.5rem" }}>
+          <Typography variant="h6" display="inline" className={classes.titleA}>
+            Event Class:{" "}
+          </Typography>
+          <Typography display="inline" className={classes.titleA}>
+            Ace, King and Queen
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <PointsTable classes={classes} />
+        </Grid>
+        <Grid item xs={12}>
+          <RulesList classes={classes} />
+        </Grid>
+      </Grid>
+    </Grid>
+  )
+}
+
+function RulesList(props) {
+  const { classes } = props
+
+  return (
+    <ul className={classes.bulletsHolder}>
+      <li>
+        Individual participation is allowed in all College Trophy Events with
+        Fees as per Individual Entry Fee mentioned in the Poster
+      </li>
+      <li>
+        There will be one overall Winner between individual participants and
+        college trophy participants who will win the event prize money
+      </li>
+      <li>Point system is applicable for college trophy participants</li>
+      <li>
+        Only one participant/team per event is allowed for college trophy
+        participation. For more Registrations, the other participant/team can
+        register as Individual Participants
+      </li>
+      <li>
+        Ranking of the colleges for College Trophy Participation will be done
+        separately
+      </li>
+      <li>
+        For Example - Consider 3 college participation and 2 individual
+        participation
+      </li>
+      <li>
+        If final ranking is:
+        <ol>
+          <li>Individual A (Overall Winner) (Wins Prize Money)</li>
+          <li>College B</li>
+          <li>Individual B</li>
+          <li>College B</li>
+          <li>College C</li>
+        </ol>
+      </li>
+      <li>
+        Then, Ranking for College Trophy Participation:
+        <ol>
+          <li>College A (Points based on Points Table for 1st Position)</li>
+          <li>College B (Points based on Points Table for 2nd Position)</li>
+          <li>College C (Points based on Points Table for 3rd Position)</li>
+        </ol>
+      </li>
+    </ul>
+  )
+}
+
+function StyledCell(props) {
+  const { children, ...otherProps } = props
+  return (
+    <TableCell
+      {...otherProps}
+      style={{
+        color: "#F7EDE1",
+        borderBottom: "1px solid #F7EDE1",
+        fontWeight: 700,
+      }}
+    >
+      {children}
+    </TableCell>
+  )
+}
+
+function PointsTable(props) {
+  const { classes } = props
+
+  return (
+    <Table>
+      <TableHead>
+        <TableRow>
+          <StyledCell className={classes.tableHeadCell}>
+            College Position
+          </StyledCell>
+          <StyledCell className={classes.tableHeadCell}>Ace</StyledCell>
+          <StyledCell className={classes.tableHeadCell}>King</StyledCell>
+          <StyledCell className={classes.tableHeadCell}>Queen</StyledCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <StyledCell>1st</StyledCell>
+          <StyledCell>2000</StyledCell>
+          <StyledCell>1500</StyledCell>
+          <StyledCell>1200</StyledCell>
+        </TableRow>
+        <TableRow>
+          <StyledCell>2nd</StyledCell>
+          <StyledCell>1500</StyledCell>
+          <StyledCell>1200</StyledCell>
+          <StyledCell>900</StyledCell>
+        </TableRow>
+        <TableRow>
+          <StyledCell>3rd</StyledCell>
+          <StyledCell>1200</StyledCell>
+          <StyledCell>1000</StyledCell>
+          <StyledCell>600</StyledCell>
+        </TableRow>
+      </TableBody>
+    </Table>
   )
 }
 
