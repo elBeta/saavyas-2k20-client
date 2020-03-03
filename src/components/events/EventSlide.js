@@ -141,6 +141,20 @@ const useStyles = makeStyles(theme => ({
       fontSize: "2.5rem",
     },
   }),
+  policyTypoHolder: {
+    display: "flex",
+    justifyContent: "flex-end",
+    [theme.breakpoints.down("xs")]: {
+      justifyContent: "center",
+    },
+  },
+  policyTypo: {
+    color: "white",
+    maxWidth: "20vw",
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "initial",
+    },
+  },
 }))
 
 function useWidth() {
@@ -244,6 +258,16 @@ function EventSlide(props) {
             ruleBookLink={ruleBookLink}
             registrationLink={registrationLink}
           />
+        </Grid>
+        <Grid item xs={12} className={classes.policyTypoHolder}>
+          <Typography
+            variant="caption"
+            align="center"
+            className={classes.policyTypo}
+          >
+            *There is no refund/cancellation/return/membership on any of the
+            products/services sold here.
+          </Typography>
         </Grid>
       </Grid>
     </div>
