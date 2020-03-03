@@ -80,7 +80,7 @@ export const teamDetails = [
   {
     name: "#Documentation-Head",
     members: [
-      { name: "Sireeja", phoneNo: "...", emailId: "..." },
+      { name: "Sireejaa", phoneNo: "...", emailId: "..." },
       { name: "Pratyay", phoneNo: "...", emailId: "..." },
     ],
   },
