@@ -218,6 +218,17 @@ function ComingSoon() {
                       </Link>
                     </Grid>
                     <Grid item xs={12} sm="auto">
+                      <Link to="/college-trophy" className={classes.navLink}>
+                        <Button
+                          variant="outlined"
+                          color="inherit"
+                          className={classes.navBtn}
+                        >
+                          College Trophy
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={12} sm="auto">
                       <Link
                         to="https://drive.google.com/open?id=1wWg1QPw0TBk4bDqEX7881elWWSLLvS2W"
                         className={classes.navLink}
