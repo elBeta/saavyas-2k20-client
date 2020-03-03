@@ -86,10 +86,17 @@ function EntriesPage(props) {
     Amplify.configure(awsconfig)
     API.get("eventEntriesFetchAPI", "/fetch-event-entries")
       .then(items => {
-        setEventDetails(JSON.parse(items))
+        console.log(items)
+        items = items.map(item => ({
+          ...item,
+          "Registered At": new Date(
+            parseInt(item["Registered At"])
+          ).toLocaleString("en-IN"),
+        }))
+        setEventDetails(items)
       })
       .catch(err => {
-        console.error(err.response.data)
+        console.error(err)
       })
       .finally(() => {
         setIsLoading(false)
@@ -114,7 +121,6 @@ function EntriesPage(props) {
             <div className={classes.titleUnderline} />
           </Grid>
         </Grid>
-
         <Grid container item>
           <Grid item xs={12}>
             {isLoading ? (
@@ -126,14 +132,11 @@ function EntriesPage(props) {
               <MaterialTable
                 title="Entries"
                 icons={tableIcons}
-                columns={[
-                  { title: "Name", field: "name" },
-                  { title: "Event", field: "event" },
-                ]}
-                data={[
-                  { name: "Piyush", event: "csgo" },
-                  { name: "Ayush", event: "drone-prix" },
-                ]}
+                columns={Object.keys(eventDetails[0]).map(item => ({
+                  title: item,
+                  field: item,
+                }))}
+                data={eventDetails}
                 options={{
                   exportButton: true,
                   headerStyle: {
