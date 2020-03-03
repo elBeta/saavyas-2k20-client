@@ -1,7 +1,11 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
+
+import Amplify, { API } from "aws-amplify"
+import awsconfig from "../aws-exports"
+import Loader from "../components/Loader"
 
 import { forwardRef } from "react"
 
@@ -74,6 +78,24 @@ const useStyles = makeStyles(theme => ({
 
 function EntriesPage(props) {
   const classes = useStyles()
+  const [eventDetails, setEventDetails] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    setIsLoading(true)
+    Amplify.configure(awsconfig)
+    API.get("eventEntriesFetchAPI", "/fetch-event-entries")
+      .then(items => {
+        setEventDetails(JSON.parse(items))
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }, [])
+
   return (
     <div className={classes.root}>
       <Grid container>
@@ -95,29 +117,36 @@ function EntriesPage(props) {
 
         <Grid container item>
           <Grid item xs={12}>
-            <MaterialTable
-              title="Entries"
-              icons={tableIcons}
-              columns={[
-                { title: "Name", field: "name" },
-                { title: "Event", field: "event" },
-              ]}
-              data={[
-                { name: "Piyush", event: "csgo" },
-                { name: "Ayush", event: "drone-prix" },
-              ]}
-              options={{
-                exportButton: true,
-                headerStyle: {
-                  backgroundColor: "#F6F5FA",
-                  borderBottom: "4px solid #703BE2",
-                  fontWeight: 700,
-                },
-                // rowStyle: {
-                //   backgroundColor: "#F6F5FA",
-                // },
-              }}
-            />
+            {isLoading ? (
+              <Loader
+                iconColor="#703BE2"
+                style={{ paddingTop: "2rem", height: "auto" }}
+              />
+            ) : (
+              <MaterialTable
+                title="Entries"
+                icons={tableIcons}
+                columns={[
+                  { title: "Name", field: "name" },
+                  { title: "Event", field: "event" },
+                ]}
+                data={[
+                  { name: "Piyush", event: "csgo" },
+                  { name: "Ayush", event: "drone-prix" },
+                ]}
+                options={{
+                  exportButton: true,
+                  headerStyle: {
+                    backgroundColor: "#F6F5FA",
+                    borderBottom: "4px solid #703BE2",
+                    fontWeight: 700,
+                  },
+                  // rowStyle: {
+                  //   backgroundColor: "#F6F5FA",
+                  // },
+                }}
+              />
+            )}
           </Grid>
         </Grid>
       </Grid>

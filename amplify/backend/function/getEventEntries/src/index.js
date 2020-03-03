@@ -16,7 +16,7 @@ const tableName = process.env.STORAGE_PAYMENTSDB_NAME
 exports.handler = async (event, context, callback) => {
   try {
     const scanParams = {
-      TableName: config.dynamoClient.tableName, // give it your table name
+      TableName: tableName, // give it your table name
       Select: "ALL_ATTRIBUTES",
     }
 
