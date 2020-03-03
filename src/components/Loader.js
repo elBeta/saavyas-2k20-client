@@ -16,11 +16,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function Loader(props) {
+  const { size, ...otherProps } = props
   const classes = useStyles(props)
 
   return (
-    <div className={classes.root}>
-      <CircularProgress size={props.size} className={classes.icon} />
+    <div className={classes.root} {...otherProps}>
+      <CircularProgress size={size} className={classes.icon} />
     </div>
   )
 }
