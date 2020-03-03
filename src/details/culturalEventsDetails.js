@@ -118,7 +118,7 @@ export const events = [
     eventZone: "Echo",
     // eventLocation: "Ground Sector 1",
     eventPrize: "Rs 10k",
-    eventFee: 500,
+    eventFee: 400,
     imageFileName: "group-dance.jpeg",
     coordinators: [
       {
