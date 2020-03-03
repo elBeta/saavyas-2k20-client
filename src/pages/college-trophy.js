@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
       padding: "3rem",
     },
   },
-  mainA: {
+  mainSection: {
     [theme.breakpoints.up("sm")]: {
       paddingLeft: "5rem",
       borderLeft: "8px solid #D7595D",
@@ -108,130 +108,161 @@ function CollegeTrophy(props) {
       <ThemeProvider theme={theme}>
         <div className={classes.root}>
           <Grid container>
-            <Grid container item xs={12} sm={5} className={classes.titleHolder}>
-              <Grid item xs={12} className={classes.titleAHolder}>
-                <Typography variant="h1" className={classes.titleATypo}>
-                  Cultural
-                </Typography>
+            <Grid item xs={12} sm={5}>
+              <Title classes={classes} />
+            </Grid>
+            <Grid container item xs={12} sm={7} className={classes.mainSection}>
+              <Grid item xs={12}>
+                <Prize classes={classes} />
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="h1" className={classes.titleBTypo}>
-                  Trophy
-                </Typography>
+                <RegFee classes={classes} />
               </Grid>
             </Grid>
-            <Grid container item xs={12} sm={7} className={classes.mainA}>
-              <Grid container item xs={12} className={classes.prizeHolder}>
-                <Grid item xs={12}>
-                  <Typography
-                    variant="h3"
-                    align="center"
-                    className={classes.titleCTypo}
-                  >
-                    PRIZE MONEY
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography
-                    variant="h2"
-                    align="center"
-                    className={classes.prizeValueTypo}
-                  >
-                    Rs 55,000
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography
-                  variant="h3"
-                  align="center"
-                  className={classes.titleCTypo}
-                >
-                  REGISTRATION FEE
-                </Typography>
-              </Grid>
-              <Grid container item xs={12}>
-                <Grid container item xs={5}>
-                  <Grid item xs={12}>
-                    <Typography
-                      variant="h2"
-                      align="center"
-                      className={classes.prizeValueTypo}
-                    >
-                      Rs 1500
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Typography
-                      variant="h5"
-                      align="center"
-                      className={classes.prizeValueTypo}
-                    >
-                      before 5th March
-                    </Typography>
-                  </Grid>
-                </Grid>
-                <Grid item xs={2}>
-                  <Typography
-                    variant="h2"
-                    align="center"
-                    className={classes.prizeValueTypo}
-                  >
-                    &
-                  </Typography>
-                </Grid>
-                <Grid container item xs={5}>
-                  <Grid item xs={12}>
-                    <Typography
-                      variant="h2"
-                      align="center"
-                      className={classes.prizeValueTypo}
-                    >
-                      Rs 2000
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Typography
-                      variant="h5"
-                      align="center"
-                      className={classes.prizeValueTypo}
-                    >
-                      After 5th March
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid
-              container
-              justify="center"
-              alignItems="center"
-              item
-              xs={12}
-              className={classes.midSection}
-            >
-              <Grid item style={{ flexGrow: 1 }}>
-                <div className={classes.halfMidLine} />
-              </Grid>
-              <Grid item>
-                <a
-                  href="https://drive.google.com/open?id=1ESRWQaHVm2bQN2jRyqMyR9lBihZvZxRv"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className={classes.clgRegBtn}>
-                    College Registration Form
-                  </Button>
-                </a>
-              </Grid>
-              <Grid item style={{ flexGrow: 1 }}>
-                <div className={classes.halfMidLine} />
-              </Grid>
+            <Grid item xs={12}>
+              <MidSection classes={classes} />
             </Grid>
           </Grid>
         </div>
       </ThemeProvider>
     </>
+  )
+}
+
+function Title(props) {
+  const { classes } = props
+
+  return (
+    <Grid container className={classes.titleHolder}>
+      <Grid item xs={12} className={classes.titleAHolder}>
+        <Typography variant="h1" className={classes.titleATypo}>
+          Cultural
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="h1" className={classes.titleBTypo}>
+          Trophy
+        </Typography>
+      </Grid>
+    </Grid>
+  )
+}
+
+function Prize(props) {
+  const { classes } = props
+
+  return (
+    <Grid container className={classes.prizeHolder}>
+      <Grid item xs={12}>
+        <Typography variant="h3" align="center" className={classes.titleCTypo}>
+          PRIZE MONEY
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography
+          variant="h2"
+          align="center"
+          className={classes.prizeValueTypo}
+        >
+          Rs 55,000
+        </Typography>
+      </Grid>
+    </Grid>
+  )
+}
+
+function RegFee(props) {
+  const { classes } = props
+
+  return (
+    <Grid container>
+      <Grid item xs={12}>
+        <Typography variant="h3" align="center" className={classes.titleCTypo}>
+          REGISTRATION FEE
+        </Typography>
+      </Grid>
+      <Grid container item xs={5}>
+        <Grid item xs={12}>
+          <Typography
+            variant="h2"
+            align="center"
+            className={classes.prizeValueTypo}
+          >
+            Rs 1500
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography
+            variant="h5"
+            align="center"
+            className={classes.prizeValueTypo}
+          >
+            before 5th March
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid item xs={2}>
+        <Typography
+          variant="h2"
+          align="center"
+          className={classes.prizeValueTypo}
+        >
+          &
+        </Typography>
+      </Grid>
+      <Grid container item xs={5}>
+        <Grid item xs={12}>
+          <Typography
+            variant="h2"
+            align="center"
+            className={classes.prizeValueTypo}
+          >
+            Rs 2000
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography
+            variant="h5"
+            align="center"
+            className={classes.prizeValueTypo}
+          >
+            After 5th March
+          </Typography>
+        </Grid>
+      </Grid>
+    </Grid>
+  )
+}
+
+function MidSection(props) {
+  const { classes } = props
+
+  return (
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      item
+      className={classes.midSection}
+    >
+      <Grid item style={{ flexGrow: 1 }}>
+        <div className={classes.halfMidLine} />
+      </Grid>
+      <Grid item>
+        <a
+          href="https://drive.google.com/open?id=1ESRWQaHVm2bQN2jRyqMyR9lBihZvZxRv"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button className={classes.clgRegBtn}>
+            College Registration Form
+          </Button>
+        </a>
+      </Grid>
+      <Grid item style={{ flexGrow: 1 }}>
+        <div className={classes.halfMidLine} />
+      </Grid>
+    </Grid>
   )
 }
 
