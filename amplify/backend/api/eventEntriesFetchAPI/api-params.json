@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/fetch-event-entries",
+            "lambdaFunction": "getEventEntries",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "eventEntriesFetchAPI",
+    "apiName": "eventEntriesFetchAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "getEventEntries"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-saavyas-2k20-client-dev-222337-authRole",
+        "unAuthRoleName": "amplify-saavyas-2k20-client-dev-222337-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "getEventEntries",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
