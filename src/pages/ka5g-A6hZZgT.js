@@ -27,6 +27,14 @@ import ViewColumn from "@material-ui/icons/ViewColumn"
 
 import MaterialTable from "material-table"
 
+import {
+  createMuiTheme,
+  responsiveFontSizes,
+  ThemeProvider,
+} from "@material-ui/core/styles"
+
+let theme = responsiveFontSizes(createMuiTheme())
+
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
   Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -55,11 +63,17 @@ const tableIcons = {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    minHeight: "100%",
+    minHeight: "100vh",
     padding: "5rem 10rem",
+    [theme.breakpoints.down("xs")]: {
+      padding: "1rem",
+    },
   },
   titleHolder: {
     paddingBottom: "3rem",
+    [theme.breakpoints.down("xs")]: {
+      padding: "1rem",
+    },
   },
   titleA: {
     color: "#B4B1C9",
@@ -104,56 +118,57 @@ function EntriesPage(props) {
   }, [])
 
   return (
-    <div className={classes.root}>
-      <Grid container>
-        <Grid container item className={classes.titleHolder}>
-          <Grid item xs={12}>
-            <Typography variant="h1" className={classes.titleA}>
-              Event
-            </Typography>
+    <ThemeProvider theme={theme}>
+      <div className={classes.root}>
+        <Grid container>
+          <Grid container item xs={12} className={classes.titleHolder}>
+            <Grid item xs={12}>
+              <Typography variant="h1" className={classes.titleA}>
+                Event
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="h1" className={classes.titleB}>
+                Entries
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <div className={classes.titleUnderline} />
+            </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h1" className={classes.titleB}>
-              Entries
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <div className={classes.titleUnderline} />
+          <Grid container item xs={12}>
+            <Grid item xs={12}>
+              {isLoading ? (
+                <Loader
+                  iconColor="#703BE2"
+                  style={{ paddingTop: "2rem", height: "auto" }}
+                />
+              ) : (
+                <MaterialTable
+                  style={{ overflow: "hidden" }}
+                  title="Entries"
+                  icons={tableIcons}
+                  columns={Object.keys(eventDetails[0]).map(item => ({
+                    title: item,
+                    field: item,
+                  }))}
+                  data={eventDetails}
+                  options={{
+                    exportButton: true,
+                    columnsButton: true,
+                    headerStyle: {
+                      backgroundColor: "#F6F5FA",
+                      borderBottom: "4px solid #703BE2",
+                      fontWeight: 700,
+                    },
+                  }}
+                />
+              )}
+            </Grid>
           </Grid>
         </Grid>
-        <Grid container item>
-          <Grid item xs={12}>
-            {isLoading ? (
-              <Loader
-                iconColor="#703BE2"
-                style={{ paddingTop: "2rem", height: "auto" }}
-              />
-            ) : (
-              <MaterialTable
-                title="Entries"
-                icons={tableIcons}
-                columns={Object.keys(eventDetails[0]).map(item => ({
-                  title: item,
-                  field: item,
-                }))}
-                data={eventDetails}
-                options={{
-                  exportButton: true,
-                  headerStyle: {
-                    backgroundColor: "#F6F5FA",
-                    borderBottom: "4px solid #703BE2",
-                    fontWeight: 700,
-                  },
-                  // rowStyle: {
-                  //   backgroundColor: "#F6F5FA",
-                  // },
-                }}
-              />
-            )}
-          </Grid>
-        </Grid>
-      </Grid>
-    </div>
+      </div>
+    </ThemeProvider>
   )
 }
 
