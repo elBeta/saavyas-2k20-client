@@ -148,10 +148,9 @@ function EntriesPage(props) {
                   style={{ overflow: "hidden" }}
                   title="Entries"
                   icons={tableIcons}
-                  columns={Object.keys(eventDetails[0]).map(item => ({
-                    title: item,
-                    field: item,
-                  }))}
+                  columns={Array.from(
+                    new Set(eventDetails.map(item => Object.keys(item)).flat())
+                  ).map(item => ({ title: item, field: item }))}
                   data={eventDetails}
                   options={{
                     exportButton: true,
