@@ -22,7 +22,7 @@ const eventsInfoTableName = process.env.STORAGE_EVENTSINFODB_NAME
 const secretsClient = new AWS.SecretsManager({ region: process.env.REGION })
 const secretName = "dev/saavyas/payu-test"
 
-let payLater = true
+let payOnlineNow = false
 
 function zfill(number, length) {
   // Prefix number with zeroes till it hits desired length
@@ -46,9 +46,9 @@ exports.handler = async (event, context, callback) => {
     // salt|status||||||udf5|udf4|udf3|udf2|udf1|email|firstname|productinfo|amount|txnid|key;
     const data = event["queryStringParameters"]
 
-    payLater = Boolean(data["spotReg"])
+    const spotReg = Boolean(data["spotReg"])
 
-    if (!payLater) {
+    if (!spotReg && payOnlineNow) {
       // Get important data from given string
       const isImpDataMissing = "status|email|firstname|productinfo|amount|txnid|key|hash"
         .split("|")
@@ -140,7 +140,7 @@ exports.handler = async (event, context, callback) => {
       )
     }
 
-    if (payLater) {
+    if (!payOnlineNow || spotReg) {
       // Generate Transaction ID
       data["txnid"] =
         "txn" + Date.now().toString() + zfill(RandInt(0, 999999), 6)
@@ -168,7 +168,7 @@ exports.handler = async (event, context, callback) => {
     const mailBody =
       `Registration Id: ${data["txnid"]}\n` +
       `Event Name: ${formData["Event"]}\n` +
-      (payLater
+      (!payOnlineNow && !spotReg
         ? `Amount to be paid: ${data["amount"]}\n` +
           "Payment link will be mailed to you shortly upon the activation of the payment portal.\n" +
           "Kindly complete the payment."
@@ -218,7 +218,7 @@ exports.handler = async (event, context, callback) => {
           )
           .map(key => ({ [key]: formData[key] }))
       ),
-      paid: !payLater,
+      paid: payOnlineNow || spotReg,
       mailSent: mailSent,
     }
 
