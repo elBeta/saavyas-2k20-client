@@ -5,6 +5,8 @@ import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import TextField from "@material-ui/core/TextField"
 import Button from "@material-ui/core/Button"
+import Select from "@material-ui/core/Select"
+import MenuItem from "@material-ui/core/MenuItem"
 
 import DoneIcon from "@material-ui/icons/Done"
 import FailIcon from "@material-ui/icons/Close"
@@ -122,6 +124,8 @@ const useStyles = makeStyles(theme => ({
 function RegistrationForm(props) {
   const classes = useStyles()
   const { location } = props
+  const [eventID, setEventID] = useState("drone-prix")
+  const [eventsInfo, setEventsInfo] = useState([])
   const [formFields, setFormFields] = useState([])
   const [formData, setFormData] = useState({})
   const [txnStatus, setTxnStatus] = useState({
@@ -129,12 +133,27 @@ function RegistrationForm(props) {
     success: false,
     txnid: "",
   })
-  const [isLoading, setIsLoading] = useState(false)
-  // const eventID = qs.parse(location.search.substring(1))["eventID"]
-  const eventID = "drone-prix"
+  const [isLoading, setIsLoading] = useState(true)
 
   // Check if it is hostel accomodation
   const isForHostel = eventID === "hostel-accomodation"
+
+  // Get all event names
+  useEffect(() => {
+    setIsLoading(true)
+    Amplify.configure(awsconfig)
+    API.get("eventNamesFetchAPI", "/fetch-event-names")
+      .then(evntsInfo => {
+        console.log(evntsInfo)
+        setEventsInfo(Array.prototype.concat([], evntsInfo))
+      })
+      .catch(err => {
+        console.error(err)
+      })
+      .finally(() => {
+        setIsLoading(false)
+      })
+  }, [])
 
   // Get Form Fields from eventId
   useEffect(() => {
@@ -263,16 +282,27 @@ function RegistrationForm(props) {
     navigate("/events")
   }
 
+  const handleEventNameChange = e => {
+    console.log(e.target.value)
+    const filteredEventList = eventsInfo.filter(
+      item => item["eventName"] === e.target.value
+    )
+    if (filteredEventList.length > 0) {
+      setEventID(filteredEventList[0].eventID)
+      console.log(eventID)
+    }
+  }
+
   // If loading, render loader
   // const isLoading = !formFields.length && !txnStatus.performed
-  if (isLoading) {
-    return (
-      <>
-        <CssBaseline />
-        <Loader size="5rem" bgColor="#333645" iconColor="white" />
-      </>
-    )
-  }
+  // if (isLoading) {
+  //   return (
+  //     <>
+  //       <CssBaseline />
+  //       <Loader size="5rem" bgColor="#333645" iconColor="white" />
+  //     </>
+  //   )
+  // }
 
   if (txnStatus.performed) {
     return (
@@ -287,31 +317,18 @@ function RegistrationForm(props) {
   return (
     <>
       <CssBaseline />
-      <Helmet>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-        />
-        <script
-          id="bolt"
-          src="https://sboxcheckout-static.citruspay.com/bolt/run/bolt.min.js"
-          bolt-
-          color="<color-code>"
-          bolt-logo="<image path>"
-        ></script>
-      </Helmet>
       <div className={classes.root}>
         <Grid container alignItems="center" className={classes.rootGrid}>
           <Grid container item xs={12} md={5} lg={6}>
             <Grid container item xs={12} className={classes.titleHolder}>
               <Grid item xs={12}>
                 <Typography variant="h3" className={classes.titleTypo}>
-                  {isForHostel ? "Hostel" : "Event"}
+                  Spot
                 </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography variant="h4" className={classes.titleTypo}>
-                  {isForHostel ? "Accomodation" : "Registration"}
+                  Registration
                 </Typography>
               </Grid>
               <Grid item className={classes.titleUnderline} />
@@ -328,67 +345,107 @@ function RegistrationForm(props) {
             </Grid>
           </Grid>
           <Grid container item xs={12} md={7} lg={6}>
-            <Grid container item xs={12} className={classes.formHolder}>
-              {formFields.map(field => (
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  sm={6}
-                  className={classes.fieldHolder}
-                  key={field}
-                >
-                  <Grid item xs={12}>
-                    <Typography variant="h6" className={classes.fieldLabelTypo}>
-                      {field +
-                        (isForHostel && field === "Amount"
-                          ? " (per day)"
-                          : "") +
-                        ":"}
-                    </Typography>
+            {isLoading ? (
+              <Loader size="5rem" bgColor="#333645" iconColor="white" />
+            ) : (
+              <>
+                <Grid container item xs={12} className={classes.formHolder}>
+                  {formFields.map(field => (
+                    <Grid
+                      container
+                      item
+                      xs={12}
+                      sm={6}
+                      className={classes.fieldHolder}
+                      key={field}
+                    >
+                      <Grid item xs={12}>
+                        <Typography
+                          variant="h6"
+                          className={classes.fieldLabelTypo}
+                        >
+                          {field +
+                            (isForHostel && field === "Amount"
+                              ? " (per day)"
+                              : "") +
+                            ":"}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={12} className={classes.fieldInputHolder}>
+                        {field === "Event" && eventsInfo.length > 0 ? (
+                          <Select
+                            disableUnderline
+                            className={classes.fieldInput}
+                            fullWidth
+                            value={
+                              eventsInfo.filter(
+                                item => item["eventID"] === eventID
+                              )[0].eventName
+                            }
+                            onChange={handleEventNameChange}
+                          >
+                            {eventsInfo.map(item => (
+                              <MenuItem
+                                value={item.eventName}
+                                key={item.eventName}
+                              >
+                                {item.eventName}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        ) : (
+                          <TextField
+                            InputProps={{
+                              className: classes.fieldInput,
+                              disableUnderline: true,
+                              readOnly: ["Event", "Amount"].includes(field),
+                            }}
+                            fullWidth
+                            type={
+                              isForHostel && field.includes("Date")
+                                ? "date"
+                                : "text"
+                            }
+                            id={field}
+                            value={formData[field] || ""}
+                            onChange={handleInputChange}
+                            // className={classes.fieldInput}
+                          />
+                        )}
+                      </Grid>
+                    </Grid>
+                  ))}
+                </Grid>
+                <Grid container item xs={12} className={classes.actionPanel}>
+                  <Grid item xs={6}>
+                    <Button
+                      className={classes.actionBtn}
+                      onClick={handleCancelClick}
+                    >
+                      <Typography
+                        variant="h6"
+                        className={classes.actionBtnTypo}
+                      >
+                        Cancel
+                      </Typography>
+                    </Button>
                   </Grid>
-                  <Grid item xs={12} className={classes.fieldInputHolder}>
-                    <TextField
-                      InputProps={{
-                        className: classes.fieldInput,
-                        disableUnderline: true,
-                        readOnly: ["Event", "Amount"].includes(field),
-                      }}
-                      fullWidth
-                      type={
-                        isForHostel && field.includes("Date") ? "date" : "text"
-                      }
-                      id={field}
-                      value={formData[field] || ""}
-                      onChange={handleInputChange}
-                      // className={classes.fieldInput}
-                    />
+                  <Grid item xs={6}>
+                    <Button
+                      className={classes.actionBtn}
+                      onClick={handleRegisterClick}
+                    >
+                      <Typography
+                        variant="h6"
+                        className={classes.actionBtnTypo}
+                      >
+                        Register
+                      </Typography>
+                    </Button>
                   </Grid>
                 </Grid>
-              ))}
-            </Grid>
-            <Grid container item xs={12} className={classes.actionPanel}>
-              <Grid item xs={6}>
-                <Button
-                  className={classes.actionBtn}
-                  onClick={handleCancelClick}
-                >
-                  <Typography variant="h6" className={classes.actionBtnTypo}>
-                    Cancel
-                  </Typography>
-                </Button>
-              </Grid>
-              <Grid item xs={6}>
-                <Button
-                  className={classes.actionBtn}
-                  onClick={handleRegisterClick}
-                >
-                  <Typography variant="h6" className={classes.actionBtnTypo}>
-                    Register
-                  </Typography>
-                </Button>
-              </Grid>
-            </Grid>
+              </>
+            )}
           </Grid>
         </Grid>
       </div>
