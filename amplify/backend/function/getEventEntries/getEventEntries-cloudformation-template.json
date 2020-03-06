@@ -76,7 +76,7 @@
 				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-saavyas-2k20-client-dev-222337-deployment",
+					"S3Bucket": "amplify-saavyas-2k20-client-master-221423-deployment",
 					"S3Key": "amplify-builds/getEventEntries-676375706a79634d4d4f-build.zip"
 				}
 			}

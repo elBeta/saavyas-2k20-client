@@ -19,7 +19,8 @@
                 "paymentsDB": {},
                 "getFormFieldsFromEventName": {},
                 "getTxnDetails": {},
-                "getEventEntries": {}
+                "getEventEntries": {},
+                "getEventNames": {}
             }
         }
     },
