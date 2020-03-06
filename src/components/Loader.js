@@ -16,8 +16,8 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function Loader(props) {
-  const { size, ...otherProps } = props
-  const classes = useStyles(props)
+  const { size, bgColor, iconColor, ...otherProps } = props
+  const classes = useStyles({ bgColor, iconColor })
 
   return (
     <div className={classes.root} {...otherProps}>

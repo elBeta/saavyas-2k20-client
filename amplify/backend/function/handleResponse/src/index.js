@@ -22,7 +22,7 @@ const eventsInfoTableName = process.env.STORAGE_EVENTSINFODB_NAME
 const secretsClient = new AWS.SecretsManager({ region: process.env.REGION })
 const secretName = "dev/saavyas/payu-test"
 
-const payLater = true
+let payLater = true
 
 function zfill(number, length) {
   // Prefix number with zeroes till it hits desired length
@@ -45,6 +45,8 @@ exports.handler = async (event, context, callback) => {
     // hashSequence =
     // salt|status||||||udf5|udf4|udf3|udf2|udf1|email|firstname|productinfo|amount|txnid|key;
     const data = event["queryStringParameters"]
+
+    payLater = Boolean(data["spotReg"])
 
     if (!payLater) {
       // Get important data from given string
@@ -216,12 +218,10 @@ exports.handler = async (event, context, callback) => {
           )
           .map(key => ({ [key]: formData[key] }))
       ),
-      paid: true,
+      paid: !payLater,
       mailSent: mailSent,
     }
-    if (payLater) {
-      entryItem.paid = false
-    }
+
     console.log(`Entry item:\n ${entryItem}`)
 
     const putItemParams = {

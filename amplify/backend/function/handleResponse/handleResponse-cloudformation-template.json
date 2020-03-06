@@ -90,8 +90,8 @@
 				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-saavyas-2k20-client-master-221423-deployment",
-					"S3Key": "amplify-builds/handleResponse-65326946634971456e2f-build.zip"
+					"S3Bucket": "amplify-saavyas-2k20-client-dev-222337-deployment",
+					"S3Key": "amplify-builds/handleResponse-47336a5255715747356d-build.zip"
 				}
 			}
 		},

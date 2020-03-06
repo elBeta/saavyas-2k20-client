@@ -212,12 +212,6 @@ function Sponsors(props) {
             style={{ width: "25rem", height: "12rem" }}
           />
         </Grid>
-        <Grid item className={classes.photoHolder2}>
-          <FluidImage
-            fileName="magsons.png"
-            style={{ width: "25rem", height: "10rem" }}
-          />
-        </Grid>
       </Grid>
     </div>
   )
