@@ -10,6 +10,7 @@ import Grid from "@material-ui/core/Grid"
 import Typography from "@material-ui/core/Typography"
 import Fab from "@material-ui/core/Fab"
 import Input from "@material-ui/core/Input"
+import Button from "@material-ui/core/Button"
 
 import PhotoIcon from "@material-ui/icons/PhotoCamera"
 
@@ -75,6 +76,19 @@ const useStyles = makeStyles(theme => ({
     color: "#fafafa",
     padding: 4,
   },
+  actionBtn: {
+    background: "#424556",
+    padding: "0.75rem 1rem",
+
+    "&:hover": {
+      background: "#424556",
+    },
+  },
+  actionBtnTypo: {
+    fontFamily: "Barlow",
+    fontWeight: 700,
+    color: "#fafafa",
+  },
 }))
 
 function QRScanner(props) {
@@ -122,6 +136,8 @@ function QRScanner(props) {
     setQrResult("")
   }
 
+  const handleCompleteRegClick = e => {}
+
   if (isLoading) {
     return (
       <>
@@ -149,6 +165,7 @@ function QRScanner(props) {
             <RegDetails
               txnDetails={txnDetails}
               photoClickHandler={handlePhotoClick}
+              handleCompleteRegClick={handleCompleteRegClick}
               classes={classes}
             />
           )}
@@ -159,7 +176,12 @@ function QRScanner(props) {
 }
 
 function RegDetails(props) {
-  const { txnDetails, photoClickHandler, classes } = props
+  const {
+    handleCompleteRegClick,
+    txnDetails,
+    photoClickHandler,
+    classes,
+  } = props
 
   const getShortDate = timestamp => {
     const date = new Date(parseInt(timestamp))
@@ -231,14 +253,21 @@ function RegDetails(props) {
               </Grid>
             ))}
         </Grid>
+        <Grid container item xs={12}>
+          <Grid item>
+            <Button
+              className={classes.actionBtn}
+              onClick={handleCompleteRegClick}
+            >
+              <Typography variant="h6" className={classes.actionBtnTypo}>
+                Complete Registration
+              </Typography>
+            </Button>
+          </Grid>
+        </Grid>
       </Grid>
     </div>
   )
 }
 
 export default QRScanner
-
-// import React from "react"
-// export default function QRScanner() {
-//   return null
-// }
