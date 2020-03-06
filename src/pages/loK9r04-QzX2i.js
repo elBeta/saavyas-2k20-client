@@ -346,7 +346,9 @@ function RegistrationForm(props) {
           </Grid>
           <Grid container item xs={12} md={7} lg={6}>
             {isLoading ? (
-              <Loader size="5rem" bgColor="#333645" iconColor="white" />
+              <Grid item xs={12}>
+                <Loader size="5rem" bgColor="#333645" iconColor="white" />
+              </Grid>
             ) : (
               <>
                 <Grid container item xs={12} className={classes.formHolder}>
