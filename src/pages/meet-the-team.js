@@ -52,6 +52,11 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Barlow",
     fontWeight: 700,
     color: "#05386b",
+  },
+  emailId: {
+    fontFamily: "Barlow",
+    fontWeight: 700,
+    color: "white",
     paddingBottom: "1rem",
   },
   memberCardParent: {
@@ -65,8 +70,8 @@ const useStyles = makeStyles(theme => ({
   cardHeader: {
     maxWidth: "max-content",
     paddingRight: "3rem",
-    paddingBottom: 4,
-    borderBottom: "2px solid #05386b",
+    // paddingBottom: 4,
+    // borderBottom: "2px solid #05386b",
     [theme.breakpoints.down("xs")]: {
       maxWidth: "10rem",
     },
@@ -174,6 +179,11 @@ function MeetTheTeam(props) {
                     {team.name}
                   </Typography>
                 </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="h6" className={classes.emailId}>
+                    {team.emailId}
+                  </Typography>
+                </Grid>
                 <Grid container alignItems="center" item xs={12}>
                   {team.members.map(teamMember => (
                     <Grid
@@ -225,16 +235,6 @@ function ContactCard(props) {
         <Grid container item xs={12}>
           <Grid item className={classes.cardIconHolder}>
             <PhoneIcon className={classes.cardIcon} />
-          </Grid>
-          <Grid item>
-            <Typography variant="h6" className={classes.cardNameTypo}>
-              {phoneNo}
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid container item xs={12}>
-          <Grid item className={classes.cardIconHolder}>
-            <EmailIcon className={classes.cardIcon} />
           </Grid>
           <Grid item>
             <Typography variant="h6" className={classes.cardNameTypo}>
