@@ -20,7 +20,8 @@
                 "getFormFieldsFromEventName": {},
                 "getTxnDetails": {},
                 "getEventEntries": {},
-                "getEventNames": {}
+                "getEventNames": {},
+                "spotRegister": {}
             }
         }
     },
