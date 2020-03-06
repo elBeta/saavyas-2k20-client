@@ -107,7 +107,33 @@ function EntriesPage(props) {
             parseInt(item["Registered At"])
           ).toLocaleString("en-IN"),
         }))
-        setEventDetails(items)
+        return items
+      })
+      .then(items => {
+        API.get("eventNamesFetchAPI", "/fetch-event-names")
+          .then(eventsInfo => {
+            console.log(eventsInfo)
+
+            // eventsInfo = [{eventID: "drone-prix", eventName: "Fireflies"}, ...]
+            // Convert into
+            // eventsInfoObj = {"drone-prix": "Fireflies", "...": "..."}
+            let eventsInfoObj = {}
+            for (let i = 0; i < eventsInfo.length; i++) {
+              Object.assign(eventsInfoObj, {
+                [eventsInfo[i].eventID]: eventsInfo[i].eventName,
+              })
+            }
+            console.log(eventsInfoObj)
+            items = items.map(item => ({
+              ...item,
+              eventName: eventsInfoObj[item.eventID],
+            }))
+            console.log(items)
+            setEventDetails(items)
+          })
+          .catch(err => {
+            console.error(err)
+          })
       })
       .catch(err => {
         console.error(err)
