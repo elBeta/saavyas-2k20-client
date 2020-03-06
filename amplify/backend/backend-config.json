@@ -97,6 +97,21 @@
 					]
 				}
 			]
+		},
+		"spotRegister": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "paymentsDB",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	},
 	"api": {
@@ -177,6 +192,20 @@
 				{
 					"category": "function",
 					"resourceName": "getEventNames",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"spotRegistrationAPI": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "spotRegister",
 					"attributes": [
 						"Name",
 						"Arn"
