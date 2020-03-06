@@ -137,6 +137,7 @@ function QRScanner(props) {
   }
 
   const handleCompleteRegClick = e => {
+    setIsLoading(true)
     API.get("spotRegistrationAPI", "/spot-register", {
       queryStringParameters: {
         txnid: qrResult,
@@ -149,6 +150,9 @@ function QRScanner(props) {
       .catch(err => {
         console.error(err)
         alert("ERROR: Spot Registration Failed!")
+      })
+      .finally(() => {
+        setIsLoading(false)
       })
   }
 
