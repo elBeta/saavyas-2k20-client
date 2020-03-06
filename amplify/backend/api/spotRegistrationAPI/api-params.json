@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/spot-register",
+            "lambdaFunction": "spotRegister",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "spotRegistrationAPI",
+    "apiName": "spotRegistrationAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "spotRegister"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-saavyas-2k20-client-dev-222337-authRole",
+        "unAuthRoleName": "amplify-saavyas-2k20-client-dev-222337-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "spotRegister",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
