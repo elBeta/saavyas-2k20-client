@@ -243,6 +243,20 @@ function ComingSoon() {
                       </Link>
                     </Grid>
                     <Grid item xs={12} sm="auto">
+                      <Link
+                        to="https://drive.google.com/open?id=11q1GC3aWxOxnHdjbmGXWtyf6xFTKv1N3"
+                        className={classes.navLink}
+                      >
+                        <Button
+                          variant="outlined"
+                          color="inherit"
+                          className={classes.navBtn}
+                        >
+                          Event Schedule
+                        </Button>
+                      </Link>
+                    </Grid>
+                    <Grid item xs={12} sm="auto">
                       <SelectDownload
                         items={[
                           {
@@ -275,13 +289,13 @@ function ComingSoon() {
                       </Link>
                     </Grid>
                     <Grid item xs={12} sm="auto">
-                      <Link to="/merchandise" className={classes.navLink}>
+                      <Link to="/sponsors" className={classes.navLink}>
                         <Button
                           variant="outlined"
                           color="inherit"
                           className={classes.navBtn}
                         >
-                          Merchandise
+                          Sponsors
                         </Button>
                       </Link>
                     </Grid>
