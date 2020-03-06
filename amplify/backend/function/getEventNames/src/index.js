@@ -17,7 +17,7 @@ exports.handler = async (event, context, callback) => {
   try {
     const scanParams = {
       TableName: tableName,
-      ProjectionExpression: "eventID",
+      ProjectionExpression: "eventID, eventName",
     }
 
     const dbData = await dynamodb.scan(scanParams).promise()
