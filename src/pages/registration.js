@@ -512,6 +512,13 @@ function TransactionStatus(props) {
                 <br />
                 Thank you for registering.
               </Typography>
+              <Typography
+                variant="h6"
+                align="center"
+                className={classes.fieldLabelTypo}
+              >
+                {`QR Code link: https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${txnid}\n`}
+              </Typography>
             </Grid>
           )}
           <Grid item className={classes.verticalPad}>
