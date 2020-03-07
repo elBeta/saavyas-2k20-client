@@ -47,10 +47,9 @@ const useStyles = makeStyles({
     overflowY: "hidden",
   },
   comingSoonTypo: {
-    fontFamily: "Barlow Semi Condensed",
+    fontFamily: "Kaushan Script",
     fontWeight: 700,
-    // color: "#ff0066",
-    color: "#F50057",
+    color: "white",
     [theme.breakpoints.only("xs")]: {
       fontSize: "2.6rem",
     },
@@ -335,17 +334,20 @@ function ComingSoon() {
                   <Grid item>
                     <Typography
                       color="secondary"
-                      variant="h1"
+                      variant="h3"
                       align="center"
                       className={classes.comingSoonTypo}
                     >
-                      COMING SOON
+                      A <span style={{ color: "#F50057" }}>Poetry</span> of{" "}
+                      <br />
+                      <span style={{ color: "#01BCF3" }}>Ice</span> and{" "}
+                      <span style={{ color: "rgb(255, 12, 0)" }}>Fire</span>
                     </Typography>
-                    <Divider className={classes.styledDivider} />
+                    {/* <Divider className={classes.styledDivider} /> */}
                   </Grid>
-                  <Grid item>
+                  {/* <Grid item>
                     <CountdownTimer />
-                  </Grid>
+                  </Grid> */}
                   <Grid item>
                     <ShareButtons />
                   </Grid>
