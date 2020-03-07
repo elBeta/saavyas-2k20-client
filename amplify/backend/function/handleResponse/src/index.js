@@ -167,6 +167,9 @@ exports.handler = async (event, context, callback) => {
 
     const mailBody =
       `Registration Id: ${data["txnid"]}\n` +
+      `QR Code link: https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${
+        data["txnid"]
+      }` +
       `Event Name: ${formData["Event"]}\n` +
       (!payOnlineNow && !spotReg
         ? `Amount to be paid: ${data["amount"]}\n` +
